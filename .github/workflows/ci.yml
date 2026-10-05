@@ -6,11 +6,31 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: fireside_chat
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d fireside_chat"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/fireside_chat
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/fireside_chat?schema=public
 
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +48,12 @@ jobs:
       - name: Generate Prisma client
         run: npm run prisma:generate
 
+      - name: Apply database migrations
+        run: npm run db:deploy
+
+      - name: Seed verified registry
+        run: npm run db:seed
+
       - name: Test feed ingestion
         run: npm test
 
@@ -39,3 +65,16 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Crawl rendered MVP
+        run: |
+          npm run start > /tmp/fireside-chat.log 2>&1 &
+          APP_PID=$!
+          trap 'kill $APP_PID || true' EXIT
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:3000/api/health > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          npm run smoke:mvp

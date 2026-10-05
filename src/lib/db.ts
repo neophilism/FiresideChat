@@ -5,14 +5,23 @@ const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;
 };
 
-function createPrismaClient() {
-  const connectionString = process.env.DATABASE_URL;
+const localDatabaseUrl =
+  "postgresql://postgres:postgres@localhost:5432/fireside_chat?schema=public";
 
-  if (!connectionString) {
+function databaseUrl() {
+  const configured = process.env.DATABASE_URL;
+
+  if (configured) return configured;
+
+  if (process.env.NODE_ENV === "production") {
     throw new Error("DATABASE_URL is not configured");
   }
 
-  const adapter = new PrismaPg({ connectionString });
+  return localDatabaseUrl;
+}
+
+function createPrismaClient() {
+  const adapter = new PrismaPg({ connectionString: databaseUrl() });
   return new PrismaClient({ adapter });
 }
 

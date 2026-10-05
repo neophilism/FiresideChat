@@ -1,0 +1,2 @@
+-- AddEnumValue
+ALTER TYPE "PersonKind" ADD VALUE 'SHADOW_SENATE';

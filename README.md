@@ -23,18 +23,15 @@ The product is organized around public servants rather than shows. A person may 
 Requirements: Node.js 20.9+ and Docker.
 
 ```bash
-cp .env.example .env
-docker compose up -d
 npm install
-npm run prisma:generate
-npm run db:migrate -- --name init
-npm run db:seed
-npm run registry:validate
+npm run dev:setup
 npm run ingest:feeds
 npm run dev
 ```
 
 Open http://localhost:3000. Health check: http://localhost:3000/api/health.
+
+For local development and Codespaces, database commands default to the Docker Compose PostgreSQL instance when `DATABASE_URL` is not set. Production still requires an explicit `DATABASE_URL`. If you want to use another local database, copy `.env.example` to `.env` and edit it before running setup.
 
 Run validation independently with:
 
@@ -44,6 +41,14 @@ npm run lint
 npm run typecheck
 npm run build
 ```
+
+With the built or development server running on port 3000, run the rendered MVP acceptance crawl with:
+
+```bash
+npm run smoke:mvp
+```
+
+The crawl verifies the homepage, People directory, a seeded person page, a seeded podcast page, search, and the database-backed health endpoint.
 
 ## Verified podcast registry
 
