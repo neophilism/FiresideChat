@@ -38,22 +38,23 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [volume, setVolumeState] = useState(1);
   const [playbackRate, setPlaybackRateState] = useState(1);
 
-  const playEpisode = useCallback((episode: PlayerEpisode) => {
-    const audio = audioRef.current;
-    if (!audio) return;
+  const playEpisode = useCallback(
+    (episode: PlayerEpisode) => {
+      const audio = audioRef.current;
+      if (!audio) return;
 
-    setCurrent((previous) => {
-      if (previous?.id !== episode.id) {
+      if (current?.id !== episode.id) {
+        setCurrent(episode);
         audio.src = episode.audioUrl;
         audio.currentTime = 0;
         setCurrentTime(0);
         setDuration(0);
       }
-      return episode;
-    });
 
-    void audio.play().catch(() => setPlaying(false));
-  }, []);
+      void audio.play().catch(() => setPlaying(false));
+    },
+    [current],
+  );
 
   const toggle = useCallback(() => {
     const audio = audioRef.current;
@@ -122,15 +123,11 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     });
 
     return () => {
-      for (const action of [
-        "play",
-        "pause",
-        "seekbackward",
-        "seekforward",
-        "seekto",
-      ] as MediaSessionAction[]) {
-        navigator.mediaSession.setActionHandler(action, null);
-      }
+      navigator.mediaSession.setActionHandler("play", null);
+      navigator.mediaSession.setActionHandler("pause", null);
+      navigator.mediaSession.setActionHandler("seekbackward", null);
+      navigator.mediaSession.setActionHandler("seekforward", null);
+      navigator.mediaSession.setActionHandler("seekto", null);
     };
   }, [current, seek, skip]);
 
