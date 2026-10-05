@@ -28,6 +28,8 @@ docker compose up -d
 npm install
 npm run prisma:generate
 npm run db:migrate -- --name init
+npm run db:seed
+npm run registry:validate
 npm run dev
 ```
 
@@ -38,3 +40,7 @@ Open http://localhost:3000. Health check: http://localhost:3000/api/health.
 The verified registry includes a podcast only when a current or former member of Congress, or a U.S. president, hosts it, co-hosts it, or the show is officially produced on their behalf. Guest appearances alone do not qualify.
 
 Fireside Chat is independent and is not affiliated with or endorsed by the public officials whose publicly available podcasts it indexes.
+
+## Verified podcast registry
+
+The curated registry lives in `src/data/podcast-registry.ts`. Every ingestable show carries a canonical RSS URL, a verified host relationship, provenance, and a verification date. See `docs/podcast-registry.md` for the inclusion and review policy.
