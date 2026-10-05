@@ -1146,3 +1146,29 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+
+.page-count {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.4rem;
+}
+
+.pagination a {
+  color: var(--navy);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  color: var(--red);
+}
