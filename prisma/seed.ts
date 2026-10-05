@@ -3,10 +3,13 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { podcastRegistry } from "../src/data/podcast-registry";
 
-const connectionString = process.env.DATABASE_URL;
+const localDatabaseUrl =
+  "postgresql://postgres:postgres@localhost:5432/fireside_chat?schema=public";
 
-if (!connectionString) {
-  throw new Error("DATABASE_URL is required to seed Fireside Chat");
+const connectionString = process.env.DATABASE_URL ?? localDatabaseUrl;
+
+if (process.env.NODE_ENV === "production" && !process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is required to seed Fireside Chat in production");
 }
 
 const prisma = new PrismaClient({
