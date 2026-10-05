@@ -84,6 +84,7 @@ model Podcast {
   language              String?
   feedEtag              String?
   feedLastModified      String?
+  resolvedFeedUrl       String?
   lastCheckedAt         DateTime?
   lastSuccessfulCheckAt DateTime?
   lastEpisodeAt         DateTime?
