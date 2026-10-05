@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,9 +21,9 @@ export default function RootLayout({
       <body>
         <div className="site-shell">
           <header className="site-header">
-            <a className="brand" href="/">
+            <Link className="brand" href="/">
               Fireside Chat
-            </a>
+            </Link>
             <span className="tagline">Hear them yourself.</span>
           </header>
           <main>{children}</main>
