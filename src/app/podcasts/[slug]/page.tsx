@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EpisodeCard } from "@/components/episode-card";
 import { db } from "@/lib/db";
@@ -6,8 +7,11 @@ import { initials, officeLabel } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
+const PAGE_SIZE = 50;
+
 type Props = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -19,22 +23,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: podcast?.title ?? "Podcast" };
 }
 
-export default async function PodcastPage({ params }: Props) {
-  const { slug } = await params;
+export default async function PodcastPage({ params, searchParams }: Props) {
+  const [{ slug }, query] = await Promise.all([params, searchParams]);
+  const requestedPage = Number.parseInt(query.page ?? "1", 10);
+  const pageNumber =
+    Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+
   const podcast = await db.podcast.findUnique({
     where: { slug },
     include: {
       people: { include: { person: true } },
-      episodes: {
-        orderBy: { publishedAt: "desc" },
-        take: 100,
-      },
+      _count: { select: { episodes: true } },
     },
   });
 
   if (!podcast) notFound();
   const person = podcast.people[0]?.person;
   if (!person) notFound();
+
+  const totalPages = Math.max(1, Math.ceil(podcast._count.episodes / PAGE_SIZE));
+  if (pageNumber > totalPages && podcast._count.episodes > 0) notFound();
+
+  const episodes = await db.episode.findMany({
+    where: { podcastId: podcast.id },
+    orderBy: { publishedAt: "desc" },
+    skip: (pageNumber - 1) * PAGE_SIZE,
+    take: PAGE_SIZE,
+  });
 
   return (
     <div className="detail-page">
@@ -56,20 +71,47 @@ export default async function PodcastPage({ params }: Props) {
         <div className="section-heading">
           <div>
             <p className="section-label">Archive</p>
-            <h2>{podcast.episodes.length} recent episodes</h2>
+            <h2>
+              {podcast._count.episodes.toLocaleString()}{" "}
+              {podcast._count.episodes === 1 ? "episode" : "episodes"}
+            </h2>
           </div>
+          {totalPages > 1 ? (
+            <span className="page-count">
+              Page {pageNumber} of {totalPages}
+            </span>
+          ) : null}
         </div>
-        {podcast.episodes.length > 0 ? (
-          <div className="episode-list">
-            {podcast.episodes.map((episode) => (
-              <EpisodeCard
-                key={episode.id}
-                episode={episode}
-                podcast={podcast}
-                person={person}
-              />
-            ))}
-          </div>
+
+        {episodes.length > 0 ? (
+          <>
+            <div className="episode-list">
+              {episodes.map((episode) => (
+                <EpisodeCard
+                  key={episode.id}
+                  episode={episode}
+                  podcast={podcast}
+                  person={person}
+                />
+              ))}
+            </div>
+            {totalPages > 1 ? (
+              <nav className="pagination" aria-label="Episode pages">
+                {pageNumber > 1 ? (
+                  <Link href={`/podcasts/${podcast.slug}?page=${pageNumber - 1}`}>
+                    ← Newer episodes
+                  </Link>
+                ) : (
+                  <span />
+                )}
+                {pageNumber < totalPages ? (
+                  <Link href={`/podcasts/${podcast.slug}?page=${pageNumber + 1}`}>
+                    Older episodes →
+                  </Link>
+                ) : null}
+              </nav>
+            ) : null}
+          </>
         ) : (
           <div className="empty-state">
             <strong>No episodes have been ingested yet.</strong>
