@@ -2,4 +2,39 @@
 
 Fireside Chat is a nonpartisan podcast player and searchable archive for podcasts hosted, co-hosted, or officially produced by current and former members of the U.S. Congress and U.S. presidents.
 
-The project is being built incrementally. The first milestone establishes the application and data foundation; later milestones add verified podcast ingestion, a persistent player, transcript search, public-servant profile pages, achievements, and contact tools.
+The product is organized around public servants rather than shows. A person may host multiple podcasts over time, while their Fireside Chat page remains the durable home for episodes, transcripts, accomplishments, and eventually official contact information.
+
+## MVP roadmap
+
+1. Application and PostgreSQL data foundation
+2. Verified politician/podcast registry
+3. RSS ingestion and automatic episode updates
+4. Homepage and podcast directory
+5. Persistent bottom audio player
+6. Person pages and episode browsing
+7. Publisher transcript ingestion
+8. Automatic transcription when publisher transcripts are absent
+9. Full-text transcript search with timestamp playback
+10. Private administration and source-health interface
+11. Production hardening and deployment
+
+## Local development
+
+Requirements: Node.js 20.9+ and Docker.
+
+```bash
+cp .env.example .env
+docker compose up -d
+npm install
+npm run prisma:generate
+npm run db:migrate -- --name init
+npm run dev
+```
+
+Open http://localhost:3000. Health check: http://localhost:3000/api/health.
+
+## Editorial scope
+
+The verified registry includes a podcast only when a current or former member of Congress, or a U.S. president, hosts it, co-hosts it, or the show is officially produced on their behalf. Guest appearances alone do not qualify.
+
+Fireside Chat is independent and is not affiliated with or endorsed by the public officials whose publicly available podcasts it indexes.
