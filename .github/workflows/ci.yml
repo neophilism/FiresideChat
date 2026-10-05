@@ -61,3 +61,16 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Crawl rendered MVP
+        run: |
+          npm run start > /tmp/fireside-chat.log 2>&1 &
+          APP_PID=$!
+          trap 'kill $APP_PID || true' EXIT
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:3000/api/health > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          npm run smoke:mvp
