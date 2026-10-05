@@ -22,7 +22,8 @@
     "predb:seed": "npm run prisma:generate",
     "preingest:feeds": "npm run prisma:generate",
     "dev:db": "docker compose up -d postgres",
-    "dev:setup": "npm run dev:db && npm run db:deploy && npm run db:seed && npm run registry:validate"
+    "dev:setup": "npm run dev:db && npm run db:deploy && npm run db:seed && npm run registry:validate",
+    "smoke:mvp": "node scripts/smoke-mvp.mjs"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.0",
