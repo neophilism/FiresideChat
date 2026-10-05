@@ -39,6 +39,12 @@ enum IngestionRunStatus {
   FAILED
 }
 
+enum PublishingStatus {
+  ACTIVE
+  INACTIVE
+  UNKNOWN
+}
+
 model Person {
   id           String          @id @default(cuid())
   slug         String          @unique
@@ -65,9 +71,13 @@ model Podcast {
   title         String
   rssUrl        String          @unique
   websiteUrl    String?
-  description   String?
-  active        Boolean         @default(true)
-  lastCheckedAt DateTime?
+  description      String?
+  active           Boolean          @default(true)
+  publishingStatus PublishingStatus @default(UNKNOWN)
+  verificationUrl  String?
+  verifiedAt       DateTime?
+  verificationNote String?
+  lastCheckedAt    DateTime?
   lastEpisodeAt DateTime?
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
