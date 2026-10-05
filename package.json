@@ -17,7 +17,12 @@
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "registry:validate": "tsx scripts/validate-registry.ts",
-    "ingest:feeds": "tsx scripts/ingest-feeds.ts"
+    "ingest:feeds": "tsx scripts/ingest-feeds.ts",
+    "postinstall": "prisma generate",
+    "predb:seed": "npm run prisma:generate",
+    "preingest:feeds": "npm run prisma:generate",
+    "dev:db": "docker compose up -d postgres",
+    "dev:setup": "npm run dev:db && npm run db:deploy && npm run db:seed && npm run registry:validate"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.0",
