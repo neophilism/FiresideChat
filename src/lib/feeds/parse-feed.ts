@@ -115,18 +115,28 @@ function decodeCommonHtmlEntities(value: string): string {
   );
 }
 
+function decodeRepeatedly(value: string): string {
+  let decoded = value;
+
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const next = decodeCommonHtmlEntities(decoded);
+    if (next === decoded) break;
+    decoded = next;
+  }
+
+  return decoded;
+}
+
 export function toPlainText(value: string | null): string | null {
   if (!value) return null;
 
-  const plain = decodeCommonHtmlEntities(
-    value
-      .replace(/<\s*br\s*\/?>/gi, "\n")
-      .replace(
-        /<\s*\/?(?:p|div|li|h[1-6]|section|article|blockquote)[^>]*>/gi,
-        "\n",
-      )
-      .replace(/<[^>]*>/g, ""),
-  )
+  const plain = decodeRepeatedly(value)
+    .replace(/<\s*br\s*\/?>/gi, "\n")
+    .replace(
+      /<\s*\/?(?:p|div|li|h[1-6]|section|article|blockquote)[^>]*>/gi,
+      "\n",
+    )
+    .replace(/<[^>]*>/g, "")
     .replace(/[\t\r ]+/g, " ")
     .replace(/ *\n+ */g, "\n")
     .trim();
