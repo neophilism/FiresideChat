@@ -66,27 +66,40 @@ model Person {
 }
 
 model Podcast {
-  id            String          @id @default(cuid())
-  slug          String          @unique
-  title         String
-  rssUrl        String          @unique
-  websiteUrl    String?
-  description      String?
-  active           Boolean          @default(true)
-  publishingStatus PublishingStatus @default(UNKNOWN)
-  verificationUrl  String?
-  verifiedAt       DateTime?
-  verificationNote String?
-  lastCheckedAt    DateTime?
-  lastEpisodeAt DateTime?
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  people        PodcastPerson[]
-  episodes      Episode[]
-  ingestionRuns IngestionRun[]
+  id                    String           @id @default(cuid())
+  slug                  String           @unique
+  title                 String
+  rssUrl                String           @unique
+  websiteUrl            String?
+  description           String?
+  active                Boolean          @default(true)
+  publishingStatus      PublishingStatus @default(UNKNOWN)
+  verificationUrl       String?
+  verifiedAt            DateTime?
+  verificationNote      String?
+  feedTitle             String?
+  feedDescription       String?
+  feedWebsiteUrl        String?
+  feedImageUrl          String?
+  language              String?
+  feedEtag              String?
+  feedLastModified      String?
+  resolvedFeedUrl       String?
+  lastCheckedAt         DateTime?
+  lastSuccessfulCheckAt DateTime?
+  lastEpisodeAt         DateTime?
+  consecutiveFailures   Int              @default(0)
+  nextRetryAt           DateTime?
+  lastError             String?
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @updatedAt
+  people                PodcastPerson[]
+  episodes              Episode[]
+  ingestionRuns         IngestionRun[]
 
   @@index([active])
   @@index([lastEpisodeAt])
+  @@index([nextRetryAt])
 }
 
 model PodcastPerson {
@@ -107,9 +120,12 @@ model Episode {
   title            String
   description      String?
   publishedAt      DateTime
+  sourceUpdatedAt  DateTime?
   durationSeconds  Int?
   audioUrl         String
+  audioMimeType    String?
   episodeUrl       String?
+  imageUrl         String?
   transcriptStatus TranscriptStatus @default(MISSING)
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
@@ -146,13 +162,20 @@ model TranscriptSegment {
 }
 
 model IngestionRun {
-  id          String             @id @default(cuid())
-  podcastId   String
-  status      IngestionRunStatus @default(RUNNING)
-  startedAt   DateTime           @default(now())
-  completedAt DateTime?
-  error       String?
-  podcast     Podcast            @relation(fields: [podcastId], references: [id], onDelete: Cascade)
+  id              String             @id @default(cuid())
+  podcastId       String
+  status          IngestionRunStatus @default(RUNNING)
+  startedAt       DateTime           @default(now())
+  completedAt     DateTime?
+  httpStatus      Int?
+  notModified     Boolean            @default(false)
+  feedBytes       Int?
+  episodesSeen    Int                @default(0)
+  episodesCreated Int                @default(0)
+  episodesUpdated Int                @default(0)
+  episodesSkipped Int                @default(0)
+  error           String?
+  podcast         Podcast            @relation(fields: [podcastId], references: [id], onDelete: Cascade)
 
   @@index([podcastId, startedAt])
   @@index([status])

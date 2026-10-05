@@ -8,7 +8,7 @@ The product is organized around public servants rather than shows. A person may 
 
 1. Application and PostgreSQL data foundation
 2. Verified politician/podcast registry
-3. RSS ingestion and automatic episode updates
+3. RSS/Atom ingestion and automatic episode updates
 4. Homepage and podcast directory
 5. Persistent bottom audio player
 6. Person pages and episode browsing
@@ -30,17 +30,31 @@ npm run prisma:generate
 npm run db:migrate -- --name init
 npm run db:seed
 npm run registry:validate
+npm run ingest:feeds
 npm run dev
 ```
 
 Open http://localhost:3000. Health check: http://localhost:3000/api/health.
+
+Run validation independently with:
+
+```bash
+npm test
+npm run lint
+npm run typecheck
+npm run build
+```
+
+## Verified podcast registry
+
+The curated registry lives in `src/data/podcast-registry.ts`. Every ingestable show carries a canonical RSS URL, a verified host relationship, provenance, and a verification date. See `docs/podcast-registry.md` for the inclusion and review policy.
+
+## Feed ingestion
+
+`npm run ingest:feeds` fetches all active, due feeds and idempotently inserts or updates their episodes. It supports conditional HTTP requests, RSS 2.0 and Atom, bounded concurrency, per-feed run records, failure isolation, and retry backoff. See `docs/rss-ingestion.md` for commands and operational details.
 
 ## Editorial scope
 
 The verified registry includes a podcast only when a current or former member of Congress, or a U.S. president, hosts it, co-hosts it, or the show is officially produced on their behalf. Guest appearances alone do not qualify.
 
 Fireside Chat is independent and is not affiliated with or endorsed by the public officials whose publicly available podcasts it indexes.
-
-## Verified podcast registry
-
-The curated registry lives in `src/data/podcast-registry.ts`. Every ingestable show carries a canonical RSS URL, a verified host relationship, provenance, and a verification date. See `docs/podcast-registry.md` for the inclusion and review policy.
