@@ -31,6 +31,7 @@ export default function RootLayout({
 
               <nav className="site-nav" aria-label="Primary navigation">
                 <Link href="/#shows">Shows</Link>
+                <Link href="/people">People</Link>
                 <Link href="/search">Search</Link>
               </nav>
 
