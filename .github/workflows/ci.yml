@@ -48,6 +48,9 @@ jobs:
       - name: Generate Prisma client
         run: npm run prisma:generate
 
+      - name: Wait for database
+        run: npm run db:wait
+
       - name: Apply database migrations
         run: npm run db:deploy
 
