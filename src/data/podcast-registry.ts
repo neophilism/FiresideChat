@@ -1,7 +1,7 @@
 export type RegistryPerson = {
   slug: string;
   fullName: string;
-  kind: "HOUSE" | "SENATE" | "PRESIDENT";
+  kind: "HOUSE" | "SENATE" | "SHADOW_SENATE" | "PRESIDENT";
   state?: string;
   party?: string;
   isCurrent: boolean;
@@ -129,6 +129,14 @@ export const podcastRegistry: {
       fullName: "Anthony Weiner",
       kind: "HOUSE",
       state: "NY",
+      party: "Democratic",
+      isCurrent: false,
+    },
+    {
+      slug: "michael-d-brown",
+      fullName: "Michael D. Brown",
+      kind: "SHADOW_SENATE",
+      state: "DC",
       party: "Democratic",
       isCurrent: false,
     },
@@ -289,6 +297,19 @@ export const podcastRegistry: {
       verificationNote:
         "Podcast metadata identifies former Congressman Anthony Weiner as the show's host.",
       people: [{ personSlug: "anthony-weiner", role: "HOST" }],
+    },
+    {
+      slug: "shadow-politics",
+      title: "Shadow Politics with US Senator Michael D Brown",
+      rssUrl: "https://bbsradio.com/customshow/2570",
+      websiteUrl: "https://bbsradio.com/shadowpolitics",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl: "https://bbsradio.com/shadowpolitics",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "BBS Radio identifies former D.C. Shadow Senator Michael D. Brown as host and exposes this endpoint as the show's Audio RSS Feed.",
+      people: [{ personSlug: "michael-d-brown", role: "HOST" }],
     },
   ],
   candidates: [
