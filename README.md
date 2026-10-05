@@ -42,6 +42,14 @@ npm run typecheck
 npm run build
 ```
 
+With the built or development server running on port 3000, run the rendered MVP acceptance crawl with:
+
+```bash
+npm run smoke:mvp
+```
+
+The crawl verifies the homepage, People directory, a seeded person page, a seeded podcast page, search, and the database-backed health endpoint.
+
 ## Verified podcast registry
 
 The curated registry lives in `src/data/podcast-registry.ts`. Every ingestable show carries a canonical RSS URL, a verified host relationship, provenance, and a verification date. See `docs/podcast-registry.md` for the inclusion and review policy.
