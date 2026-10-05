@@ -1073,3 +1073,76 @@ h3 {
     font-size: 1.45rem;
   }
 }
+
+.people-directory {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.directory-person {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem;
+  min-width: 0;
+  padding: 1.5rem;
+  background: var(--panel);
+}
+
+.portrait-mark-directory {
+  width: 5rem;
+  height: 6rem;
+}
+
+.directory-person-copy {
+  min-width: 0;
+}
+
+.directory-person h2 {
+  margin: 0;
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.directory-person h2 a {
+  text-decoration: none;
+}
+
+.directory-person h2 a:hover {
+  color: var(--red);
+}
+
+.directory-party {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+}
+
+.directory-show-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  margin-top: 1rem;
+}
+
+.directory-show-links a {
+  color: var(--navy);
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.directory-show-links a:hover {
+  color: var(--red);
+}
+
+@media (max-width: 760px) {
+  .people-directory {
+    grid-template-columns: 1fr;
+  }
+}
