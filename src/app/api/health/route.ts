@@ -1,8 +1,25 @@
 import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
 
-export function GET() {
-  return NextResponse.json({
-    ok: true,
-    service: "fireside-chat",
-  });
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  try {
+    await db.$queryRaw`SELECT 1`;
+
+    return NextResponse.json({
+      ok: true,
+      service: "fireside-chat",
+      database: "reachable",
+    });
+  } catch {
+    return NextResponse.json(
+      {
+        ok: false,
+        service: "fireside-chat",
+        database: "unreachable",
+      },
+      { status: 503 },
+    );
+  }
 }
