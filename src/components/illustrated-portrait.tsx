@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { portraitPathFor } from "@/data/portrait-registry";
+
 type PortraitSpec = {
   skin: string;
   hair: string;
@@ -45,8 +48,23 @@ export function IllustratedPortrait({
   name: string;
   large?: boolean;
 }) {
+  const portraitPath = portraitPathFor(slug);
   const spec = specs[slug] ?? fallbackSpec(slug);
   const sizeClass = large ? "illustrated-portrait illustrated-portrait-large" : "illustrated-portrait";
+
+  if (portraitPath) {
+    return (
+      <div className={`${sizeClass} illustrated-portrait-photo`}>
+        <Image
+          src={portraitPath}
+          alt={`Stylized editorial portrait of ${name}`}
+          fill
+          sizes={large ? "(max-width: 760px) 112px, 190px" : "128px"}
+        />
+        <span className="portrait-art-label">Editorial illustration</span>
+      </div>
+    );
+  }
 
   return (
     <div className={sizeClass} role="img" aria-label={`Illustrated portrait of ${name}`}>
