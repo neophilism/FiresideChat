@@ -31,7 +31,7 @@ npm run dev
 
 Open http://localhost:3000. Health check: http://localhost:3000/api/health.
 
-For local development and Codespaces, database commands default to the Docker Compose PostgreSQL instance when `DATABASE_URL` is not set. Production still requires an explicit `DATABASE_URL`. If you want to use another local database, copy `.env.example` to `.env` and edit it before running setup.
+For local development and Codespaces, database commands default to the Docker Compose PostgreSQL instance when `DATABASE_URL` is not set. `dev:setup` waits until PostgreSQL is accepting connections before applying migrations, so a fresh container cannot race the database startup. Production still requires an explicit `DATABASE_URL`. If you want to use another local database, copy `.env.example` to `.env` and edit it before running setup.
 
 Run validation independently with:
 

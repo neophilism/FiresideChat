@@ -5,18 +5,57 @@ import { db } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
+const episodeInclude = {
+  podcast: {
+    include: {
+      people: { include: { person: true } },
+    },
+  },
+} as const;
+
 export default async function Home() {
-  const [latestEpisodes, podcasts, peopleCount, episodeCount] = await Promise.all([
-    db.episode.findMany({
-      orderBy: { publishedAt: "desc" },
-      take: 6,
-      include: {
+  const [
+    latestDemocraticEpisode,
+    latestRepublicanEpisode,
+    chronologicalEpisodes,
+    podcasts,
+    peopleCount,
+    episodeCount,
+  ] = await Promise.all([
+    db.episode.findFirst({
+      where: {
         podcast: {
-          include: {
-            people: { include: { person: true } },
+          people: {
+            some: {
+              person: {
+                party: { in: ["Democratic", "Democrat"] },
+              },
+            },
           },
         },
       },
+      orderBy: { publishedAt: "desc" },
+      include: episodeInclude,
+    }),
+    db.episode.findFirst({
+      where: {
+        podcast: {
+          people: {
+            some: {
+              person: {
+                party: "Republican",
+              },
+            },
+          },
+        },
+      },
+      orderBy: { publishedAt: "desc" },
+      include: episodeInclude,
+    }),
+    db.episode.findMany({
+      orderBy: { publishedAt: "desc" },
+      take: 12,
+      include: episodeInclude,
     }),
     db.podcast.findMany({
       where: { active: true },
@@ -32,6 +71,24 @@ export default async function Home() {
     db.person.count(),
     db.episode.count(),
   ]);
+
+  const featuredEpisodes = [
+    latestDemocraticEpisode,
+    latestRepublicanEpisode,
+  ]
+    .filter((episode): episode is NonNullable<typeof episode> => Boolean(episode))
+    .filter(
+      (episode, index, episodes) =>
+        episodes.findIndex((candidate) => candidate.id === episode.id) === index,
+    )
+    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
+  const featuredIds = new Set(featuredEpisodes.map((episode) => episode.id));
+  const secondaryEpisodes = chronologicalEpisodes
+    .filter((episode) => !featuredIds.has(episode.id))
+    .slice(0, Math.max(0, 6 - featuredEpisodes.length));
+
+  const latestEpisodes = [...featuredEpisodes, ...secondaryEpisodes];
 
   return (
     <>
@@ -83,9 +140,10 @@ export default async function Home() {
             <p className="section-label">Latest</p>
             <h2>New across the archive</h2>
           </div>
-          <Link className="text-link" href="/search?q=">
-            Search everything →
-          </Link>
+          <div className="latest-balance-note">
+            <span>Featured pair</span>
+            <strong>Newest Democrat + newest Republican</strong>
+          </div>
         </div>
 
         {latestEpisodes.length > 0 ? (
@@ -96,7 +154,7 @@ export default async function Home() {
               return (
                 <EpisodeCard
                   key={episode.id}
-                  featured={index < 2}
+                  featured={index < featuredEpisodes.length}
                   episode={episode}
                   podcast={episode.podcast}
                   person={person}

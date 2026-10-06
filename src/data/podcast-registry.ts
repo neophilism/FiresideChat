@@ -37,6 +37,118 @@ export const podcastRegistry: {
 } = {
   people: [
     {
+      slug: "ed-markey",
+      fullName: "Ed Markey",
+      kind: "SENATE",
+      state: "MA",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "marsha-blackburn",
+      fullName: "Marsha Blackburn",
+      kind: "SENATE",
+      state: "TN",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "mark-pocan",
+      fullName: "Mark Pocan",
+      kind: "HOUSE",
+      state: "WI",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "bernie-sanders",
+      fullName: "Bernie Sanders",
+      kind: "SENATE",
+      state: "VT",
+      party: "Independent",
+      isCurrent: true,
+    },
+    {
+      slug: "sheldon-whitehouse",
+      fullName: "Sheldon Whitehouse",
+      kind: "SENATE",
+      state: "RI",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "james-lankford",
+      fullName: "James Lankford",
+      kind: "SENATE",
+      state: "OK",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "jim-clyburn",
+      fullName: "James E. Clyburn",
+      kind: "HOUSE",
+      state: "SC",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "scott-peters",
+      fullName: "Scott Peters",
+      kind: "HOUSE",
+      state: "CA",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "marc-veasey",
+      fullName: "Marc Veasey",
+      kind: "HOUSE",
+      state: "TX",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "greg-landsman",
+      fullName: "Greg Landsman",
+      kind: "HOUSE",
+      state: "OH",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "mike-johnson",
+      fullName: "Mike Johnson",
+      kind: "HOUSE",
+      state: "LA",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "anna-paulina-luna",
+      fullName: "Anna Paulina Luna",
+      kind: "HOUSE",
+      state: "FL",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "erin-houchin",
+      fullName: "Erin Houchin",
+      kind: "HOUSE",
+      state: "IN",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "eric-burlison",
+      fullName: "Eric Burlison",
+      kind: "HOUSE",
+      state: "MO",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
       slug: "ted-cruz",
       fullName: "Ted Cruz",
       kind: "SENATE",
@@ -142,6 +254,187 @@ export const podcastRegistry: {
     },
   ],
   podcasts: [
+    {
+      slug: "the-ed-markey-podcast",
+      title: "The Ed Markey Podcast",
+      rssUrl: "https://media.rss.com/edmarkeypodcast/feed.xml",
+      websiteUrl: "https://rss.com/podcasts/edmarkeypodcast",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/the-ed-markey-podcast/id1729232913",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Apple identifies Senator Ed Markey as creator and links the show website to rss.com/podcasts/edmarkeypodcast; RSS.com's documented canonical feed format yields this feed URL.",
+      people: [{ personSlug: "ed-markey", role: "HOST" }],
+    },
+    {
+      slug: "unmuted-with-senator-marsha-blackburn",
+      title: "Unmuted with Senator Marsha Blackburn",
+      rssUrl: "https://feeds.buzzsprout.com/2328442.rss",
+      websiteUrl: "https://www.buzzsprout.com/2328442",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl: "https://www.buzzsprout.com/2328442",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Buzzsprout identifies Senator Marsha Blackburn as host and exposes the canonical RSS feed directly from the publisher page.",
+      people: [{ personSlug: "marsha-blackburn", role: "HOST" }],
+    },
+    {
+      slug: "with-liberty-and-justice-for-some",
+      title: "With Liberty and Justice for Some",
+      rssUrl: "https://anchor.fm/s/ff00a8d4/podcast/rss",
+      websiteUrl: "https://pocan.house.gov/",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl: "https://podcastrepublic.net/podcast/1794881118",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Podcast directories identify Rep. Mark Pocan as host and expose the canonical Anchor RSS feed.",
+      people: [{ personSlug: "mark-pocan", role: "HOST" }],
+    },
+    {
+      slug: "hear-the-bern",
+      title: "Hear the Bern",
+      rssUrl: "https://feeds.blubrry.com/feeds/hear_the_bern.xml",
+      websiteUrl: "https://berniesanders.com/podcast/",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl: "https://podcastrepublic.net/podcast/1458648316",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Podcast directories identify Bernie Sanders and Briahna Joy Gray as hosts; the historical campaign feed remains available.",
+      people: [{ personSlug: "bernie-sanders", role: "COHOST" }],
+    },
+    {
+      slug: "making-the-case",
+      title: "Making the Case",
+      rssUrl: "https://anchor.fm/s/e0d8cda0/podcast/rss",
+      websiteUrl: "https://www.whitehouse.senate.gov/making-the-case/",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl:
+        "https://www.whitehouse.senate.gov/news/release/whitehouse-launches-making-the-case-podcast-to-shine-light-on-far-right-scheme-to-capture-supreme-court/",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Senator Whitehouse's official Senate office launched the show and podcast directories expose the canonical Anchor RSS feed.",
+      people: [{ personSlug: "sheldon-whitehouse", role: "HOST" }],
+    },
+    {
+      slug: "the-breakdown-with-james-lankford",
+      title: "The Breakdown with James Lankford",
+      rssUrl: "https://feeds.feedburner.com/TheBreakdownwithJamesLankford",
+      websiteUrl: "https://www.lankford.senate.gov/",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://www.lankford.senate.gov/news/press-releases/senator-lankford-releases-podcast-on-solution-to-end-government-shutdowns/",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Official Senate releases identify The Breakdown as Senator Lankford's podcast; the canonical feed is preserved for the historical archive.",
+      people: [{ personSlug: "james-lankford", role: "HOST" }],
+    },
+    {
+      slug: "clyburn-chronicles",
+      title: "Clyburn Chronicles",
+      rssUrl: "https://feed.podbean.com/clyburnchronicles/feed.xml",
+      websiteUrl: "https://clyburnchronicles.podbean.com/",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl: "https://clyburnchronicles.podbean.com/",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Publisher page identifies Congressman James Clyburn as host; the feed follows Podbean's canonical feed endpoint for the publisher subdomain.",
+      people: [{ personSlug: "jim-clyburn", role: "HOST" }],
+    },
+    {
+      slug: "72-and-sunny-with-scott-peters",
+      title: "72 and Sunny with Scott Peters",
+      rssUrl:
+        "https://www.omnycontent.com/d/playlist/d57f2f8a-7bab-4064-9571-ae7c0139f8ec/2e7a4896-2eb4-4fdb-97b4-b3df00fdbdd1/da3fe69b-dedc-4726-99f0-b3df00fdc27a/podcast.rss",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl:
+        "https://www.olaspodcast.com/72-and-sunny-with-scott-peters",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Publisher page identifies Congressman Scott Peters as host and exposes the canonical Omny RSS feed.",
+      people: [{ personSlug: "scott-peters", role: "HOST" }],
+    },
+    {
+      slug: "the-fly-in",
+      title: "The Fly-In",
+      rssUrl: "https://api.substack.com/feed/podcast/5246009.rss",
+      websiteUrl: "https://newdemocratcoalition.substack.com/",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl:
+        "https://newdemocratcoalition.house.gov/media-center/press-releases/new-democrat-coalition-launches-the-fly-in-podcast",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "New Democrat Coalition and podcast metadata identify Reps. Greg Landsman and Marc Veasey as co-hosts.",
+      people: [
+        { personSlug: "greg-landsman", role: "COHOST" },
+        { personSlug: "marc-veasey", role: "COHOST" },
+      ],
+    },
+    {
+      slug: "truth-be-told-with-mike-and-kelly-johnson",
+      title: "Truth be Told with Mike & Kelly Johnson",
+      rssUrl: "https://feeds.libsyn.com/404672/rss",
+      websiteUrl: "https://www.mikeandkellyjohnson.com/",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/truth-be-told-with-mike-kelly-johnson/id1613637836",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Podcast metadata identifies Congressman Mike Johnson and Kelly Johnson as co-hosts; the archived Libsyn feed remains available.",
+      people: [{ personSlug: "mike-johnson", role: "COHOST" }],
+    },
+    {
+      slug: "luna-talks-with-anna-paulina",
+      title: "Luna Talks with Anna Paulina",
+      rssUrl:
+        "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/35c394c3-f8c7-45f5-be55-ae27016d8c23/69d87d5f-23a7-4c22-a11c-ae27016d8c36/podcast.rss",
+      websiteUrl: "https://omny.fm/shows/luna-talks-with-anna-paulina",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://www.podbean.com/podcast-detail/22iqr-1b2b0d/Luna-Talks-with-Anna-Paulina-Podcast",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Podcast directories identify Anna Paulina Luna as host and expose the canonical Omny RSS feed for the historical series.",
+      people: [{ personSlug: "anna-paulina-luna", role: "HOST" }],
+    },
+    {
+      slug: "the-contender-with-erin-houchin",
+      title: "The Contender with Erin Houchin",
+      rssUrl: "https://feed.podbean.com/thecontendereh/feed.xml",
+      websiteUrl: "https://thecontendereh.podbean.com/",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl: "https://thecontendereh.podbean.com/",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Publisher page identifies Congresswoman Erin Houchin as host; the feed uses Podbean's canonical endpoint for the publisher subdomain.",
+      people: [{ personSlug: "erin-houchin", role: "HOST" }],
+    },
+    {
+      slug: "fresh-freedom",
+      title: "Fresh Freedom",
+      rssUrl: "https://anchor.fm/s/db2f52d4/podcast/rss",
+      websiteUrl: "https://burlison.house.gov/",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/fresh-freedom/id1674604542",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Podcast metadata identifies Congressman Eric Burlison as host and Podstatus exposes the canonical Anchor RSS feed.",
+      people: [{ personSlug: "eric-burlison", role: "HOST" }],
+    },
     {
       slug: "verdict-with-ted-cruz",
       title: "Verdict with Ted Cruz",
@@ -313,6 +606,107 @@ export const podcastRegistry: {
     },
   ],
   candidates: [
+    {
+      person: "Ruben Gallego",
+      show: "Real Talk with Ruben",
+      sourceUrl:
+        "https://podcasts.apple.com/us/podcast/real-talk-with-ruben/id1888294647",
+      reason:
+        "Host relationship is verified and the active 2026 show is in scope; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Angus King",
+      show: "Inside Maine with Senator Angus King",
+      sourceUrl:
+        "https://podcasts.apple.com/us/podcast/inside-maine-with-senator-angus-king/id1089371119",
+      reason:
+        "Host relationship is verified; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Tim Scott",
+      show: "Opportunity With Tim Scott",
+      sourceUrl:
+        "https://www.scott.senate.gov/newsroom/newsletters/e-newsletter-justice-for-all/",
+      reason:
+        "Official Senate material verifies the podcast; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Ron Johnson",
+      show: "Hey, Wisconsin",
+      sourceUrl:
+        "https://www.ronjohnson.senate.gov/2016/06/10/2016-6-johnson-releases-new-hey-wisconsin-episode/",
+      reason:
+        "Official Senate material verifies the historical podcast; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Pete Ricketts",
+      show: "The Nebraska Way",
+      sourceUrl:
+        "https://podcasts.apple.com/us/podcast/the-nebraska-way/id1471046353",
+      reason:
+        "Host relationship is verified for the historical series; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Brian Fitzpatrick and Tom Suozzi",
+      show: "The Pod Couple",
+      sourceUrl:
+        "https://problemsolverscaucus.house.gov/news/documentsingle.aspx?DocumentID=889",
+      reason:
+        "Official caucus announcement verifies both members as co-hosts; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Mike Levin",
+      show: "Listening with Levin",
+      sourceUrl:
+        "https://levin.house.gov/media/press-releases/rep-mike-levin-launches-new-podcast-listening-with-levin",
+      reason:
+        "Official House announcement verifies the podcast; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Tim Burchett",
+      show: "Tennessee Talks with Tim Burchett / Unscripted with Tim Burchett",
+      sourceUrl:
+        "https://podcasts.apple.com/us/podcast/tennessee-talks-with-tim-burchett/id1604614351",
+      reason:
+        "Both host relationships are verified; canonical feeds still need recovery before adding the shows separately.",
+    },
+    {
+      person: "Troy Carter",
+      show: "\"What Makes America Tick?\" with Congressman Troy A. Carter, Sr.",
+      sourceUrl:
+        "https://podcasts.apple.com/us/podcast/what-makes-america-tick-with-congressman-troy-a-carter-sr/id1809799553",
+      reason:
+        "Active host relationship is verified; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Mark Alford",
+      show: "Mark Alford's America",
+      sourceUrl: "https://alford.house.gov/alfords-america-archive/",
+      reason:
+        "Official House archive explicitly calls it Rep. Alford's radio show/podcast; no canonical open RSS feed has been located.",
+    },
+    {
+      person: "Gil Cisneros",
+      show: "Who Dem?",
+      sourceUrl:
+        "https://www.gilonthehill.com/2025/03/21/congressman-gil-cisneros-introduces-who-dem-podcast/",
+      reason:
+        "Host relationship is verified; canonical public RSS feed still needs recovery.",
+    },
+    {
+      person: "Andy Biggs",
+      show: "What's the BIGGS Idea?",
+      sourceUrl: "https://biggs.house.gov/media/whats-biggs-idea-podcast",
+      reason:
+        "Official House page verifies the series, but current distribution is primarily YouTube/Rumble and the historical audio RSS feed still needs recovery.",
+    },
+    {
+      person: "Jeff Crank",
+      show: "American Potential",
+      sourceUrl: "https://americanpotential.podbean.com/",
+      reason:
+        "Jeff Crank previously hosted the show, but it now continues under David From. Ingestion needs host-date boundaries before the continuing feed can be safely attached to Crank's archive.",
+    },
     {
       person: "Bernie Sanders",
       show: "The Bernie Sanders Show",
