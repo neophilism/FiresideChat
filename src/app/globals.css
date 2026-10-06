@@ -1274,3 +1274,42 @@ h3 {
     height: 2.75rem;
   }
 }
+
+.hero-stats-two {
+  grid-template-columns: repeat(2, max-content);
+}
+
+.illustrated-portrait-photo img {
+  object-fit: cover;
+}
+
+.show-portrait-link,
+.directory-portrait-link {
+  display: block;
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.show-portrait-link {
+  width: 3.8rem;
+}
+
+.directory-portrait-link {
+  width: 5rem;
+}
+
+.person-portrait-wrap {
+  width: 8rem;
+}
+
+@media (max-width: 760px) {
+  .person-portrait-wrap {
+    width: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats-two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
