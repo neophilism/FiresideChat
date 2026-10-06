@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { PlayButton } from "@/components/player/play-button";
 import { formatDate, formatDuration } from "@/lib/presentation";
 
@@ -30,21 +31,29 @@ export function EpisodeCard({
   featured = false,
 }: EpisodeCardProps) {
   const duration = formatDuration(episode.durationSeconds);
+  const playerEpisode = {
+    id: episode.id,
+    title: episode.title,
+    audioUrl: episode.audioUrl,
+    podcastTitle: podcast.title,
+    podcastSlug: podcast.slug,
+    personName: person.fullName,
+    imageUrl: episode.imageUrl,
+  };
 
   return (
     <article className={featured ? "episode-card episode-card-featured" : "episode-card"}>
       <div className="episode-play">
-        <PlayButton
-          episode={{
-            id: episode.id,
-            title: episode.title,
-            audioUrl: episode.audioUrl,
-            podcastTitle: podcast.title,
-            podcastSlug: podcast.slug,
-            personName: person.fullName,
-            imageUrl: episode.imageUrl,
-          }}
-        />
+        {featured ? (
+          <div className="featured-portrait-wrap">
+            <Link href={`/people/${person.slug}`} aria-label={`Open ${person.fullName}'s page`}>
+              <IllustratedPortrait slug={person.slug} name={person.fullName} large />
+            </Link>
+            <PlayButton episode={playerEpisode} />
+          </div>
+        ) : (
+          <PlayButton episode={playerEpisode} />
+        )}
       </div>
       <div className="episode-content">
         <div className="episode-kicker">
