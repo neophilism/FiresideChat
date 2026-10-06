@@ -1,35 +1,35 @@
 member,chamber,state,district,party,bioguide,official_url,status,show,source,notes
-Maria Cantwell,SENATE,WA,,Democrat,C000127,https://www.cantwell.senate.gov,UNCHECKED,,,
-Amy Klobuchar,SENATE,MN,,Democrat,K000367,https://www.klobuchar.senate.gov,UNCHECKED,,,
-Bernard Sanders,SENATE,VT,,Independent,S000033,https://www.sanders.senate.gov,UNCHECKED,,,
-Sheldon Whitehouse,SENATE,RI,,Democrat,W000802,https://www.whitehouse.senate.gov,UNCHECKED,,,
-John Barrasso,SENATE,WY,,Republican,B001261,https://www.barrasso.senate.gov,UNCHECKED,,,
-Roger F. Wicker,SENATE,MS,,Republican,W000437,https://www.wicker.senate.gov,UNCHECKED,,,
-Susan M. Collins,SENATE,ME,,Republican,C001035,https://www.collins.senate.gov,UNCHECKED,,,
-John Cornyn,SENATE,TX,,Republican,C001056,https://www.cornyn.senate.gov,UNCHECKED,,,
-Richard J. Durbin,SENATE,IL,,Democrat,D000563,https://www.durbin.senate.gov,UNCHECKED,,,
-Mitch McConnell,SENATE,KY,,Republican,M000355,https://www.mcconnell.senate.gov,UNCHECKED,,,
-Jeff Merkley,SENATE,OR,,Democrat,M001176,https://www.merkley.senate.gov,UNCHECKED,,,
-Jack Reed,SENATE,RI,,Democrat,R000122,https://www.reed.senate.gov,UNCHECKED,,,
-James E. Risch,SENATE,ID,,Republican,R000584,https://www.risch.senate.gov,UNCHECKED,,,
-Jeanne Shaheen,SENATE,NH,,Democrat,S001181,https://www.shaheen.senate.gov,UNCHECKED,,,
-Mark R. Warner,SENATE,VA,,Democrat,W000805,https://www.warner.senate.gov,UNCHECKED,,,
-Kirsten E. Gillibrand,SENATE,NY,,Democrat,G000555,https://www.gillibrand.senate.gov,UNCHECKED,,,
-Christopher A. Coons,SENATE,DE,,Democrat,C001088,https://www.coons.senate.gov,UNCHECKED,,,
+Maria Cantwell,SENATE,WA,,Democrat,C000127,https://www.cantwell.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Amy Klobuchar,SENATE,MN,,Democrat,K000367,https://www.klobuchar.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Bernard Sanders,SENATE,VT,,Independent,S000033,https://www.sanders.senate.gov,YES_VERIFIED,Hear the Bern,https://podcasts.apple.com/us/podcast/hear-the-bern/id1458648316,Verified hosted/co-hosted podcast; Apple lists Bernie Sanders as host. Historical series (2019-2020).
+Sheldon Whitehouse,SENATE,RI,,Democrat,W000802,https://www.whitehouse.senate.gov,YES_VERIFIED,Making the Case,https://www.whitehouse.senate.gov/news/release/whitehouse-launches-making-the-case-podcast-to-shine-light-on-far-right-scheme-to-capture-supreme-court/,Official Senate office launch; hosted by Senator Whitehouse. Active series.
+John Barrasso,SENATE,WY,,Republican,B001261,https://www.barrasso.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Roger F. Wicker,SENATE,MS,,Republican,W000437,https://www.wicker.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Susan M. Collins,SENATE,ME,,Republican,C001035,https://www.collins.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+John Cornyn,SENATE,TX,,Republican,C001056,https://www.cornyn.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Richard J. Durbin,SENATE,IL,,Democrat,D000563,https://www.durbin.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Mitch McConnell,SENATE,KY,,Republican,M000355,https://www.mcconnell.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Jeff Merkley,SENATE,OR,,Democrat,M001176,https://www.merkley.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Jack Reed,SENATE,RI,,Democrat,R000122,https://www.reed.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+James E. Risch,SENATE,ID,,Republican,R000584,https://www.risch.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Jeanne Shaheen,SENATE,NH,,Democrat,S001181,https://www.shaheen.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Mark R. Warner,SENATE,VA,,Democrat,W000805,https://www.warner.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Kirsten E. Gillibrand,SENATE,NY,,Democrat,G000555,https://www.gillibrand.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Christopher A. Coons,SENATE,DE,,Democrat,C001088,https://www.coons.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Robert B. Aderholt,HOUSE,AL,4,Republican,A000055,https://aderholt.house.gov,UNCHECKED,,,
-Tammy Baldwin,SENATE,WI,,Democrat,B001230,https://www.baldwin.senate.gov,UNCHECKED,,,
-Michael F. Bennet,SENATE,CO,,Democrat,B001267,https://www.bennet.senate.gov,UNCHECKED,,,
+Tammy Baldwin,SENATE,WI,,Democrat,B001230,https://www.baldwin.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Michael F. Bennet,SENATE,CO,,Democrat,B001267,https://www.bennet.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Gus M. Bilirakis,HOUSE,FL,12,Republican,B001257,https://bilirakis.house.gov,UNCHECKED,,,
 "Sanford D. Bishop, Jr.",HOUSE,GA,2,Democrat,B000490,https://bishop.house.gov,UNCHECKED,,,
-Marsha Blackburn,SENATE,TN,,Republican,B001243,https://www.blackburn.senate.gov,UNCHECKED,,,
-Richard Blumenthal,SENATE,CT,,Democrat,B001277,https://www.blumenthal.senate.gov,UNCHECKED,,,
-John Boozman,SENATE,AR,,Republican,B001236,https://www.boozman.senate.gov/public,UNCHECKED,,,
+Marsha Blackburn,SENATE,TN,,Republican,B001243,https://www.blackburn.senate.gov,YES_VERIFIED,Unmuted with Senator Marsha Blackburn,https://podcasts.apple.com/us/podcast/unmuted-with-senator-marsha-blackburn/id1736996395,Apple lists Senator Marsha Blackburn as creator/host. Active series.
+Richard Blumenthal,SENATE,CT,,Democrat,B001277,https://www.blumenthal.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+John Boozman,SENATE,AR,,Republican,B001236,https://www.boozman.senate.gov/public,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Vern Buchanan,HOUSE,FL,16,Republican,B001260,https://buchanan.house.gov,UNCHECKED,,,
 Ken Calvert,HOUSE,CA,41,Republican,C000059,https://calvert.house.gov,UNCHECKED,,,
-Shelley Moore Capito,SENATE,WV,,Republican,C001047,https://www.capito.senate.gov,UNCHECKED,,,
+Shelley Moore Capito,SENATE,WV,,Republican,C001047,https://www.capito.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 André Carson,HOUSE,IN,7,Democrat,C001072,https://carson.house.gov,UNCHECKED,,,
 John R. Carter,HOUSE,TX,31,Republican,C001051,https://carter.house.gov,UNCHECKED,,,
-Bill Cassidy,SENATE,LA,,Republican,C001075,https://www.cassidy.senate.gov,UNCHECKED,,,
+Bill Cassidy,SENATE,LA,,Republican,C001075,https://www.cassidy.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Kathy Castor,HOUSE,FL,14,Democrat,C001066,https://castor.house.gov,UNCHECKED,,,
 Judy Chu,HOUSE,CA,28,Democrat,C001080,https://chu.house.gov,UNCHECKED,,,
 Yvette D. Clarke,HOUSE,NY,9,Democrat,C001067,https://clarke.house.gov,UNCHECKED,,,
@@ -39,7 +39,7 @@ Steve Cohen,HOUSE,TN,9,Democrat,C001068,https://cohen.house.gov,UNCHECKED,,,
 Tom Cole,HOUSE,OK,4,Republican,C001053,https://cole.house.gov,UNCHECKED,,,
 Jim Costa,HOUSE,CA,21,Democrat,C001059,https://costa.house.gov,UNCHECKED,,,
 Joe Courtney,HOUSE,CT,2,Democrat,C001069,https://courtney.house.gov,UNCHECKED,,,
-Mike Crapo,SENATE,ID,,Republican,C000880,https://www.crapo.senate.gov,UNCHECKED,,,
+Mike Crapo,SENATE,ID,,Republican,C000880,https://www.crapo.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 "Eric A. ""Rick"" Crawford",HOUSE,AR,1,Republican,C001087,https://crawford.house.gov,UNCHECKED,,,
 Henry Cuellar,HOUSE,TX,28,Democrat,C001063,https://cuellar.house.gov,UNCHECKED,,,
 Danny K. Davis,HOUSE,IL,7,Democrat,D000096,https://davis.house.gov,UNCHECKED,,,
@@ -52,34 +52,34 @@ Lloyd Doggett,HOUSE,TX,37,Democrat,D000399,https://doggett.house.gov,UNCHECKED,,
 Virginia Foxx,HOUSE,NC,5,Republican,F000450,https://foxx.house.gov,UNCHECKED,,,
 John Garamendi,HOUSE,CA,8,Democrat,G000559,https://garamendi.house.gov,UNCHECKED,,,
 Paul A. Gosar,HOUSE,AZ,9,Republican,G000565,https://gosar.house.gov,UNCHECKED,,,
-Chuck Grassley,SENATE,IA,,Republican,G000386,https://www.grassley.senate.gov,UNCHECKED,,,
+Chuck Grassley,SENATE,IA,,Republican,G000386,https://www.grassley.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Sam Graves,HOUSE,MO,6,Republican,G000546,https://graves.house.gov,UNCHECKED,,,
 Al Green,HOUSE,TX,9,Democrat,G000553,https://algreen.house.gov,UNCHECKED,,,
 H. Morgan Griffith,HOUSE,VA,9,Republican,G000568,https://morgangriffith.house.gov,UNCHECKED,,,
 Brett Guthrie,HOUSE,KY,2,Republican,G000558,https://guthrie.house.gov,UNCHECKED,,,
 Andy Harris,HOUSE,MD,1,Republican,H001052,https://harris.house.gov,UNCHECKED,,,
-Martin Heinrich,SENATE,NM,,Democrat,H001046,https://www.heinrich.senate.gov,UNCHECKED,,,
+Martin Heinrich,SENATE,NM,,Democrat,H001046,https://www.heinrich.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 James A. Himes,HOUSE,CT,4,Democrat,H001047,https://himes.house.gov,UNCHECKED,,,
-Mazie K. Hirono,SENATE,HI,,Democrat,H001042,https://www.hirono.senate.gov,UNCHECKED,,,
-John Hoeven,SENATE,ND,,Republican,H001061,https://www.hoeven.senate.gov,UNCHECKED,,,
+Mazie K. Hirono,SENATE,HI,,Democrat,H001042,https://www.hirono.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+John Hoeven,SENATE,ND,,Republican,H001061,https://www.hoeven.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Steny H. Hoyer,HOUSE,MD,5,Democrat,H000874,https://hoyer.house.gov,UNCHECKED,,,
 Bill Huizenga,HOUSE,MI,4,Republican,H001058,https://huizenga.house.gov,UNCHECKED,,,
 "Henry C. ""Hank"" Johnson, Jr.",HOUSE,GA,4,Democrat,J000288,https://hankjohnson.house.gov,UNCHECKED,,,
-Ron Johnson,SENATE,WI,,Republican,J000293,https://www.ronjohnson.senate.gov,UNCHECKED,,,
+Ron Johnson,SENATE,WI,,Republican,J000293,https://www.ronjohnson.senate.gov,YES_VERIFIED,"Hey, Wisconsin",https://www.ronjohnson.senate.gov/2016/06/10/2016-6-johnson-releases-new-hey-wisconsin-episode/,"Official Senate office identifies Hey, Wisconsin as Sen. Johnson's podcast."
 Jim Jordan,HOUSE,OH,4,Republican,J000289,https://jordan.house.gov,UNCHECKED,,,
 Marcy Kaptur,HOUSE,OH,9,Democrat,K000009,https://kaptur.house.gov,UNCHECKED,,,
 William R. Keating,HOUSE,MA,9,Democrat,K000375,https://keating.house.gov,UNCHECKED,,,
 Mike Kelly,HOUSE,PA,16,Republican,K000376,https://kelly.house.gov,UNCHECKED,,,
-James Lankford,SENATE,OK,,Republican,L000575,https://www.lankford.senate.gov,UNCHECKED,,,
+James Lankford,SENATE,OK,,Republican,L000575,https://www.lankford.senate.gov,YES_VERIFIED,The Breakdown with James Lankford,https://www.lankford.senate.gov/news/press-releases/senator-lankford-releases-podcast-on-solution-to-end-government-shutdowns/,Official Senate office identifies The Breakdown as Senator Lankford's podcast.
 Rick Larsen,HOUSE,WA,2,Democrat,L000560,https://larsen.house.gov,UNCHECKED,,,
 John B. Larson,HOUSE,CT,1,Democrat,L000557,https://larson.house.gov,UNCHECKED,,,
 Robert E. Latta,HOUSE,OH,5,Republican,L000566,https://latta.house.gov,UNCHECKED,,,
-Mike Lee,SENATE,UT,,Republican,L000577,https://www.lee.senate.gov,UNCHECKED,,,
+Mike Lee,SENATE,UT,,Republican,L000577,https://www.lee.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Zoe Lofgren,HOUSE,CA,18,Democrat,L000397,https://lofgren.house.gov,UNCHECKED,,,
 Frank D. Lucas,HOUSE,OK,3,Republican,L000491,https://lucas.house.gov,UNCHECKED,,,
-Ben Ray Luján,SENATE,NM,,Democrat,L000570,https://www.lujan.senate.gov,UNCHECKED,,,
+Ben Ray Luján,SENATE,NM,,Democrat,L000570,https://www.lujan.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Stephen F. Lynch,HOUSE,MA,8,Democrat,L000562,https://lynch.house.gov,UNCHECKED,,,
-Edward J. Markey,SENATE,MA,,Democrat,M000133,https://www.markey.senate.gov,UNCHECKED,,,
+Edward J. Markey,SENATE,MA,,Democrat,M000133,https://www.markey.senate.gov,YES_VERIFIED,The Ed Markey Podcast,https://podcasts.apple.com/us/podcast/the-ed-markey-podcast/id1729232913,Apple lists The Ed Markey Podcast under Senator Markey; official Senate office also announced its launch.
 Doris O. Matsui,HOUSE,CA,7,Democrat,M001163,https://matsui.house.gov,UNCHECKED,,,
 Michael T. McCaul,HOUSE,TX,10,Republican,M001157,https://mccaul.house.gov,UNCHECKED,,,
 Tom McClintock,HOUSE,CA,5,Republican,M001177,https://mcclintock.house.gov,UNCHECKED,,,
@@ -87,29 +87,29 @@ Betty McCollum,HOUSE,MN,4,Democrat,M001143,https://mccollum.house.gov,UNCHECKED,
 James P. McGovern,HOUSE,MA,2,Democrat,M000312,https://mcgovern.house.gov,UNCHECKED,,,
 Gregory W. Meeks,HOUSE,NY,5,Democrat,M001137,https://meeks.house.gov,UNCHECKED,,,
 Gwen Moore,HOUSE,WI,4,Democrat,M001160,https://gwenmoore.house.gov,UNCHECKED,,,
-Jerry Moran,SENATE,KS,,Republican,M000934,https://www.moran.senate.gov,UNCHECKED,,,
-Lisa Murkowski,SENATE,AK,,Republican,M001153,https://www.murkowski.senate.gov,UNCHECKED,,,
-Christopher Murphy,SENATE,CT,,Democrat,M001169,https://www.murphy.senate.gov,UNCHECKED,,,
-Patty Murray,SENATE,WA,,Democrat,M001111,https://www.murray.senate.gov,UNCHECKED,,,
+Jerry Moran,SENATE,KS,,Republican,M000934,https://www.moran.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Lisa Murkowski,SENATE,AK,,Republican,M001153,https://www.murkowski.senate.gov,YES_VERIFIED,The Icebreaker,https://www.murkowski.senate.gov/press/release/watch-ua-president-pat-pitney-joins-senator-murkowski-on-the-icebreaker-to-discuss-recent-wins-for-the-university-,Official Senate office identifies The Icebreaker as Senator Murkowski's series. Qualifies; canonical open RSS still needs recovery.
+Christopher Murphy,SENATE,CT,,Democrat,M001169,https://www.murphy.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Patty Murray,SENATE,WA,,Democrat,M001111,https://www.murray.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Jerrold Nadler,HOUSE,NY,12,Democrat,N000002,https://nadler.house.gov,UNCHECKED,,,
 Richard E. Neal,HOUSE,MA,1,Democrat,N000015,https://neal.house.gov,UNCHECKED,,,
 Eleanor Holmes Norton,HOUSE,DC,0,Democrat,N000147,https://norton.house.gov,UNCHECKED,,,
 "Frank Pallone, Jr.",HOUSE,NJ,6,Democrat,P000034,https://pallone.house.gov,UNCHECKED,,,
-Rand Paul,SENATE,KY,,Republican,P000603,https://www.paul.senate.gov,UNCHECKED,,,
+Rand Paul,SENATE,KY,,Republican,P000603,https://www.paul.senate.gov,YES_VERIFIED,Rand Paul for President Podcast,https://podcasts.apple.com/dk/podcast/rand-paul-for-president-podcast/id1033322546?l=da,Apple lists Rand Paul as creator; official campaign podcast. Historical one-episode series; current RSS appears empty.
 Nancy Pelosi,HOUSE,CA,11,Democrat,P000197,https://pelosi.house.gov,UNCHECKED,,,
-Gary C. Peters,SENATE,MI,,Democrat,P000595,https://www.peters.senate.gov,UNCHECKED,,,
+Gary C. Peters,SENATE,MI,,Democrat,P000595,https://www.peters.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Chellie Pingree,HOUSE,ME,1,Democrat,P000597,https://pingree.house.gov,UNCHECKED,,,
 Mike Quigley,HOUSE,IL,5,Democrat,Q000023,https://quigley.house.gov,UNCHECKED,,,
 Harold Rogers,HOUSE,KY,5,Republican,R000395,https://halrogers.house.gov,UNCHECKED,,,
 Mike Rogers,HOUSE,AL,3,Republican,R000575,https://mikerogers.house.gov,UNCHECKED,,,
 Steve Scalise,HOUSE,LA,1,Republican,S001176,https://scalise.house.gov,UNCHECKED,,,
 Janice D. Schakowsky,HOUSE,IL,9,Democrat,S001145,https://schakowsky.house.gov,UNCHECKED,,,
-Adam B. Schiff,SENATE,CA,,Democrat,S001150,https://www.schiff.senate.gov,UNCHECKED,,,
-Charles E. Schumer,SENATE,NY,,Democrat,S000148,https://www.schumer.senate.gov,UNCHECKED,,,
+Adam B. Schiff,SENATE,CA,,Democrat,S001150,https://www.schiff.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Charles E. Schumer,SENATE,NY,,Democrat,S000148,https://www.schumer.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 David Schweikert,HOUSE,AZ,1,Republican,S001183,https://schweikert.house.gov,UNCHECKED,,,
 Austin Scott,HOUSE,GA,8,Republican,S001189,https://austinscott.house.gov,UNCHECKED,,,
 "Robert C. ""Bobby"" Scott",HOUSE,VA,3,Democrat,S000185,https://bobbyscott.house.gov,UNCHECKED,,,
-Tim Scott,SENATE,SC,,Republican,S001184,https://www.scott.senate.gov,UNCHECKED,,,
+Tim Scott,SENATE,SC,,Republican,S001184,https://www.scott.senate.gov,YES_VERIFIED,Opportunity With Tim Scott,https://www.scott.senate.gov/newsroom/newsletters/e-newsletter-justice-for-all/,Official Senate newsletter announces Senator Scott's bi-monthly podcast.
 Terri A. Sewell,HOUSE,AL,7,Democrat,S001185,https://sewell.house.gov,UNCHECKED,,,
 Brad Sherman,HOUSE,CA,32,Democrat,S000344,https://sherman.house.gov,UNCHECKED,,,
 Michael K. Simpson,HOUSE,ID,2,Republican,S001148,https://simpson.house.gov,UNCHECKED,,,
@@ -120,30 +120,30 @@ Linda T. Sánchez,HOUSE,CA,38,Democrat,S001156,https://lindasanchez.house.gov,UN
 Bennie G. Thompson,HOUSE,MS,2,Democrat,T000193,https://benniethompson.house.gov,UNCHECKED,,,
 Mike Thompson,HOUSE,CA,4,Democrat,T000460,https://mikethompson.house.gov,UNCHECKED,,,
 Glenn Thompson,HOUSE,PA,15,Republican,T000467,https://thompson.house.gov,UNCHECKED,,,
-John Thune,SENATE,SD,,Republican,T000250,https://www.thune.senate.gov,UNCHECKED,,,
+John Thune,SENATE,SD,,Republican,T000250,https://www.thune.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Paul Tonko,HOUSE,NY,20,Democrat,T000469,https://tonko.house.gov,UNCHECKED,,,
 Michael R. Turner,HOUSE,OH,10,Republican,T000463,https://turner.house.gov,UNCHECKED,,,
-Chris Van Hollen,SENATE,MD,,Democrat,V000128,https://www.vanhollen.senate.gov,UNCHECKED,,,
+Chris Van Hollen,SENATE,MD,,Democrat,V000128,https://www.vanhollen.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Nydia M. Velázquez,HOUSE,NY,7,Democrat,V000081,https://velazquez.house.gov,UNCHECKED,,,
 Tim Walberg,HOUSE,MI,5,Republican,W000798,https://walberg.house.gov,UNCHECKED,,,
 Debbie Wasserman Schultz,HOUSE,FL,25,Democrat,W000797,https://wassermanschultz.house.gov,UNCHECKED,,,
 Maxine Waters,HOUSE,CA,43,Democrat,W000187,https://waters.house.gov,UNCHECKED,,,
 Daniel Webster,HOUSE,FL,11,Republican,W000806,https://webster.house.gov,UNCHECKED,,,
-Peter Welch,SENATE,VT,,Democrat,W000800,https://www.welch.senate.gov,UNCHECKED,,,
+Peter Welch,SENATE,VT,,Democrat,W000800,https://www.welch.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Joe Wilson,HOUSE,SC,2,Republican,W000795,https://joewilson.house.gov,UNCHECKED,,,
 Frederica S. Wilson,HOUSE,FL,24,Democrat,W000808,https://wilson.house.gov,UNCHECKED,,,
 Robert J. Wittman,HOUSE,VA,1,Republican,W000804,https://wittman.house.gov,UNCHECKED,,,
 Steve Womack,HOUSE,AR,3,Republican,W000809,https://womack.house.gov,UNCHECKED,,,
-Ron Wyden,SENATE,OR,,Democrat,W000779,https://www.wyden.senate.gov,UNCHECKED,,,
-Todd Young,SENATE,IN,,Republican,Y000064,https://www.young.senate.gov,UNCHECKED,,,
+Ron Wyden,SENATE,OR,,Democrat,W000779,https://www.wyden.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Todd Young,SENATE,IN,,Republican,Y000064,https://www.young.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Mark E. Amodei,HOUSE,NV,2,Republican,A000369,https://amodei.house.gov,UNCHECKED,,,
 Suzanne Bonamici,HOUSE,OR,1,Democrat,B001278,https://bonamici.house.gov,UNCHECKED,,,
 Suzan K. DelBene,HOUSE,WA,1,Democrat,D000617,https://delbene.house.gov,UNCHECKED,,,
 Thomas Massie,HOUSE,KY,4,Republican,M001184,https://massie.house.gov,UNCHECKED,,,
-Brian Schatz,SENATE,HI,,Democrat,S001194,https://www.schatz.senate.gov,UNCHECKED,,,
+Brian Schatz,SENATE,HI,,Democrat,S001194,https://www.schatz.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Bill Foster,HOUSE,IL,11,Democrat,F000454,https://foster.house.gov,UNCHECKED,,,
 Dina Titus,HOUSE,NV,1,Democrat,T000468,https://titus.house.gov,UNCHECKED,,,
-Tom Cotton,SENATE,AR,,Republican,C001095,https://www.cotton.senate.gov,UNCHECKED,,,
+Tom Cotton,SENATE,AR,,Republican,C001095,https://www.cotton.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Jared Huffman,HOUSE,CA,2,Democrat,H001068,https://huffman.house.gov,UNCHECKED,,,
 Ami Bera,HOUSE,CA,6,Democrat,B001287,https://bera.house.gov,UNCHECKED,,,
 Julia Brownley,HOUSE,CA,26,Democrat,B001285,https://juliabrownley.house.gov,UNCHECKED,,,
@@ -152,37 +152,37 @@ Mark Takano,HOUSE,CA,39,Democrat,T000472,https://takano.house.gov,UNCHECKED,,,
 Juan Vargas,HOUSE,CA,52,Democrat,V000130,https://vargas.house.gov,UNCHECKED,,,
 Scott H. Peters,HOUSE,CA,50,Democrat,P000608,https://scottpeters.house.gov,UNCHECKED,,,
 Lois Frankel,HOUSE,FL,22,Democrat,F000462,https://frankel.house.gov,UNCHECKED,,,
-Tammy Duckworth,SENATE,IL,,Democrat,D000622,https://www.duckworth.senate.gov,UNCHECKED,,,
+Tammy Duckworth,SENATE,IL,,Democrat,D000622,https://www.duckworth.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Andy Barr,HOUSE,KY,6,Republican,B001282,https://barr.house.gov,UNCHECKED,,,
-Elizabeth Warren,SENATE,MA,,Democrat,W000817,https://www.warren.senate.gov,UNCHECKED,,,
-"Angus S. King, Jr.",SENATE,ME,,Independent,K000383,https://www.king.senate.gov,UNCHECKED,,,
+Elizabeth Warren,SENATE,MA,,Democrat,W000817,https://www.warren.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+"Angus S. King, Jr.",SENATE,ME,,Independent,K000383,https://www.king.senate.gov,YES_VERIFIED,Inside Maine Podcast with Senator Angus King,https://www.king.senate.gov/newsroom/press-releases/king-launches-podcast-featuring-local-and-national-leaders,Official Senate office launch identifies Senator King as host.
 Ann Wagner,HOUSE,MO,2,Republican,W000812,https://wagner.house.gov,UNCHECKED,,,
-Steve Daines,SENATE,MT,,Republican,D000618,https://www.daines.senate.gov,UNCHECKED,,,
+Steve Daines,SENATE,MT,,Republican,D000618,https://www.daines.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Richard Hudson,HOUSE,NC,9,Republican,H001067,https://hudson.house.gov,UNCHECKED,,,
-Kevin Cramer,SENATE,ND,,Republican,C001096,https://www.cramer.senate.gov,UNCHECKED,,,
-Deb Fischer,SENATE,NE,,Republican,F000463,https://www.fischer.senate.gov,UNCHECKED,,,
+Kevin Cramer,SENATE,ND,,Republican,C001096,https://www.cramer.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Deb Fischer,SENATE,NE,,Republican,F000463,https://www.fischer.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Grace Meng,HOUSE,NY,6,Democrat,M001188,https://meng.house.gov,UNCHECKED,,,
 Hakeem S. Jeffries,HOUSE,NY,8,Democrat,J000294,https://jeffries.house.gov,UNCHECKED,,,
 Joyce Beatty,HOUSE,OH,3,Democrat,B001281,https://beatty.house.gov,UNCHECKED,,,
 David P. Joyce,HOUSE,OH,14,Republican,J000295,https://joyce.house.gov,UNCHECKED,,,
 Scott Perry,HOUSE,PA,10,Republican,P000605,https://perry.house.gov,UNCHECKED,,,
-Ted Cruz,SENATE,TX,,Republican,C001098,https://www.cruz.senate.gov,UNCHECKED,,,
+Ted Cruz,SENATE,TX,,Republican,C001098,https://www.cruz.senate.gov,YES_VERIFIED,Verdict with Ted Cruz,https://podcasts.apple.com/us/podcast/verdict-with-ted-cruz/id1495601614,Apple and publisher identify Senator Cruz as co-host. Active series.
 "Randy K. Weber, Sr.",HOUSE,TX,14,Republican,W000814,https://weber.house.gov,UNCHECKED,,,
 Joaquin Castro,HOUSE,TX,20,Democrat,C001091,https://castro.house.gov,UNCHECKED,,,
 Roger Williams,HOUSE,TX,25,Republican,W000816,https://williams.house.gov,UNCHECKED,,,
 Marc A. Veasey,HOUSE,TX,33,Democrat,V000131,https://veasey.house.gov,UNCHECKED,,,
-Tim Kaine,SENATE,VA,,Democrat,K000384,https://www.kaine.senate.gov,UNCHECKED,,,
+Tim Kaine,SENATE,VA,,Democrat,K000384,https://www.kaine.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Mark Pocan,HOUSE,WI,2,Democrat,P000607,https://pocan.house.gov,UNCHECKED,,,
 Robin L. Kelly,HOUSE,IL,2,Democrat,K000385,https://robinkelly.house.gov,UNCHECKED,,,
 Jason Smith,HOUSE,MO,8,Republican,S001195,https://jasonsmith.house.gov,UNCHECKED,,,
-Cory A. Booker,SENATE,NJ,,Democrat,B001288,https://www.booker.senate.gov,UNCHECKED,,,
+Cory A. Booker,SENATE,NJ,,Democrat,B001288,https://www.booker.senate.gov,YES_VERIFIED,Lift Every Voice,https://www.booker.senate.gov/news/press/booker-launches-podcast-dedicated-to-justice-on-mlk-jr-day,Official Senate office launch identifies Booker's podcast.
 Katherine M. Clark,HOUSE,MA,5,Democrat,C001101,https://katherineclark.house.gov,UNCHECKED,,,
 Donald Norcross,HOUSE,NJ,1,Democrat,N000188,https://norcross.house.gov,UNCHECKED,,,
 Alma S. Adams,HOUSE,NC,12,Democrat,A000370,https://adams.house.gov,UNCHECKED,,,
 Gary J. Palmer,HOUSE,AL,6,Republican,P000609,https://palmer.house.gov,UNCHECKED,,,
 J. French Hill,HOUSE,AR,2,Republican,H001072,https://hill.house.gov,UNCHECKED,,,
 Bruce Westerman,HOUSE,AR,4,Republican,W000821,https://westerman.house.gov,UNCHECKED,,,
-Ruben Gallego,SENATE,AZ,,Democrat,G000574,https://www.gallego.senate.gov,UNCHECKED,,,
+Ruben Gallego,SENATE,AZ,,Democrat,G000574,https://www.gallego.senate.gov,YES_VERIFIED,Real Talk with Ruben,https://podcasts.apple.com/us/podcast/real-talk-with-ruben/id1888294647,Apple lists Ruben Gallego as creator and describes Senator Gallego as host. Active in 2026.
 Mark DeSaulnier,HOUSE,CA,10,Democrat,D000623,https://desaulnier.house.gov,UNCHECKED,,,
 Pete Aguilar,HOUSE,CA,33,Democrat,A000371,https://aguilar.house.gov,UNCHECKED,,,
 Ted Lieu,HOUSE,CA,36,Democrat,L000582,https://lieu.house.gov,UNCHECKED,,,
@@ -205,18 +205,18 @@ Stacey E. Plaskett,HOUSE,VI,0,Democrat,P000610,https://plaskett.house.gov,UNCHEC
 Dan Newhouse,HOUSE,WA,4,Republican,N000189,https://newhouse.house.gov,UNCHECKED,,,
 Glenn Grothman,HOUSE,WI,6,Republican,G000576,https://grothman.house.gov,UNCHECKED,,,
 Aumua Amata Coleman Radewagen,HOUSE,AS,0,Republican,R000600,https://radewagen.house.gov,UNCHECKED,,,
-Dan Sullivan,SENATE,AK,,Republican,S001198,https://www.sullivan.senate.gov,UNCHECKED,,,
-Joni Ernst,SENATE,IA,,Republican,E000295,https://www.ernst.senate.gov,UNCHECKED,,,
-Thom Tillis,SENATE,NC,,Republican,T000476,https://www.tillis.senate.gov,UNCHECKED,,,
-Mike Rounds,SENATE,SD,,Republican,R000605,https://www.rounds.senate.gov,UNCHECKED,,,
+Dan Sullivan,SENATE,AK,,Republican,S001198,https://www.sullivan.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Joni Ernst,SENATE,IA,,Republican,E000295,https://www.ernst.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Thom Tillis,SENATE,NC,,Republican,T000476,https://www.tillis.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Mike Rounds,SENATE,SD,,Republican,R000605,https://www.rounds.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Trent Kelly,HOUSE,MS,1,Republican,K000388,https://trentkelly.house.gov,UNCHECKED,,,
 Darin LaHood,HOUSE,IL,16,Republican,L000585,https://lahood.house.gov,UNCHECKED,,,
 Warren Davidson,HOUSE,OH,8,Republican,D000626,https://davidson.house.gov,UNCHECKED,,,
 James Comer,HOUSE,KY,1,Republican,C001108,https://comer.house.gov,UNCHECKED,,,
 Dwight Evans,HOUSE,PA,3,Democrat,E000296,https://evans.house.gov,UNCHECKED,,,
-John Kennedy,SENATE,LA,,Republican,K000393,https://www.kennedy.senate.gov/public,UNCHECKED,,,
-Margaret Wood Hassan,SENATE,NH,,Democrat,H001076,https://www.hassan.senate.gov,UNCHECKED,,,
-Catherine Cortez Masto,SENATE,NV,,Democrat,C001113,https://www.cortezmasto.senate.gov,UNCHECKED,,,
+John Kennedy,SENATE,LA,,Republican,K000393,https://www.kennedy.senate.gov/public,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Margaret Wood Hassan,SENATE,NH,,Democrat,H001076,https://www.hassan.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Catherine Cortez Masto,SENATE,NV,,Democrat,C001113,https://www.cortezmasto.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Bradley Scott Schneider,HOUSE,IL,10,Democrat,S001190,https://schneider.house.gov,UNCHECKED,,,
 Andy Biggs,HOUSE,AZ,5,Republican,B001302,https://biggs.house.gov,UNCHECKED,,,
 Ro Khanna,HOUSE,CA,17,Democrat,K000389,https://khanna.house.gov,UNCHECKED,,,
@@ -224,22 +224,22 @@ Jimmy Panetta,HOUSE,CA,19,Democrat,P000613,https://panetta.house.gov,UNCHECKED,,
 Salud O. Carbajal,HOUSE,CA,24,Democrat,C001112,https://carbajal.house.gov,UNCHECKED,,,
 Nanette Diaz Barragán,HOUSE,CA,44,Democrat,B001300,https://barragan.house.gov,UNCHECKED,,,
 J. Luis Correa,HOUSE,CA,46,Democrat,C001110,https://correa.house.gov,UNCHECKED,,,
-Lisa Blunt Rochester,SENATE,DE,,Democrat,B001303,https://www.bluntrochester.senate.gov,UNCHECKED,,,
+Lisa Blunt Rochester,SENATE,DE,,Democrat,B001303,https://www.bluntrochester.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Neal P. Dunn,HOUSE,FL,2,Republican,D000628,https://dunn.house.gov,UNCHECKED,,,
 John H. Rutherford,HOUSE,FL,5,Republican,R000609,https://rutherford.house.gov,UNCHECKED,,,
 Darren Soto,HOUSE,FL,9,Democrat,S001200,https://soto.house.gov,UNCHECKED,,,
 Brian J. Mast,HOUSE,FL,21,Republican,M001199,https://mast.house.gov,UNCHECKED,,,
 Raja Krishnamoorthi,HOUSE,IL,8,Democrat,K000391,https://krishnamoorthi.house.gov,UNCHECKED,,,
-Jim Banks,SENATE,IN,,Republican,B001299,https://www.banks.senate.gov,UNCHECKED,,,
-Roger Marshall,SENATE,KS,,Republican,M001198,https://www.marshall.senate.gov,UNCHECKED,,,
+Jim Banks,SENATE,IN,,Republican,B001299,https://www.banks.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Roger Marshall,SENATE,KS,,Republican,M001198,https://www.marshall.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Clay Higgins,HOUSE,LA,3,Republican,H001077,https://clayhiggins.house.gov,UNCHECKED,,,
 Mike Johnson,HOUSE,LA,4,Republican,J000299,https://mikejohnson.house.gov,UNCHECKED,,,
 Jamie Raskin,HOUSE,MD,8,Democrat,R000606,https://raskin.house.gov,UNCHECKED,,,
 Jack Bergman,HOUSE,MI,1,Republican,B001301,https://bergman.house.gov,UNCHECKED,,,
-Ted Budd,SENATE,NC,,Republican,B001305,https://www.budd.senate.gov,UNCHECKED,,,
+Ted Budd,SENATE,NC,,Republican,B001305,https://www.budd.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Don Bacon,HOUSE,NE,2,Republican,B001298,https://bacon.house.gov,UNCHECKED,,,
 Josh Gottheimer,HOUSE,NJ,5,Democrat,G000583,https://gottheimer.house.gov,UNCHECKED,,,
-Jacky Rosen,SENATE,NV,,Democrat,R000608,https://www.rosen.senate.gov,UNCHECKED,,,
+Jacky Rosen,SENATE,NV,,Democrat,R000608,https://www.rosen.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Adriano Espaillat,HOUSE,NY,13,Democrat,E000297,https://espaillat.house.gov,UNCHECKED,,,
 Brian K. Fitzpatrick,HOUSE,PA,1,Republican,F000466,https://fitzpatrick.house.gov,UNCHECKED,,,
 Lloyd Smucker,HOUSE,PA,11,Republican,S001199,https://smucker.house.gov,UNCHECKED,,,
@@ -250,9 +250,9 @@ Pramila Jayapal,HOUSE,WA,7,Democrat,J000298,https://jayapal.house.gov,UNCHECKED,
 Ron Estes,HOUSE,KS,4,Republican,E000298,https://estes.house.gov,UNCHECKED,,,
 Ralph Norman,HOUSE,SC,5,Republican,N000190,https://norman.house.gov,UNCHECKED,,,
 Jimmy Gomez,HOUSE,CA,34,Democrat,G000585,https://gomez.house.gov,UNCHECKED,,,
-John R. Curtis,SENATE,UT,,Republican,C001114,https://www.curtis.senate.gov,UNCHECKED,,,
-Tina Smith,SENATE,MN,,Democrat,S001203,https://www.smith.senate.gov,UNCHECKED,,,
-Cindy Hyde-Smith,SENATE,MS,,Republican,H001079,https://www.hydesmith.senate.gov,UNCHECKED,,,
+John R. Curtis,SENATE,UT,,Republican,C001114,https://www.curtis.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Tina Smith,SENATE,MN,,Democrat,S001203,https://www.smith.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Cindy Hyde-Smith,SENATE,MS,,Republican,H001079,https://www.hydesmith.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Michael Cloud,HOUSE,TX,27,Republican,C001115,https://cloud.house.gov,UNCHECKED,,,
 Troy Balderson,HOUSE,OH,12,Republican,B001306,https://balderson.house.gov,UNCHECKED,,,
 Kevin Hern,HOUSE,OK,1,Republican,H001082,https://hern.house.gov,UNCHECKED,,,
@@ -276,7 +276,7 @@ James R. Baird,HOUSE,IN,4,Republican,B001307,https://baird.house.gov,UNCHECKED,,
 Sharice Davids,HOUSE,KS,3,Democrat,D000629,https://davids.house.gov,UNCHECKED,,,
 Lori Trahan,HOUSE,MA,3,Democrat,T000482,https://trahan.house.gov,UNCHECKED,,,
 Ayanna Pressley,HOUSE,MA,7,Democrat,P000617,https://pressley.house.gov,UNCHECKED,,,
-Elissa Slotkin,SENATE,MI,,Democrat,S001208,https://www.slotkin.senate.gov,UNCHECKED,,,
+Elissa Slotkin,SENATE,MI,,Democrat,S001208,https://www.slotkin.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Haley M. Stevens,HOUSE,MI,11,Democrat,S001215,https://stevens.house.gov,UNCHECKED,,,
 Rashida Tlaib,HOUSE,MI,12,Democrat,T000481,https://tlaib.house.gov,UNCHECKED,,,
 Angie Craig,HOUSE,MN,2,Democrat,C001119,https://craig.house.gov,UNCHECKED,,,
@@ -285,7 +285,7 @@ Pete Stauber,HOUSE,MN,8,Republican,S001212,https://stauber.house.gov,UNCHECKED,,
 Michael Guest,HOUSE,MS,3,Republican,G000591,https://guest.house.gov,UNCHECKED,,,
 Chris Pappas,HOUSE,NH,1,Democrat,P000614,https://pappas.house.gov,UNCHECKED,,,
 Jefferson Van Drew,HOUSE,NJ,2,Republican,V000133,https://vandrew.house.gov,UNCHECKED,,,
-Andy Kim,SENATE,NJ,,Democrat,K000394,https://www.kim.senate.gov,UNCHECKED,,,
+Andy Kim,SENATE,NJ,,Democrat,K000394,https://www.kim.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Susie Lee,HOUSE,NV,3,Democrat,L000590,https://susielee.house.gov,UNCHECKED,,,
 Alexandria Ocasio-Cortez,HOUSE,NY,14,Democrat,O000172,https://ocasio-cortez.house.gov,UNCHECKED,,,
 Madeleine Dean,HOUSE,PA,4,Democrat,D000631,https://dean.house.gov,UNCHECKED,,,
@@ -307,20 +307,20 @@ Ben Cline,HOUSE,VA,6,Republican,C001118,https://cline.house.gov,UNCHECKED,,,
 Kim Schrier,HOUSE,WA,8,Democrat,S001216,https://schrier.house.gov,UNCHECKED,,,
 Bryan Steil,HOUSE,WI,1,Republican,S001213,https://steil.house.gov,UNCHECKED,,,
 Carol D. Miller,HOUSE,WV,1,Republican,M001205,https://miller.house.gov,UNCHECKED,,,
-Rick Scott,SENATE,FL,,Republican,S001217,https://www.rickscott.senate.gov,UNCHECKED,,,
-Josh Hawley,SENATE,MO,,Republican,H001089,https://www.hawley.senate.gov,UNCHECKED,,,
+Rick Scott,SENATE,FL,,Republican,S001217,https://www.rickscott.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Josh Hawley,SENATE,MO,,Republican,H001089,https://www.hawley.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Jared F. Golden,HOUSE,ME,2,Democrat,G000592,https://golden.house.gov,UNCHECKED,,,
 Gregory F. Murphy,HOUSE,NC,3,Republican,M001210,https://murphy.house.gov,UNCHECKED,,,
 Kweisi Mfume,HOUSE,MD,7,Democrat,M000687,https://mfume.house.gov,UNCHECKED,,,
 Thomas P. Tiffany,HOUSE,WI,7,Republican,T000165,https://tiffany.house.gov,UNCHECKED,,,
-Mark Kelly,SENATE,AZ,,Democrat,K000377,https://www.kelly.senate.gov,UNCHECKED,,,
-Cynthia M. Lummis,SENATE,WY,,Republican,L000571,https://www.lummis.senate.gov,UNCHECKED,,,
+Mark Kelly,SENATE,AZ,,Democrat,K000377,https://www.kelly.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Cynthia M. Lummis,SENATE,WY,,Republican,L000571,https://www.lummis.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Darrell Issa,HOUSE,CA,48,Republican,I000056,https://issa.house.gov,UNCHECKED,,,
 Pete Sessions,HOUSE,TX,17,Republican,S000250,https://sessions.house.gov,UNCHECKED,,,
 David G. Valadao,HOUSE,CA,22,Republican,V000129,https://valadao.house.gov,UNCHECKED,,,
-Tommy Tuberville,SENATE,AL,,Republican,T000278,https://www.tuberville.senate.gov,UNCHECKED,,,
-John W. Hickenlooper,SENATE,CO,,Democrat,H000273,https://www.hickenlooper.senate.gov,UNCHECKED,,,
-Bill Hagerty,SENATE,TN,,Republican,H000601,https://www.hagerty.senate.gov,UNCHECKED,,,
+Tommy Tuberville,SENATE,AL,,Republican,T000278,https://www.tuberville.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+John W. Hickenlooper,SENATE,CO,,Democrat,H000273,https://www.hickenlooper.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Bill Hagerty,SENATE,TN,,Republican,H000601,https://www.hagerty.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Barry Moore,HOUSE,AL,1,Republican,M001212,https://barrymoore.house.gov,UNCHECKED,,,
 Jay Obernolte,HOUSE,CA,23,Republican,O000019,https://obernolte.house.gov,UNCHECKED,,,
 Young Kim,HOUSE,CA,40,Republican,K000397,https://youngkim.house.gov,UNCHECKED,,,
@@ -361,9 +361,9 @@ Blake D. Moore,HOUSE,UT,1,Republican,M001213,https://blakemoore.house.gov,UNCHEC
 Burgess Owens,HOUSE,UT,4,Republican,O000086,https://owens.house.gov,UNCHECKED,,,
 Marilyn Strickland,HOUSE,WA,10,Democrat,S001159,https://strickland.house.gov,UNCHECKED,,,
 Scott Fitzgerald,HOUSE,WI,5,Republican,F000471,https://fitzgerald.house.gov,UNCHECKED,,,
-Alex Padilla,SENATE,CA,,Democrat,P000145,https://www.padilla.senate.gov,UNCHECKED,,,
-Jon Ossoff,SENATE,GA,,Democrat,O000174,https://www.ossoff.senate.gov,UNCHECKED,,,
-Raphael G. Warnock,SENATE,GA,,Democrat,W000790,https://www.warnock.senate.gov,UNCHECKED,,,
+Alex Padilla,SENATE,CA,,Democrat,P000145,https://www.padilla.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Jon Ossoff,SENATE,GA,,Democrat,O000174,https://www.ossoff.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Raphael G. Warnock,SENATE,GA,,Democrat,W000790,https://www.warnock.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Claudia Tenney,HOUSE,NY,24,Republican,T000478,https://tenney.house.gov,UNCHECKED,,,
 Julia Letlow,HOUSE,LA,5,Republican,L000595,https://letlow.house.gov,UNCHECKED,,,
 Troy A. Carter,HOUSE,LA,2,Democrat,C001125,https://troycarter.house.gov,UNCHECKED,,,
@@ -376,9 +376,9 @@ Brad Finstad,HOUSE,MN,1,Republican,F000475,https://finstad.house.gov,UNCHECKED,,
 Patrick Ryan,HOUSE,NY,18,Democrat,R000579,https://patryan.house.gov,UNCHECKED,,,
 Rudy Yakym III,HOUSE,IN,2,Republican,Y000067,https://yakym.house.gov,UNCHECKED,,,
 Ryan K. Zinke,HOUSE,MT,1,Republican,Z000018,https://zinke.house.gov,UNCHECKED,,,
-Katie Boyd Britt,SENATE,AL,,Republican,B001319,https://www.britt.senate.gov,UNCHECKED,,,
-Eric Schmitt,SENATE,MO,,Republican,S001227,https://www.schmitt.senate.gov,UNCHECKED,,,
-John Fetterman,SENATE,PA,,Democrat,F000479,https://www.fetterman.senate.gov,UNCHECKED,,,
+Katie Boyd Britt,SENATE,AL,,Republican,B001319,https://www.britt.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Eric Schmitt,SENATE,MO,,Republican,S001227,https://www.schmitt.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+John Fetterman,SENATE,PA,,Democrat,F000479,https://www.fetterman.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Dale W. Strong,HOUSE,AL,5,Republican,S001220,https://strong.house.gov,UNCHECKED,,,
 Elijah Crane,HOUSE,AZ,2,Republican,C001132,https://crane.house.gov,UNCHECKED,,,
 Juan Ciscomani,HOUSE,AZ,6,Republican,C001133,https://ciscomani.house.gov,UNCHECKED,,,
@@ -444,7 +444,7 @@ Becca Balint,HOUSE,VT,0,Democrat,B001318,https://balint.house.gov,UNCHECKED,,,
 Marie Gluesenkamp Perez,HOUSE,WA,3,Democrat,G000600,https://gluesenkampperez.house.gov,UNCHECKED,,,
 Derrick Van Orden,HOUSE,WI,3,Republican,V000135,https://vanorden.house.gov,UNCHECKED,,,
 Harriet M. Hageman,HOUSE,WY,0,Republican,H001096,https://hageman.house.gov,UNCHECKED,,,
-Pete Ricketts,SENATE,NE,,Republican,R000618,https://www.ricketts.senate.gov,UNCHECKED,,,
+Pete Ricketts,SENATE,NE,,Republican,R000618,https://www.ricketts.senate.gov,YES_VERIFIED,The Nebraska Way,https://podcasts.apple.com/us/podcast/the-nebraska-way/id1471046353,Hosted by Pete Ricketts before his Senate service; historical series still qualifies under person-based archive scope.
 Jennifer L. McClellan,HOUSE,VA,4,Democrat,M001227,https://mcclellan.house.gov,UNCHECKED,,,
 Gabe Amo,HOUSE,RI,1,Democrat,A000380,https://amo.house.gov,UNCHECKED,,,
 Celeste Maloy,HOUSE,UT,2,Republican,M001228,https://maloy.house.gov,UNCHECKED,,,
@@ -457,10 +457,10 @@ Tony Wied,HOUSE,WI,8,Republican,W000829,https://wied.house.gov,UNCHECKED,,,
 Cleo Fields,HOUSE,LA,6,Democrat,F000110,https://fields.house.gov,UNCHECKED,,,
 Marlin A. Stutzman,HOUSE,IN,3,Republican,S001188,https://stutzman.house.gov,UNCHECKED,,,
 "Gilbert Ray Cisneros, Jr.",HOUSE,CA,31,Democrat,C001123,https://cisneros.house.gov,UNCHECKED,,,
-Angela D. Alsobrooks,SENATE,MD,,Democrat,A000382,https://www.alsobrooks.senate.gov,UNCHECKED,,,
-Tim Sheehy,SENATE,MT,,Republican,S001232,https://www.sheehy.senate.gov,UNCHECKED,,,
-Bernie Moreno,SENATE,OH,,Republican,M001242,https://www.moreno.senate.gov,UNCHECKED,,,
-David McCormick,SENATE,PA,,Republican,M001243,https://www.mccormick.senate.gov,UNCHECKED,,,
+Angela D. Alsobrooks,SENATE,MD,,Democrat,A000382,https://www.alsobrooks.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Tim Sheehy,SENATE,MT,,Republican,S001232,https://www.sheehy.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Bernie Moreno,SENATE,OH,,Republican,M001242,https://www.moreno.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+David McCormick,SENATE,PA,,Republican,M001243,https://www.mccormick.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Nicholas J. Begich III,HOUSE,AK,0,Republican,B001323,https://begich.house.gov,UNCHECKED,,,
 Shomari Figures,HOUSE,AL,2,Democrat,F000481,https://figures.house.gov,UNCHECKED,,,
 Yassamin Ansari,HOUSE,AZ,3,Democrat,A000381,https://ansari.house.gov,UNCHECKED,,,
@@ -522,19 +522,19 @@ Suhas Subramanyam,HOUSE,VA,10,Democrat,S001230,https://subramanyam.house.gov,UNC
 Michael Baumgartner,HOUSE,WA,5,Republican,B001322,https://baumgartner.house.gov,UNCHECKED,,,
 Emily Randall,HOUSE,WA,6,Democrat,R000621,https://randall.house.gov,UNCHECKED,,,
 Riley M. Moore,HOUSE,WV,2,Republican,M001235,https://rileymoore.house.gov,UNCHECKED,,,
-James C. Justice,SENATE,WV,,Republican,J000312,https://www.justice.senate.gov,UNCHECKED,,,
-Jon Husted,SENATE,OH,,Republican,H001104,https://www.husted.senate.gov,UNCHECKED,,,
-Ashley Moody,SENATE,FL,,Republican,M001244,https://www.moody.senate.gov,UNCHECKED,,,
+James C. Justice,SENATE,WV,,Republican,J000312,https://www.justice.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Jon Husted,SENATE,OH,,Republican,H001104,https://www.husted.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
+Ashley Moody,SENATE,FL,,Republican,M001244,https://www.moody.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Jimmy Patronis,HOUSE,FL,1,Republican,P000622,https://patronis.house.gov,UNCHECKED,,,
 Randy Fine,HOUSE,FL,6,Republican,F000484,https://fine.house.gov,UNCHECKED,,,
 James R. Walkinshaw,HOUSE,VA,11,Democrat,W000831,https://walkinshaw.house.gov,UNCHECKED,,,
 Adelita S. Grijalva,HOUSE,AZ,7,Democrat,G000606,https://grijalva.house.gov,UNCHECKED,,,
 Matt Van Epps,HOUSE,TN,7,Republican,V000139,https://vanepps.house.gov,UNCHECKED,,,
 Christian D. Menefee,HOUSE,TX,18,Democrat,M001245,https://menefee.house.gov,UNCHECKED,,,
-Alan Armstrong,SENATE,OK,,Republican,A000383,https://www.armstrong.senate.gov,UNCHECKED,,,
+Alan Armstrong,SENATE,OK,,Republican,A000383,https://www.armstrong.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Clay Fuller,HOUSE,GA,14,Republican,F000485,https://fuller.house.gov,UNCHECKED,,,
 Analilia Mejia,HOUSE,NJ,11,Democrat,M001246,https://mejia.house.gov,UNCHECKED,,,
 James Gallagher,HOUSE,CA,1,Republican,G000607,https://gallagher.house.gov/,UNCHECKED,,,
-Darline Graham,SENATE,SC,,Republican,G000608,https://www.dgraham.senate.gov,UNCHECKED,,,
+Darline Graham,SENATE,SC,,Republican,G000608,https://www.dgraham.senate.gov,NO_QUALIFYING_SHOW_FOUND,,,Audited 2026-10-05 by exact-name podcast/host searches plus targeted official-site checks where results were ambiguous; guest appearances do not qualify.
 Everton Blair Jr.,HOUSE,GA,13,Democrat,B001328,https://blair.house.gov/,UNCHECKED,,,
 Aisha Wahab,HOUSE,CA,14,Democrat,W000832,https://wahab.house.gov/,UNCHECKED,,,
