@@ -37,6 +37,14 @@ export const podcastRegistry: {
 } = {
   people: [
     {
+      slug: "ed-markey",
+      fullName: "Ed Markey",
+      kind: "SENATE",
+      state: "MA",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
       slug: "marsha-blackburn",
       fullName: "Marsha Blackburn",
       kind: "SENATE",
@@ -246,6 +254,20 @@ export const podcastRegistry: {
     },
   ],
   podcasts: [
+    {
+      slug: "the-ed-markey-podcast",
+      title: "The Ed Markey Podcast",
+      rssUrl: "https://media.rss.com/edmarkeypodcast/feed.xml",
+      websiteUrl: "https://rss.com/podcasts/edmarkeypodcast",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/the-ed-markey-podcast/id1729232913",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Apple identifies Senator Ed Markey as creator and links the show website to rss.com/podcasts/edmarkeypodcast; RSS.com's documented canonical feed format yields this feed URL.",
+      people: [{ personSlug: "ed-markey", role: "HOST" }],
+    },
     {
       slug: "unmuted-with-senator-marsha-blackburn",
       title: "Unmuted with Senator Marsha Blackburn",
@@ -584,14 +606,6 @@ export const podcastRegistry: {
     },
   ],
   candidates: [
-    {
-      person: "Ed Markey",
-      show: "The Ed Markey Podcast",
-      sourceUrl:
-        "https://podcasts.apple.com/us/podcast/the-ed-markey-podcast/id1729232913",
-      reason:
-        "Host relationship is verified and the show is in scope; canonical public RSS feed still needs recovery.",
-    },
     {
       person: "Ruben Gallego",
       show: "Real Talk with Ruben",
