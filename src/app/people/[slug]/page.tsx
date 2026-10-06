@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EpisodeCard } from "@/components/episode-card";
+import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { db } from "@/lib/db";
-import { initials, officeLabel } from "@/lib/presentation";
+import { officeLabel } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
@@ -45,7 +46,7 @@ export default async function PersonPage({ params }: Props) {
   return (
     <div className="detail-page">
       <section className="person-hero">
-        <div className="portrait-mark portrait-mark-large">{initials(person.fullName)}</div>
+        <div className="person-portrait-wrap"><IllustratedPortrait slug={person.slug} name={person.fullName} large /></div>
         <div>
           <p className="eyebrow">
             {officeLabel(person.kind, person.isCurrent, person.state)}
