@@ -19,7 +19,6 @@ export default async function Home() {
     latestRepublicanEpisode,
     chronologicalEpisodes,
     podcasts,
-    peopleCount,
     episodeCount,
   ] = await Promise.all([
     db.episode.findFirst({
@@ -68,7 +67,6 @@ export default async function Home() {
         },
       },
     }),
-    db.person.count(),
     db.episode.count(),
   ]);
 
@@ -108,14 +106,10 @@ export default async function Home() {
             />
             <button type="submit">Search archive</button>
           </form>
-          <div className="hero-stats" aria-label="Archive statistics">
-            <div>
-              <strong>{peopleCount}</strong>
-              <span>public servants</span>
-            </div>
+          <div className="hero-stats hero-stats-two" aria-label="Archive statistics">
             <div>
               <strong>{podcasts.length}</strong>
-              <span>verified shows</span>
+              <span>shows</span>
             </div>
             <div>
               <strong>{episodeCount.toLocaleString()}</strong>
