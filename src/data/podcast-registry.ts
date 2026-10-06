@@ -37,6 +37,14 @@ export const podcastRegistry: {
 } = {
   people: [
     {
+      slug: "marsha-blackburn",
+      fullName: "Marsha Blackburn",
+      kind: "SENATE",
+      state: "TN",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
       slug: "mark-pocan",
       fullName: "Mark Pocan",
       kind: "HOUSE",
@@ -238,6 +246,19 @@ export const podcastRegistry: {
     },
   ],
   podcasts: [
+    {
+      slug: "unmuted-with-senator-marsha-blackburn",
+      title: "Unmuted with Senator Marsha Blackburn",
+      rssUrl: "https://feeds.buzzsprout.com/2328442.rss",
+      websiteUrl: "https://www.buzzsprout.com/2328442",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl: "https://www.buzzsprout.com/2328442",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Buzzsprout identifies Senator Marsha Blackburn as host and exposes the canonical RSS feed directly from the publisher page.",
+      people: [{ personSlug: "marsha-blackburn", role: "HOST" }],
+    },
     {
       slug: "with-liberty-and-justice-for-some",
       title: "With Liberty and Justice for Some",
@@ -563,14 +584,6 @@ export const podcastRegistry: {
     },
   ],
   candidates: [
-    {
-      person: "Marsha Blackburn",
-      show: "Unmuted with Senator Marsha Blackburn",
-      sourceUrl:
-        "https://podcasts.apple.com/us/podcast/unmuted-with-senator-marsha-blackburn/id1736996395",
-      reason:
-        "Host relationship is verified and the show is in scope; canonical public RSS feed still needs recovery.",
-    },
     {
       person: "Ed Markey",
       show: "The Ed Markey Podcast",
