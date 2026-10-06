@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PlayButton } from "@/components/player/play-button";
-import { formatDate, initials, officeLabel } from "@/lib/presentation";
+import { IllustratedPortrait } from "@/components/illustrated-portrait";
+import { formatDate, officeLabel } from "@/lib/presentation";
 
 type ShowCardProps = {
   podcast: {
@@ -37,8 +38,8 @@ export function ShowCard({ podcast }: ShowCardProps) {
   return (
     <article className="show-card">
       <div className="show-card-head">
-        <Link className="portrait-mark" href={`/people/${person.slug}`} aria-label={person.fullName}>
-          {initials(person.fullName)}
+        <Link className="show-portrait-link" href={`/people/${person.slug}`} aria-label={person.fullName}>
+          <IllustratedPortrait slug={person.slug} name={person.fullName} />
         </Link>
         <div>
           <div className="show-office">
