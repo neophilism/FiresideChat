@@ -37,6 +37,14 @@ export const podcastRegistry: {
 } = {
   people: [
     {
+      slug: "mark-pocan",
+      fullName: "Mark Pocan",
+      kind: "HOUSE",
+      state: "WI",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
       slug: "bernie-sanders",
       fullName: "Bernie Sanders",
       kind: "SENATE",
@@ -230,6 +238,19 @@ export const podcastRegistry: {
     },
   ],
   podcasts: [
+    {
+      slug: "with-liberty-and-justice-for-some",
+      title: "With Liberty and Justice for Some",
+      rssUrl: "https://anchor.fm/s/ff00a8d4/podcast/rss",
+      websiteUrl: "https://pocan.house.gov/",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl: "https://podcastrepublic.net/podcast/1794881118",
+      verifiedAt: "2026-10-05",
+      verificationNote:
+        "Podcast directories identify Rep. Mark Pocan as host and expose the canonical Anchor RSS feed.",
+      people: [{ personSlug: "mark-pocan", role: "HOST" }],
+    },
     {
       slug: "hear-the-bern",
       title: "Hear the Bern",
@@ -597,14 +618,6 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/the-nebraska-way/id1471046353",
       reason:
         "Host relationship is verified for the historical series; canonical public RSS feed still needs recovery.",
-    },
-    {
-      person: "Mark Pocan",
-      show: "With Liberty and Justice for Some",
-      sourceUrl:
-        "https://www.iheart.com/podcast/1333-with-liberty-and-justice-265211928/",
-      reason:
-        "Host relationship is verified; canonical public RSS feed still needs recovery.",
     },
     {
       person: "Brian Fitzpatrick and Tom Suozzi",
