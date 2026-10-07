@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { EpisodeCard } from "@/components/episode-card";
+import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { db } from "@/lib/db";
-import { initials, officeLabel } from "@/lib/presentation";
+import { officeLabel } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
@@ -95,7 +96,11 @@ export default async function SearchPage({ searchParams }: Props) {
         <div className="people-results">
           {people.map((person) => (
             <Link className="person-result" href={`/people/${person.slug}`} key={person.id}>
-              <span className="portrait-mark">{initials(person.fullName)}</span>
+              <IllustratedPortrait
+                slug={person.slug}
+                name={person.fullName}
+                className="illustrated-portrait-search"
+              />
               <span>
                 <strong>{person.fullName}</strong>
                 <small>{officeLabel(person.kind, person.isCurrent, person.state)}</small>
