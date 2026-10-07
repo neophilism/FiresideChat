@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePlayer } from "./player-provider";
 
@@ -34,6 +35,16 @@ export function AudioPlayer() {
   return (
     <aside className="audio-player" aria-label="Audio player">
       <div className="player-inner">
+        {current.imageUrl?.startsWith("/portraits/") ? (
+          <Image
+            className="player-artwork"
+            src={current.imageUrl}
+            alt=""
+            width={54}
+            height={54}
+          />
+        ) : null}
+
         <button
           className="player-main-button"
           type="button"
