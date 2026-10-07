@@ -831,7 +831,7 @@ h3 {
 
 .player-inner {
   display: grid;
-  grid-template-columns: auto minmax(170px, 300px) auto minmax(200px, 1fr) auto 120px auto;
+  grid-template-columns: auto auto minmax(170px, 300px) auto minmax(200px, 1fr) auto 120px auto;
   gap: 0.85rem;
   align-items: center;
   max-width: 1400px;
@@ -839,6 +839,14 @@ h3 {
   margin: 0 auto;
   padding: 0.65rem 1rem;
   font-family: var(--sans);
+}
+
+.player-artwork {
+  width: 3.4rem;
+  height: 3.4rem;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 0.2rem;
 }
 
 .player-main-button {
@@ -946,7 +954,7 @@ h3 {
   }
 
   .player-inner {
-    grid-template-columns: auto minmax(130px, 250px) auto minmax(150px, 1fr) auto auto;
+    grid-template-columns: auto auto minmax(130px, 250px) auto minmax(150px, 1fr) auto auto;
   }
 
   .player-volume {
@@ -1037,11 +1045,12 @@ h3 {
   }
 
   .player-inner {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr);
     min-height: 74px;
     padding: 0.55rem 0.7rem;
   }
 
+  .player-artwork,
   .player-progress,
   .player-skip,
   .player-volume,
