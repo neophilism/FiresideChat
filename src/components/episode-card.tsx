@@ -2,6 +2,7 @@ import Link from "next/link";
 import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { PlayButton } from "@/components/player/play-button";
 import { formatDate, formatDuration } from "@/lib/presentation";
+import { portraitUrlForSlug } from "@/lib/portraits";
 
 type EpisodeCardProps = {
   episode: {
@@ -31,6 +32,7 @@ export function EpisodeCard({
   featured = false,
 }: EpisodeCardProps) {
   const duration = formatDuration(episode.durationSeconds);
+  const personImageUrl = portraitUrlForSlug(person.slug);
   const playerEpisode = {
     id: episode.id,
     title: episode.title,
@@ -38,7 +40,7 @@ export function EpisodeCard({
     podcastTitle: podcast.title,
     podcastSlug: podcast.slug,
     personName: person.fullName,
-    imageUrl: episode.imageUrl,
+    imageUrl: personImageUrl ?? episode.imageUrl,
   };
 
   return (

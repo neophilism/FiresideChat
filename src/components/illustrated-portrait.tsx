@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { portraitUrlForSlug } from "@/lib/portraits";
+
 type PortraitSpec = {
   skin: string;
   hair: string;
@@ -40,13 +43,36 @@ export function IllustratedPortrait({
   slug,
   name,
   large = false,
+  className,
 }: {
   slug: string;
   name: string;
   large?: boolean;
+  className?: string;
 }) {
+  const portraitSrc = portraitUrlForSlug(slug);
+  const sizeClass = [
+    "illustrated-portrait",
+    large ? "illustrated-portrait-large" : null,
+    className,
+  ].filter(Boolean).join(" ");
+
+  if (portraitSrc) {
+    return (
+      <div className={sizeClass}>
+        <Image
+          className="portrait-image"
+          src={portraitSrc}
+          alt={`Portrait of ${name}`}
+          fill
+          sizes={large ? "(max-width: 760px) 112px, 190px" : "96px"}
+          priority={large}
+        />
+      </div>
+    );
+  }
+
   const spec = specs[slug] ?? fallbackSpec(slug);
-  const sizeClass = large ? "illustrated-portrait illustrated-portrait-large" : "illustrated-portrait";
 
   return (
     <div className={sizeClass} role="img" aria-label={`Illustrated portrait of ${name}`}>

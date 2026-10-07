@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { PlayButton } from "@/components/player/play-button";
-import { formatDate, initials, officeLabel } from "@/lib/presentation";
+import { formatDate, officeLabel } from "@/lib/presentation";
+import { portraitUrlForSlug } from "@/lib/portraits";
 
 type ShowCardProps = {
   podcast: {
@@ -33,12 +35,17 @@ export function ShowCard({ podcast }: ShowCardProps) {
   const relationship = podcast.people[0];
   const person = relationship?.person;
   if (!person) return null;
+  const personImageUrl = portraitUrlForSlug(person.slug);
 
   return (
     <article className="show-card">
       <div className="show-card-head">
-        <Link className="portrait-mark" href={`/people/${person.slug}`} aria-label={person.fullName}>
-          {initials(person.fullName)}
+        <Link className="portrait-link portrait-link-show" href={`/people/${person.slug}`} aria-label={person.fullName}>
+          <IllustratedPortrait
+            slug={person.slug}
+            name={person.fullName}
+            className="illustrated-portrait-show"
+          />
         </Link>
         <div>
           <div className="show-office">
@@ -70,7 +77,7 @@ export function ShowCard({ podcast }: ShowCardProps) {
                   podcastTitle: podcast.title,
                   podcastSlug: podcast.slug,
                   personName: person.fullName,
-                  imageUrl: episode.imageUrl,
+                  imageUrl: personImageUrl ?? episode.imageUrl,
                 }}
               />
               <div>
