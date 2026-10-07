@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { db } from "@/lib/db";
-import { initials, officeLabel } from "@/lib/presentation";
+import { officeLabel } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
@@ -49,11 +50,15 @@ export default async function PeoplePage() {
             return (
               <article className="directory-person" key={person.id}>
                 <Link
-                  className="portrait-mark portrait-mark-directory"
+                  className="portrait-link portrait-link-directory"
                   href={`/people/${person.slug}`}
                   aria-label={person.fullName}
                 >
-                  {initials(person.fullName)}
+                  <IllustratedPortrait
+                    slug={person.slug}
+                    name={person.fullName}
+                    className="illustrated-portrait-directory"
+                  />
                 </Link>
                 <div className="directory-person-copy">
                   <span className="show-office">
