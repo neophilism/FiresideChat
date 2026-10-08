@@ -52,10 +52,10 @@ export function ShowCard({ podcast }: ShowCardProps) {
             {officeLabel(person.kind, person.isCurrent, person.state)}
           </div>
           <h3>
-            <Link href={`/podcasts/${podcast.slug}`}>{podcast.title}</Link>
+            <Link href={`/people/${person.slug}`}>{person.fullName}</Link>
           </h3>
-          <Link className="show-person" href={`/people/${person.slug}`}>
-            {person.fullName}
+          <Link className="show-podcast" href={`/podcasts/${podcast.slug}`}>
+            {podcast.title}
           </Link>
         </div>
       </div>
