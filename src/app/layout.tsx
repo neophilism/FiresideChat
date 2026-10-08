@@ -22,6 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PlayerProvider>
+          <a className="skip-link" href="#main-content">
+            Skip to main content
+          </a>
           <div className="site-shell">
             <header className="site-header">
               <Link className="brand" href="/">
@@ -42,7 +45,7 @@ export default function RootLayout({
               </form>
             </header>
 
-            <main>{children}</main>
+            <main id="main-content" tabIndex={-1}>{children}</main>
 
             <footer className="site-footer">
               <div>
