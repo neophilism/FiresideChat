@@ -80,3 +80,14 @@ When `sync:archive` exits non-zero:
 3. For feed failures, inspect the publisher URL and the stored last error before forcing a retry.
 4. For generated-transcript failures, check audio size, source availability, retry count, and provider configuration.
 5. Do not clear failure state merely to make monitoring green; resolve the underlying source or configuration problem first.
+
+
+## One-time bootstrap / recovery sync
+
+If a newly provisioned production database has the registry but no episodes yet, temporarily set:
+
+```bash
+STARTUP_ARCHIVE_SYNC=true
+```
+
+The next web-service startup will seed the registry and then run `npm run sync:archive`. Feed failures are surfaced in logs but do not prevent the web process from starting. After the bootstrap run completes, set `STARTUP_ARCHIVE_SYNC=false` again so normal deployments do not perform a full archive sync.
