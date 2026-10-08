@@ -81,10 +81,6 @@ export default async function Home() {
             <p className="section-label">Latest</p>
             <h2>New across the archive</h2>
           </div>
-          <div className="latest-balance-note">
-            <span>Featured pair</span>
-            <strong>One from the left + one from the right</strong>
-          </div>
         </div>
 
         {latestEpisodes.length > 0 ? (
