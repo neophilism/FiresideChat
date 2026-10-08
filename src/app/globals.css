@@ -1604,12 +1604,25 @@ h3 {
 }
 
 .transcript-time {
-  padding-top: 0.17rem;
+  padding: 0.17rem 0 0;
   color: var(--red);
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
   font-family: var(--sans);
   font-size: 0.72rem;
   font-variant-numeric: tabular-nums;
   font-weight: 800;
+}
+
+.transcript-segment-active {
+  background: color-mix(in srgb, var(--red) 5%, transparent);
+}
+
+.transcript-segment-active .transcript-time {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .transcript-segments p,
