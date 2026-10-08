@@ -10,6 +10,11 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import {
+  PLAYER_STORAGE_KEY,
+  parsePersistedPlayerState,
+  serializePlayerState,
+} from "./player-persistence";
 import type { PlayerEpisode } from "./player-types";
 
 type PlayerContextValue = {
@@ -32,12 +37,91 @@ const PlayerContext = createContext<PlayerContextValue | null>(null);
 
 export function PlayerProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const lastPersistedSecondRef = useRef(-1);
   const [current, setCurrent] = useState<PlayerEpisode | null>(null);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolumeState] = useState(1);
   const [playbackRate, setPlaybackRateState] = useState(1);
+
+  const persistFromAudio = useCallback(
+    (audio: HTMLAudioElement) => {
+      if (!current) return;
+      try {
+        localStorage.setItem(
+          PLAYER_STORAGE_KEY,
+          serializePlayerState({
+            episode: current,
+            currentTime: audio.currentTime,
+            duration: Number.isFinite(audio.duration) ? audio.duration : duration,
+            volume: audio.volume,
+            playbackRate: audio.playbackRate,
+          }),
+        );
+      } catch {
+        // Playback remains functional if browser storage is unavailable.
+      }
+    },
+    [current, duration],
+  );
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    let restored;
+    try {
+      restored = parsePersistedPlayerState(
+        localStorage.getItem(PLAYER_STORAGE_KEY),
+      );
+    } catch {
+      return;
+    }
+    if (!restored) return;
+
+    let removePositionListener = () => {};
+    const frame = window.requestAnimationFrame(() => {
+      setCurrent(restored.episode);
+      setCurrentTime(restored.currentTime);
+      setDuration(restored.duration);
+      setVolumeState(restored.volume);
+      setPlaybackRateState(restored.playbackRate);
+
+      audio.src = restored.episode.audioUrl;
+      audio.volume = restored.volume;
+      audio.playbackRate = restored.playbackRate;
+
+      const restorePosition = () => {
+        const bounded =
+          Number.isFinite(audio.duration) && audio.duration > 0
+            ? Math.min(restored.currentTime, audio.duration)
+            : restored.currentTime;
+        audio.currentTime = bounded;
+        setCurrentTime(bounded);
+        if (Number.isFinite(audio.duration)) setDuration(audio.duration);
+      };
+
+      audio.addEventListener("loadedmetadata", restorePosition, { once: true });
+      removePositionListener = () =>
+        audio.removeEventListener("loadedmetadata", restorePosition);
+      audio.load();
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      removePositionListener();
+    };
+  }, []);
+
+  useEffect(() => {
+    const onPageHide = () => {
+      const audio = audioRef.current;
+      if (audio) persistFromAudio(audio);
+    };
+    window.addEventListener("pagehide", onPageHide);
+    return () => window.removeEventListener("pagehide", onPageHide);
+  }, [persistFromAudio]);
 
   const playEpisode = useCallback(
     (episode: PlayerEpisode) => {
@@ -110,20 +194,28 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     audio.currentTime = Math.max(0, Math.min(target, audio.duration || target));
   }, []);
 
-  const setVolume = useCallback((nextVolume: number) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const normalized = Math.max(0, Math.min(1, nextVolume));
-    audio.volume = normalized;
-    setVolumeState(normalized);
-  }, []);
+  const setVolume = useCallback(
+    (nextVolume: number) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      const normalized = Math.max(0, Math.min(1, nextVolume));
+      audio.volume = normalized;
+      setVolumeState(normalized);
+      persistFromAudio(audio);
+    },
+    [persistFromAudio],
+  );
 
-  const setPlaybackRate = useCallback((rate: number) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.playbackRate = rate;
-    setPlaybackRateState(rate);
-  }, []);
+  const setPlaybackRate = useCallback(
+    (rate: number) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      audio.playbackRate = rate;
+      setPlaybackRateState(rate);
+      persistFromAudio(audio);
+    },
+    [persistFromAudio],
+  );
 
   useEffect(() => {
     if (!current || !("mediaSession" in navigator)) return;
@@ -202,8 +294,23 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         ref={audioRef}
         preload="metadata"
         onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
+        onPause={(event) => {
+          setPlaying(false);
+          persistFromAudio(event.currentTarget);
+        }}
+        onTimeUpdate={(event) => {
+          const seconds = event.currentTarget.currentTime;
+          setCurrentTime(seconds);
+          const wholeSecond = Math.floor(seconds);
+          if (
+            wholeSecond > 0 &&
+            wholeSecond % 5 === 0 &&
+            wholeSecond !== lastPersistedSecondRef.current
+          ) {
+            lastPersistedSecondRef.current = wholeSecond;
+            persistFromAudio(event.currentTarget);
+          }
+        }}
         onDurationChange={(event) =>
           setDuration(
             Number.isFinite(event.currentTarget.duration)
@@ -211,7 +318,11 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
               : 0,
           )
         }
-        onEnded={() => setPlaying(false)}
+        onEnded={(event) => {
+          setPlaying(false);
+          setCurrentTime(0);
+          persistFromAudio(event.currentTarget);
+        }}
       />
     </PlayerContext.Provider>
   );
