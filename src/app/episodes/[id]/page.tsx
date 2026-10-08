@@ -79,7 +79,7 @@ export default async function EpisodePage({ params }: Props) {
 
   return (
     <div className="detail-page">
-      <section className="episode-detail-hero">
+      <section className="show-hero episode-detail-hero">
         <IllustratedPortrait
           slug={person.slug}
           name={person.fullName}
@@ -150,8 +150,8 @@ export default async function EpisodePage({ params }: Props) {
               {episode.transcript.fullText
                 .split(/\n{2,}/)
                 .filter(Boolean)
-                .map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                .map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
                 ))}
             </div>
           )
