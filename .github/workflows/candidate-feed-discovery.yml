@@ -1,0 +1,96 @@
+name: Candidate Feed Discovery
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/candidate-feed-discovery.yml"
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Query Apple podcast metadata
+        run: |
+          node <<'NODE'
+          const fs = require("node:fs");
+
+          const ids = [
+            1888294647,
+            1089371119,
+            1519108611,
+            1114542739,
+            1471046353,
+            1604614351,
+            1823959003,
+            1809799553,
+            1803142795,
+            1223800705
+          ];
+
+          const terms = [
+            "The Pod Couple Brian Fitzpatrick Tom Suozzi",
+            "Listening with Levin Mike Levin",
+            "The Icebreaker Lisa Murkowski",
+            "What's the BIGGS Idea Andy Biggs",
+            "Mark Alford's America",
+            "Who Dem Gil Cisneros",
+            "Real Talk with Ruben Gallego",
+            "What Makes America Tick Troy Carter",
+            "Unscripted with Tim Burchett",
+            "The Nebraska Way Pete Ricketts",
+            "Inside Maine Angus King",
+            "Opportunity With Tim Scott",
+            "Hey Wisconsin Ron Johnson"
+          ];
+
+          const pick = (x) => ({
+            collectionId: x.collectionId,
+            collectionName: x.collectionName,
+            artistName: x.artistName,
+            feedUrl: x.feedUrl,
+            collectionViewUrl: x.collectionViewUrl,
+            trackCount: x.trackCount,
+            releaseDate: x.releaseDate,
+            primaryGenreName: x.primaryGenreName
+          });
+
+          async function getJson(url) {
+            const res = await fetch(url, {
+              headers: { "user-agent": "FiresideChat-feed-recovery/1.0" }
+            });
+            if (!res.ok) throw new Error(url + " -> HTTP " + res.status);
+            return res.json();
+          }
+
+          (async () => {
+            const lookups = {};
+            for (const id of ids) {
+              const data = await getJson("https://itunes.apple.com/lookup?id=" + id + "&entity=podcast");
+              lookups[id] = data.results.map(pick);
+            }
+
+            const searches = {};
+            for (const term of terms) {
+              const url = "https://itunes.apple.com/search?entity=podcast&limit=8&term=" + encodeURIComponent(term);
+              const data = await getJson(url);
+              searches[term] = data.results.map(pick);
+            }
+
+            fs.writeFileSync(
+              "candidate-feeds.json",
+              JSON.stringify({ generatedAt: new Date().toISOString(), lookups, searches }, null, 2)
+            );
+          })().catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: candidate-feeds
+          path: candidate-feeds.json
+          retention-days: 1
