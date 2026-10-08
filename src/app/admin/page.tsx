@@ -22,6 +22,10 @@ function dateTime(value: Date | null) {
   }).format(value);
 }
 
+function staleCutoff(hours: number) {
+  return new Date(Date.now() - hours * 60 * 60 * 1000);
+}
+
 function statusLabel(podcast: {
   lastSuccessfulCheckAt: Date | null;
   consecutiveFailures: number;
@@ -43,7 +47,7 @@ export default async function AdminPage() {
   );
   const staleHours =
     Number.isInteger(staleHoursRaw) && staleHoursRaw > 0 ? staleHoursRaw : 36;
-  const staleCutoff = new Date(Date.now() - staleHours * 60 * 60 * 1000);
+  const staleBefore = staleCutoff(staleHours);
 
   const [podcasts, transcriptGroups, recentRuns, failedTranscriptions] =
     await Promise.all([
@@ -78,7 +82,7 @@ export default async function AdminPage() {
 
   const feedRows = podcasts.map((podcast) => ({
     ...podcast,
-    health: statusLabel(podcast, staleCutoff),
+    health: statusLabel(podcast, staleBefore),
   }));
   const unhealthy = feedRows.filter((podcast) => podcast.health !== "Healthy");
   const transcriptCounts = new Map(
