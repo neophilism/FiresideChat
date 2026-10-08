@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { EpisodeCard } from "@/components/episode-card";
 import { ShowCard } from "@/components/show-card";
+import { LiveArchiveStats } from "@/components/live-archive-stats";
+import { getArchiveStats } from "@/lib/archive-stats";
 import { db } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
@@ -19,8 +21,7 @@ export default async function Home() {
     latestRepublicanEpisode,
     chronologicalEpisodes,
     podcasts,
-    peopleCount,
-    episodeCount,
+    archiveStats,
   ] = await Promise.all([
     db.episode.findFirst({
       where: {
@@ -68,8 +69,7 @@ export default async function Home() {
         },
       },
     }),
-    db.person.count(),
-    db.episode.count(),
+    getArchiveStats(),
   ]);
 
   const featuredEpisodes = [
@@ -108,20 +108,7 @@ export default async function Home() {
             />
             <button type="submit">Search archive</button>
           </form>
-          <div className="hero-stats" aria-label="Archive statistics">
-            <div>
-              <strong>{peopleCount}</strong>
-              <span>public servants</span>
-            </div>
-            <div>
-              <strong>{podcasts.length}</strong>
-              <span>verified shows</span>
-            </div>
-            <div>
-              <strong>{episodeCount.toLocaleString()}</strong>
-              <span>episodes</span>
-            </div>
-          </div>
+          <LiveArchiveStats initialStats={archiveStats} />
         </div>
 
         <aside className="civic-note">
