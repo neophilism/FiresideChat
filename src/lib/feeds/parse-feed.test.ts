@@ -9,7 +9,7 @@ import {
 
 test("parses RSS, normalizes metadata, and rejects unusable items", () => {
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
-  <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
       <title>Capitol &amp; Country</title>
       <description><![CDATA[<p>A public affairs show.</p>]]></description>
@@ -25,6 +25,7 @@ test("parses RSS, normalizes metadata, and rejects unusable items", () => {
         <enclosure url="https://cdn.example.com/episode-1.mp3" type="audio/mpeg" />
         <link>https://example.com/show/episode-1</link>
         <itunes:image href="https://cdn.example.com/episode-1.jpg" />
+        <podcast:transcript url="https://cdn.example.com/episode-1.vtt" type="text/vtt" />
       </item>
       <item>
         <guid>episode-1</guid>
@@ -60,6 +61,10 @@ test("parses RSS, normalizes metadata, and rejects unusable items", () => {
   assert.equal(episode.audioMimeType, "audio/mpeg");
   assert.equal(episode.episodeUrl, "https://example.com/show/episode-1");
   assert.equal(episode.imageUrl, "https://cdn.example.com/episode-1.jpg");
+  assert.deepEqual(episode.publisherTranscript, {
+    url: "https://cdn.example.com/episode-1.vtt",
+    mimeType: "text/vtt",
+  });
   assert.equal(episode.publishedAt.toISOString(), "2026-10-04T15:30:00.000Z");
 });
 
