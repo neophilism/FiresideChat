@@ -19,7 +19,9 @@ function episode(
       id: podcastId,
       title: podcastId,
       slug: podcastId,
-      people: people.map((person) => ({ person })),
+      people: people.map((person) => ({
+        person: { ...person, fullName: person.slug },
+      })),
     },
   };
 }
