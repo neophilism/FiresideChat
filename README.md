@@ -58,6 +58,20 @@ The curated registry lives in `src/data/podcast-registry.ts`. Every ingestable s
 
 `npm run ingest:feeds` fetches all active, due feeds and idempotently inserts or updates their episodes. It supports conditional HTTP requests, RSS 2.0 and Atom, bounded concurrency, per-feed run records, failure isolation, and retry backoff. See `docs/rss-ingestion.md` for commands and operational details.
 
+## Production operations
+
+Run the complete recurring archive maintenance cycle with:
+
+```bash
+npm run sync:archive
+```
+
+This checks all due feeds, ingests publisher transcripts, and then runs the
+generated-transcript fallback when that feature is explicitly enabled. Use
+`npm run archive:status` for a machine-readable health snapshot. See
+`docs/operations.md` for scheduling, admin access, health probes, transcription
+cost guards, and failure-response procedures.
+
 ## Editorial scope
 
 The verified registry includes a podcast only when a current or former member of Congress, or a U.S. president, hosts it, co-hosts it, or the show is officially produced on their behalf. Guest appearances alone do not qualify.
