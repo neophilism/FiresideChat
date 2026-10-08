@@ -10,6 +10,27 @@ type Props = {
   searchParams: Promise<{ q?: string }>;
 };
 
+function transcriptClock(seconds: number) {
+  const whole = Math.max(0, Math.floor(seconds));
+  const hours = Math.floor(whole / 3600);
+  const minutes = Math.floor((whole % 3600) / 60);
+  const secs = whole % 60;
+
+  return hours > 0
+    ? `${hours}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`
+    : `${minutes}:${String(secs).padStart(2, "0")}`;
+}
+
+function excerptAround(text: string, query: string, maxLength = 240) {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) return normalized;
+
+  const match = normalized.toLowerCase().indexOf(query.toLowerCase());
+  const start = Math.max(0, match >= 0 ? match - Math.floor(maxLength / 3) : 0);
+  const end = Math.min(normalized.length, start + maxLength);
+  return `${start > 0 ? "…" : ""}${normalized.slice(start, end)}${end < normalized.length ? "…" : ""}`;
+}
+
 export default async function SearchPage({ searchParams }: Props) {
   const { q: rawQuery } = await searchParams;
   const q = rawQuery?.trim() ?? "";
@@ -38,7 +59,8 @@ export default async function SearchPage({ searchParams }: Props) {
     );
   }
 
-  const [people, podcasts, episodes] = await Promise.all([
+  const [people, podcasts, episodes, transcriptSegments, plainTranscripts] =
+    await Promise.all([
     db.person.findMany({
       where: { fullName: { contains: q, mode: "insensitive" } },
       orderBy: { fullName: "asc" },
@@ -68,7 +90,47 @@ export default async function SearchPage({ searchParams }: Props) {
       orderBy: { publishedAt: "desc" },
       take: 40,
     }),
+    db.transcriptSegment.findMany({
+      where: { text: { contains: q, mode: "insensitive" } },
+      include: {
+        transcript: {
+          include: {
+            episode: {
+              include: {
+                podcast: {
+                  include: { people: { include: { person: true } } },
+                },
+              },
+            },
+          },
+        },
+      },
+      take: 40,
+    }),
+    db.transcript.findMany({
+      where: {
+        fullText: { contains: q, mode: "insensitive" },
+        segments: { none: {} },
+      },
+      include: {
+        episode: {
+          include: {
+            podcast: {
+              include: { people: { include: { person: true } } },
+            },
+          },
+        },
+      },
+      orderBy: { episode: { publishedAt: "desc" } },
+      take: 20,
+    }),
   ]);
+
+  transcriptSegments.sort(
+    (a, b) =>
+      b.transcript.episode.publishedAt.getTime() -
+      a.transcript.episode.publishedAt.getTime(),
+  );
 
   return (
     <div className="detail-page">
@@ -128,6 +190,71 @@ export default async function SearchPage({ searchParams }: Props) {
             );
           })}
         </div>
+      </section>
+
+      <section className="section-block">
+        <div className="section-heading">
+          <div>
+            <p className="section-label">Inside the transcripts</p>
+            <h2>{transcriptSegments.length + plainTranscripts.length} matches</h2>
+          </div>
+          <p className="section-explainer">
+            Jump straight to the part of the conversation where your search
+            term appears.
+          </p>
+        </div>
+
+        {transcriptSegments.length + plainTranscripts.length > 0 ? (
+          <div className="transcript-search-results">
+            {transcriptSegments.map((segment) => {
+              const episode = segment.transcript.episode;
+              const person = episode.podcast.people[0]?.person;
+              return (
+                <Link
+                  className="transcript-search-result"
+                  href={`/episodes/${episode.id}#segment-${segment.id}`}
+                  key={segment.id}
+                >
+                  <span className="transcript-search-time">
+                    {transcriptClock(segment.startSeconds)}
+                  </span>
+                  <span className="transcript-search-copy">
+                    <strong>{episode.title}</strong>
+                    <small>
+                      {person?.fullName ?? "Public servant"} · {episode.podcast.title}
+                    </small>
+                    <p>{segment.text}</p>
+                  </span>
+                </Link>
+              );
+            })}
+            {plainTranscripts.map((transcript) => {
+              const episode = transcript.episode;
+              const person = episode.podcast.people[0]?.person;
+              return (
+                <Link
+                  className="transcript-search-result"
+                  href={`/episodes/${episode.id}#transcript`}
+                  key={transcript.id}
+                >
+                  <span className="transcript-search-time">Text</span>
+                  <span className="transcript-search-copy">
+                    <strong>{episode.title}</strong>
+                    <small>
+                      {person?.fullName ?? "Public servant"} · {episode.podcast.title}
+                    </small>
+                    <p>{excerptAround(transcript.fullText, q)}</p>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <strong>No transcript matches.</strong>
+            <span>Episode titles and descriptions may still match below.</span>
+          </div>
+        )}
       </section>
 
       <section className="section-block">
