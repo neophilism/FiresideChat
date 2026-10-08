@@ -1,4 +1,13 @@
 export const portraitUrls = {
+  "mark-pocan": "/portraits/MarkPocan_bust.svg",
+  "james-lankford": "/portraits/JamesLankford_bust.svg",
+  "scott-peters": "/portraits/ScottPeters_bust.svg",
+  "greg-landsman": "/portraits/GregLandsman_bust.svg",
+  "guy-reschenthaler": "/portraits/GuyReschenthaler_bust.svg",
+  "doug-collins": "/portraits/DougCollins_bust.svg",
+  "joe-walsh": "/portraits/JoeWalsh_bust.svg",
+  "george-lemieux": "/portraits/GeorgeLeMieux_bust.svg",
+  "anthony-weiner": "/portraits/AnthonyWeiner_bust.svg",
   "al-franken": "/portraits/al-franken.webp",
   "andy-biggs": "/portraits/andy-biggs.webp",
   "angus-king": "/portraits/angus-king.webp",
