@@ -3,6 +3,7 @@ export type HomepageSide = "left" | "right";
 type HomepagePerson = {
   id: string;
   slug: string;
+  fullName: string;
   party: string | null;
 };
 
