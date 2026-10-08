@@ -601,7 +601,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/unscripted-with-tim-burchett/id1823959003",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata identifies Tim Burchett as the artist and exposes the canonical Anchor RSS feed.",
+        "Apple metadata identifies Tim Burchett as the artist and exposes the canonical Anchor RSS feed; the endpoint was live-verified on 2026-10-07.",
       people: [{ personSlug: "tim-burchett", role: "HOST" }],
     },
     {
@@ -614,7 +614,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/real-talk-with-ruben/id1888294647",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata identifies Senator Ruben Gallego as the artist and exposes the canonical Riverside RSS feed.",
+        "Apple metadata identifies Senator Ruben Gallego as the artist and exposes the canonical Riverside RSS feed; the endpoint was live-verified on 2026-10-07.",
       people: [{ personSlug: "ruben-gallego", role: "HOST" }],
     },
     {
@@ -628,7 +628,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/inside-maine-with-senator-angus-king/id1089371119",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata identifies U.S. Senator Angus King as the artist and exposes the official Senate-hosted RSS feed.",
+        "Apple metadata identifies U.S. Senator Angus King as the artist and exposes the official Senate-hosted RSS feed; the endpoint was live-verified on 2026-10-07.",
       people: [{ personSlug: "angus-king", role: "HOST" }],
     },
     {
@@ -641,7 +641,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/opportunity-with-tim-scott/id1519108611",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata identifies Senator Tim Scott as the artist and exposes the canonical Simplecast feed.",
+        "Apple metadata identifies Senator Tim Scott as the artist and exposes the canonical Simplecast feed; the endpoint was live-verified on 2026-10-07.",
       people: [{ personSlug: "tim-scott", role: "HOST" }],
     },
     {
@@ -655,7 +655,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/hey-wisconsin/id1114542739",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata identifies the Senator Ron Johnson show and exposes its canonical SoundCloud RSS feed.",
+        "Apple metadata identifies the Senator Ron Johnson show and exposes its canonical SoundCloud RSS feed; the endpoint was live-verified on 2026-10-07.",
       people: [{ personSlug: "ron-johnson", role: "HOST" }],
     },
     {
@@ -669,7 +669,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/the-nebraska-way/id1471046353",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata exposes the historical Nebraska Way SoundCloud RSS feed; the show was hosted by Pete Ricketts.",
+        "Apple metadata exposes the historical Nebraska Way SoundCloud RSS feed; the endpoint was live-verified on 2026-10-07 and the show was hosted by Pete Ricketts.",
       people: [{ personSlug: "pete-ricketts", role: "HOST" }],
     },
     {
@@ -682,7 +682,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/who-dem/id1803142795",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata exposes the canonical Anchor feed; Congressman Gil Cisneros' launch materials verify the host relationship.",
+        "Apple metadata exposes the canonical Anchor feed; it was live-verified on 2026-10-07 and Congressman Gil Cisneros' launch materials verify the host relationship.",
       people: [{ personSlug: "gil-cisneros", role: "COHOST" }],
     },
     {
@@ -696,7 +696,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/what-makes-america-tick-with-congressman-troy-a-carter-sr/id1809799553",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple metadata identifies Congressman Troy A. Carter, Sr. as artist and exposes the canonical Anchor feed; his official House biography identifies him as founder and host.",
+        "Apple metadata identifies Congressman Troy A. Carter, Sr. as artist and exposes the canonical Anchor feed; the endpoint was live-verified on 2026-10-07 and his official House biography identifies him as founder and host.",
       people: [{ personSlug: "troy-carter", role: "HOST" }],
     },
     {
@@ -711,7 +711,7 @@ export const podcastRegistry: {
         "https://problemsolverscaucus.house.gov/news/documentsingle.aspx?DocumentID=889",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "The Problem Solvers Caucus officially identifies co-chairs Brian Fitzpatrick and Tom Suozzi as co-hosts; Apple metadata exposes the canonical RSS.com feed.",
+        "The Problem Solvers Caucus officially identifies co-chairs Brian Fitzpatrick and Tom Suozzi as co-hosts; Apple metadata exposes the canonical RSS.com feed, live-verified on 2026-10-07.",
       people: [
         { personSlug: "brian-fitzpatrick", role: "COHOST" },
         { personSlug: "tom-suozzi", role: "COHOST" },
@@ -727,7 +727,7 @@ export const podcastRegistry: {
       verificationUrl: "https://alford.house.gov/capital-recap/",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Congressman Alford's official House site identifies Capitol Recap as his podcast; Apple metadata exposes the canonical Buzzsprout feed.",
+        "Congressman Alford's official House site identifies Capitol Recap as his podcast; Apple metadata exposes the canonical Buzzsprout feed, live-verified on 2026-10-07.",
       people: [{ personSlug: "mark-alford", role: "HOST" }],
     },
     {
@@ -847,54 +847,12 @@ export const podcastRegistry: {
     },
   ],
   candidates: [
-    {
-      person: "Ruben Gallego",
-      show: "Real Talk with Ruben",
-      sourceUrl:
-        "https://podcasts.apple.com/us/podcast/real-talk-with-ruben/id1888294647",
-      reason:
-        "Host relationship is verified and the active 2026 show is in scope; canonical public RSS feed still needs recovery.",
-    },
-    {
-      person: "Angus King",
-      show: "Inside Maine with Senator Angus King",
-      sourceUrl:
-        "https://podcasts.apple.com/us/podcast/inside-maine-with-senator-angus-king/id1089371119",
-      reason:
-        "Host relationship is verified; canonical public RSS feed still needs recovery.",
-    },
-    {
-      person: "Tim Scott",
-      show: "Opportunity With Tim Scott",
-      sourceUrl:
-        "https://www.scott.senate.gov/newsroom/newsletters/e-newsletter-justice-for-all/",
-      reason:
-        "Official Senate material verifies the podcast; canonical public RSS feed still needs recovery.",
-    },
-    {
-      person: "Ron Johnson",
-      show: "Hey, Wisconsin",
-      sourceUrl:
-        "https://www.ronjohnson.senate.gov/2016/06/10/2016-6-johnson-releases-new-hey-wisconsin-episode/",
-      reason:
-        "Official Senate material verifies the historical podcast; canonical public RSS feed still needs recovery.",
-    },
-    {
-      person: "Pete Ricketts",
-      show: "The Nebraska Way",
-      sourceUrl:
-        "https://podcasts.apple.com/us/podcast/the-nebraska-way/id1471046353",
-      reason:
-        "Host relationship is verified for the historical series; canonical public RSS feed still needs recovery.",
-    },
-    {
-      person: "Brian Fitzpatrick and Tom Suozzi",
-      show: "The Pod Couple",
-      sourceUrl:
-        "https://problemsolverscaucus.house.gov/news/documentsingle.aspx?DocumentID=889",
-      reason:
-        "Official caucus announcement verifies both members as co-hosts; canonical public RSS feed still needs recovery.",
-    },
+
+
+
+
+
+
     {
       person: "Mike Levin",
       show: "Listening with Levin",
@@ -903,22 +861,8 @@ export const podcastRegistry: {
       reason:
         "Official House announcement verifies the podcast; canonical public RSS feed still needs recovery.",
     },
-    {
-      person: "Tim Burchett",
-      show: "Unscripted with Tim Burchett",
-      sourceUrl:
-        "https://podcasts.apple.com/us/podcast/unscripted-with-tim-burchett/id1823959003",
-      reason:
-        "The host relationship and 2025 audio series are verified; its canonical public RSS feed still needs recovery before separate ingestion.",
-    },
-    {
-      person: "Troy Carter",
-      show: "\"What Makes America Tick?\" with Congressman Troy A. Carter, Sr.",
-      sourceUrl:
-        "https://podcasts.apple.com/us/podcast/what-makes-america-tick-with-congressman-troy-a-carter-sr/id1809799553",
-      reason:
-        "Active host relationship is verified; canonical public RSS feed still needs recovery.",
-    },
+
+
     {
       person: "Mark Alford",
       show: "Mark Alford's America",
@@ -926,14 +870,7 @@ export const podcastRegistry: {
       reason:
         "Official House archive explicitly calls it Rep. Alford's radio show/podcast; no canonical open RSS feed has been located.",
     },
-    {
-      person: "Gil Cisneros",
-      show: "Who Dem?",
-      sourceUrl:
-        "https://www.gilonthehill.com/2025/03/21/congressman-gil-cisneros-introduces-who-dem-podcast/",
-      reason:
-        "Host relationship is verified; canonical public RSS feed still needs recovery.",
-    },
+
     {
       person: "Andy Biggs",
       show: "What's the BIGGS Idea?",
