@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthenticated } from "@/lib/admin-auth";
 import { db } from "@/lib/db";
@@ -159,7 +160,7 @@ export default async function AdminPage() {
               {feedRows.map((podcast) => (
                 <tr key={podcast.id}>
                   <td>
-                    <a href={`/podcasts/${podcast.slug}`}>{podcast.title}</a>
+                    <Link href={`/podcasts/${podcast.slug}`}>{podcast.title}</Link>
                     {podcast.lastError ? (
                       <small className="admin-row-error">{podcast.lastError}</small>
                     ) : null}
