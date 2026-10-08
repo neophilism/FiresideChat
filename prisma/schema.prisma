@@ -129,8 +129,11 @@ model Episode {
   imageUrl         String?
   publisherTranscriptUrl      String?
   publisherTranscriptMimeType String?
-  transcriptStatus TranscriptStatus @default(MISSING)
-  createdAt        DateTime         @default(now())
+  transcriptStatus          TranscriptStatus @default(MISSING)
+  transcriptionAttempts     Int              @default(0)
+  transcriptionLastAttemptAt DateTime?
+  transcriptionLastError    String?
+  createdAt                 DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
   podcast          Podcast          @relation(fields: [podcastId], references: [id], onDelete: Cascade)
   transcript       Transcript?

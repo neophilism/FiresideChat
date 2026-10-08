@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test src/lib/feeds/*.test.ts src/lib/portraits.test.ts src/data/person-profiles.test.ts",
+    "test": "tsx --test src/lib/feeds/*.test.ts src/lib/transcription/*.test.ts src/lib/portraits.test.ts src/data/person-profiles.test.ts",
     "prisma:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
@@ -25,7 +25,9 @@
     "dev:db": "docker compose up -d postgres",
     "dev:setup": "npm run dev:db && npm run db:wait && npm run db:deploy && npm run db:seed && npm run registry:validate",
     "smoke:mvp": "node scripts/smoke-mvp.mjs",
-    "db:wait": "node scripts/wait-for-db.mjs"
+    "db:wait": "node scripts/wait-for-db.mjs",
+    "transcribe:missing": "tsx scripts/transcribe-missing.ts",
+    "pretranscribe:missing": "npm run prisma:generate"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.0",
