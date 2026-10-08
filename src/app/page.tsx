@@ -4,6 +4,7 @@ import { ShowCard } from "@/components/show-card";
 import { LiveArchiveStats } from "@/components/live-archive-stats";
 import { getArchiveStats } from "@/lib/archive-stats";
 import { db } from "@/lib/db";
+import { selectHomepageEpisodes } from "@/lib/homepage-selection";
 
 export const dynamic = "force-dynamic";
 
@@ -17,45 +18,13 @@ const episodeInclude = {
 
 export default async function Home() {
   const [
-    latestDemocraticEpisode,
-    latestRepublicanEpisode,
     chronologicalEpisodes,
     podcasts,
     archiveStats,
   ] = await Promise.all([
-    db.episode.findFirst({
-      where: {
-        podcast: {
-          people: {
-            some: {
-              person: {
-                party: { in: ["Democratic", "Democrat"] },
-              },
-            },
-          },
-        },
-      },
-      orderBy: { publishedAt: "desc" },
-      include: episodeInclude,
-    }),
-    db.episode.findFirst({
-      where: {
-        podcast: {
-          people: {
-            some: {
-              person: {
-                party: "Republican",
-              },
-            },
-          },
-        },
-      },
-      orderBy: { publishedAt: "desc" },
-      include: episodeInclude,
-    }),
     db.episode.findMany({
       orderBy: { publishedAt: "desc" },
-      take: 12,
+      take: 250,
       include: episodeInclude,
     }),
     db.podcast.findMany({
@@ -72,23 +41,7 @@ export default async function Home() {
     getArchiveStats(),
   ]);
 
-  const featuredEpisodes = [
-    latestDemocraticEpisode,
-    latestRepublicanEpisode,
-  ]
-    .filter((episode): episode is NonNullable<typeof episode> => Boolean(episode))
-    .filter(
-      (episode, index, episodes) =>
-        episodes.findIndex((candidate) => candidate.id === episode.id) === index,
-    )
-    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
-
-  const featuredIds = new Set(featuredEpisodes.map((episode) => episode.id));
-  const secondaryEpisodes = chronologicalEpisodes
-    .filter((episode) => !featuredIds.has(episode.id))
-    .slice(0, Math.max(0, 6 - featuredEpisodes.length));
-
-  const latestEpisodes = [...featuredEpisodes, ...secondaryEpisodes];
+  const latestEpisodes = selectHomepageEpisodes(chronologicalEpisodes, 6);
 
   return (
     <>
@@ -129,25 +82,21 @@ export default async function Home() {
           </div>
           <div className="latest-balance-note">
             <span>Featured pair</span>
-            <strong>Newest Democrat + newest Republican</strong>
+            <strong>One from the left + one from the right</strong>
           </div>
         </div>
 
         {latestEpisodes.length > 0 ? (
           <div className="latest-grid">
-            {latestEpisodes.map((episode, index) => {
-              const person = episode.podcast.people[0]?.person;
-              if (!person) return null;
-              return (
-                <EpisodeCard
-                  key={episode.id}
-                  featured={index < featuredEpisodes.length}
-                  episode={episode}
-                  podcast={episode.podcast}
-                  person={person}
-                />
-              );
-            })}
+            {latestEpisodes.map(({ episode, person, featured }) => (
+              <EpisodeCard
+                key={episode.id}
+                featured={featured}
+                episode={episode}
+                podcast={episode.podcast}
+                person={person}
+              />
+            ))}
           </div>
         ) : (
           <div className="empty-state">
