@@ -2000,3 +2000,39 @@ h3 {
     text-align: left;
   }
 }
+
+
+/* Episode sharing */
+.episode-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  margin-top: 1rem;
+  font-family: var(--sans);
+}
+
+.episode-share-actions button {
+  padding: 0.52rem 0.7rem;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.episode-share-actions button:hover,
+.episode-share-actions button:focus-visible {
+  color: white;
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.episode-share-status {
+  min-height: 1em;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
