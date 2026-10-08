@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { fetchFeed } from "./fetch-feed";
 import { parseFeed } from "./parse-feed";
+import { fetchPublisherTranscript } from "./publisher-transcript";
 import { calculateRetryAt } from "./retry";
 import type { IngestionResult, NormalizedEpisode } from "./types";
 
@@ -38,7 +39,83 @@ function episodeData(episode: NormalizedEpisode) {
     audioMimeType: episode.audioMimeType,
     episodeUrl: episode.episodeUrl,
     imageUrl: episode.imageUrl,
+    publisherTranscriptUrl: episode.publisherTranscript?.url ?? null,
+    publisherTranscriptMimeType: episode.publisherTranscript?.mimeType ?? null,
   };
+}
+
+async function ingestPublisherTranscripts(podcastId: string) {
+  const limit = envPositiveInteger("PUBLISHER_TRANSCRIPTS_PER_RUN") ?? 20;
+  const episodes = await db.episode.findMany({
+    where: {
+      podcastId,
+      publisherTranscriptUrl: { not: null },
+      OR: [
+        { transcriptStatus: { not: "COMPLETE" } },
+        { transcript: { is: null } },
+        { transcript: { is: { source: { not: "PUBLISHER" } } } },
+      ],
+    },
+    include: { transcript: true },
+    orderBy: { publishedAt: "desc" },
+    take: limit,
+  });
+
+  for (const episode of episodes) {
+    if (!episode.publisherTranscriptUrl) continue;
+
+    await db.episode.update({
+      where: { id: episode.id },
+      data: { transcriptStatus: "PROCESSING" },
+    });
+
+    try {
+      const parsed = await fetchPublisherTranscript({
+        url: episode.publisherTranscriptUrl,
+        mimeType: episode.publisherTranscriptMimeType,
+      });
+
+      const transcript = await db.transcript.upsert({
+        where: { episodeId: episode.id },
+        create: {
+          episodeId: episode.id,
+          source: "PUBLISHER",
+          fullText: parsed.fullText,
+        },
+        update: {
+          source: "PUBLISHER",
+          fullText: parsed.fullText,
+        },
+      });
+
+      await db.transcriptSegment.deleteMany({
+        where: { transcriptId: transcript.id },
+      });
+      if (parsed.segments.length > 0) {
+        await db.transcriptSegment.createMany({
+          data: parsed.segments.map((segment) => ({
+            transcriptId: transcript.id,
+            startSeconds: segment.startSeconds,
+            endSeconds: segment.endSeconds,
+            text: segment.text,
+          })),
+        });
+      }
+
+      await db.episode.update({
+        where: { id: episode.id },
+        data: { transcriptStatus: "COMPLETE" },
+      });
+    } catch (error) {
+      await db.episode.update({
+        where: { id: episode.id },
+        data: { transcriptStatus: "FAILED" },
+      });
+      console.warn(
+        `Publisher transcript failed for episode ${episode.id}: ${errorMessage(error)}`,
+      );
+    }
+  }
 }
 
 export async function ingestPodcastBySlug(
@@ -109,6 +186,8 @@ export async function ingestPodcastBySlug(
     });
 
     if (fetched.status === "not-modified") {
+      await ingestPublisherTranscripts(podcast.id);
+
       await db.$transaction([
         db.podcast.update({
           where: { id: podcast.id },
@@ -178,6 +257,8 @@ export async function ingestPodcastBySlug(
         ),
       );
     }
+
+    await ingestPublisherTranscripts(podcast.id);
 
     const episodesCreated = parsed.episodes.filter(
       (episode) => !existingGuids.has(episode.guid),
