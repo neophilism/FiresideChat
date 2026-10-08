@@ -63,7 +63,7 @@ export function EpisodeCard({
           <span>·</span>
           <Link href={`/podcasts/${podcast.slug}`}>{podcast.title}</Link>
         </div>
-        <h3>{episode.title}</h3>
+        <h3><Link href={`/episodes/${episode.id}`}>{episode.title}</Link></h3>
         {featured && episode.description ? (
           <p className="episode-description">{episode.description}</p>
         ) : null}
