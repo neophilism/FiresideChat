@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { PlayButton } from "@/components/player/play-button";
+import { TranscriptSegments } from "@/components/transcript-segments";
 import { db } from "@/lib/db";
 import { formatDate, formatDuration, officeLabel } from "@/lib/presentation";
 import { portraitUrlForSlug } from "@/lib/portraits";
@@ -12,17 +13,6 @@ export const dynamic = "force-dynamic";
 type Props = {
   params: Promise<{ id: string }>;
 };
-
-function transcriptClock(seconds: number) {
-  const whole = Math.max(0, Math.floor(seconds));
-  const hours = Math.floor(whole / 3600);
-  const minutes = Math.floor((whole % 3600) / 60);
-  const secs = whole % 60;
-
-  return hours > 0
-    ? `${hours}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`
-    : `${minutes}:${String(secs).padStart(2, "0")}`;
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
@@ -135,16 +125,10 @@ export default async function EpisodePage({ params }: Props) {
 
         {episode.transcript ? (
           episode.transcript.segments.length > 0 ? (
-            <ol className="transcript-segments">
-              {episode.transcript.segments.map((segment) => (
-                <li key={segment.id}>
-                  <span className="transcript-time">
-                    {transcriptClock(segment.startSeconds)}
-                  </span>
-                  <p>{segment.text}</p>
-                </li>
-              ))}
-            </ol>
+            <TranscriptSegments
+              episode={playerEpisode}
+              segments={episode.transcript.segments}
+            />
           ) : (
             <div className="transcript-fulltext">
               {episode.transcript.fullText
