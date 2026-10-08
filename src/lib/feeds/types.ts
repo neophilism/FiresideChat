@@ -6,6 +6,11 @@ export type FeedMetadata = {
   language: string | null;
 };
 
+export type PublisherTranscriptReference = {
+  url: string;
+  mimeType: string | null;
+};
+
 export type NormalizedEpisode = {
   guid: string;
   title: string;
@@ -17,6 +22,7 @@ export type NormalizedEpisode = {
   audioMimeType: string | null;
   episodeUrl: string | null;
   imageUrl: string | null;
+  publisherTranscript: PublisherTranscriptReference | null;
 };
 
 export type ParsedFeed = {

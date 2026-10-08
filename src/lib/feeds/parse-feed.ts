@@ -234,6 +234,21 @@ function readRssImage(item: XmlRecord): string | null {
   );
 }
 
+function readPublisherTranscript(record: XmlRecord) {
+  for (const candidate of asArray(record["podcast:transcript"])) {
+    const transcript = asRecord(candidate);
+    const url = normalizeUrl(attribute(transcript, "url"));
+    if (!url) continue;
+
+    return {
+      url,
+      mimeType: attribute(transcript, "type"),
+    };
+  }
+
+  return null;
+}
+
 function stableGuid(guid: string | null, audioUrl: string): string {
   return guid ?? `enclosure:${audioUrl}`;
 }
@@ -268,6 +283,7 @@ function normalizeRssItem(value: unknown): NormalizedEpisode | null {
     audioMimeType: enclosure.mimeType,
     episodeUrl: normalizeUrl(firstText(item, ["link"])),
     imageUrl: readRssImage(item),
+    publisherTranscript: readPublisherTranscript(item),
   };
 }
 
@@ -324,6 +340,7 @@ function normalizeAtomEntry(
         attribute(asRecord(entry["itunes:image"]), "href"),
         feedWebsiteUrl,
       ),
+    publisherTranscript: readPublisherTranscript(entry),
   };
 }
 

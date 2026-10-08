@@ -127,6 +127,8 @@ model Episode {
   audioMimeType    String?
   episodeUrl       String?
   imageUrl         String?
+  publisherTranscriptUrl      String?
+  publisherTranscriptMimeType String?
   transcriptStatus TranscriptStatus @default(MISSING)
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
