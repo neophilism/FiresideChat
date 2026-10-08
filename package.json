@@ -27,7 +27,10 @@
     "smoke:mvp": "node scripts/smoke-mvp.mjs",
     "db:wait": "node scripts/wait-for-db.mjs",
     "transcribe:missing": "tsx scripts/transcribe-missing.ts",
-    "pretranscribe:missing": "npm run prisma:generate"
+    "pretranscribe:missing": "npm run prisma:generate",
+    "sync:archive": "tsx scripts/sync-archive.ts",
+    "archive:status": "tsx scripts/archive-status.ts",
+    "prearchive:status": "npm run prisma:generate"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.0",
