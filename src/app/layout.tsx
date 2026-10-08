@@ -2,15 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AudioPlayer } from "@/components/player/audio-player";
 import { PlayerProvider } from "@/components/player/player-provider";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl()),
   title: {
     default: "Fireside Chat — Hear them yourself",
     template: "%s | Fireside Chat",
   },
   description:
     "One searchable archive for podcasts hosted by current and former members of Congress and U.S. presidents.",
+  openGraph: {
+    siteName: "Fireside Chat",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+  },
 };
 
 export default function RootLayout({
