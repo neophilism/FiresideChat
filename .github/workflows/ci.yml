@@ -45,29 +45,6 @@ jobs:
       - name: Validate registry
         run: npm run registry:validate
 
-      - name: One-time live probe of recovered podcast feeds
-        run: |
-          set -euo pipefail
-          feeds=(
-            "https://anchor.fm/s/106cc7b4c/podcast/rss"
-            "https://api.riverside.fm/hosting/r1lIhYeW.rss"
-            "https://www.king.senate.gov/podcast/feed?new"
-            "https://feeds.simplecast.com/csy2Vjm1"
-            "https://feeds.soundcloud.com/users/soundcloud:users:225913226/sounds.rss"
-            "https://feeds.soundcloud.com/users/soundcloud:users:657762987/sounds.rss"
-            "https://anchor.fm/s/101b1e1d8/podcast/rss"
-            "https://anchor.fm/s/103c70cdc/podcast/rss"
-            "https://media.rss.com/the-pod-couple-episode-1/feed.xml"
-            "https://rss.buzzsprout.com/2311905.rss"
-          )
-          tmp_feed="$(mktemp)"
-          trap 'rm -f "$tmp_feed"' EXIT
-          for feed in "${feeds[@]}"; do
-            echo "Probing $feed"
-            curl --fail --location --silent --show-error --max-time 25 "$feed" -o "$tmp_feed"
-            grep -Eq '<rss|<feed' "$tmp_feed"
-          done
-
       - name: Generate Prisma client
         run: npm run prisma:generate
 
