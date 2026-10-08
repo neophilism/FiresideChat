@@ -1018,6 +1018,323 @@ export const personProfiles: Record<string, PersonProfile> = {
     ],
   },
 
+  "ruben-gallego": {
+    strapline: "A Marine combat veteran who came to the Senate carrying both the memory of war and the impatience of Arizona growth.",
+    summary:
+      "Ruben Gallego's politics are shaped by two forms of precarity: growing up in a working-class immigrant family and serving in an Iraq War unit that suffered devastating losses. His legislative focus repeatedly returns to veterans, housing, water, wages and the obligations institutions owe people who have little margin for failure.",
+    biography: [
+      "Gallego grew up helping a single mother support four children, became a first-generation Harvard graduate, enlisted in the Marine Corps and deployed to Iraq with Lima Company, 3rd Battalion, 25th Marines. Twenty-two Marines and a Navy corpsman from the battalion were killed during that deployment. He later served in the Arizona legislature and spent a decade in the U.S. House before winning a Senate seat in 2024.",
+      "That biography does not make every vote self-explanatory, but it helps explain the recurring question in his work: whether the systems that ask people to serve, work or build a life are actually prepared to support them afterward. In the Senate he has mixed veterans policy with housing, worker pay and Arizona-specific water and infrastructure fights.",
+    ],
+    civicQuestion:
+      "What does government owe people after it has asked them to carry risks the rest of society does not?",
+    achievements: [
+      {
+        eyebrow: "Enacted law",
+        title: "Put Native veterans' care into federal statute",
+        body:
+          "Gallego-sponsored legislation known as the PRC for Native Veterans Act became public law, addressing access to purchased and referred health care for Native veterans.",
+        sourceUrl: "https://www.gallego.senate.gov/meet-ruben/legislation/",
+        sourceLabel: "Official Senate legislation record",
+      },
+      {
+        eyebrow: "Senate appropriations · 2025",
+        title: "Carried veteran health and housing priorities into a funding bill",
+        body:
+          "Gallego secured provisions in the Senate Military Construction and Veterans Affairs funding bill touching suicide prevention, mental-health and addiction treatment, survivor benefits, veteran housing and Arizona military facilities.",
+        sourceUrl:
+          "https://www.gallego.senate.gov/news/press-releases/gallego-secures-major-arizona-and-veteran-priorities-in-senate-milcon-va-funding-bill/",
+        sourceLabel: "Official Senate release",
+      },
+    ],
+  },
+
+  "angus-king": {
+    strapline: "An independent who treats the Senate less like a battlefield than a machine that still ought to be repairable.",
+    summary:
+      "Angus King has spent his Senate career testing a proposition that sounds almost antique in modern politics: that independence can be useful rather than merely theatrical. His most durable wins have often come from small bipartisan groups willing to keep negotiating after the cameras leave.",
+    biography: [
+      "King served two terms as Maine's independent governor before entering the Senate in 2013 without joining either major party. He caucuses with Democrats but has made institutional independence central to his public identity, moving between national-security oversight, energy, broadband, conservation and budget questions.",
+      "His early student-loan compromise is a revealing example. Interest rates were about to double, the parties were stuck, and King joined a cross-party group that wrote a market-based formula with caps. Years later he helped fold his Restore Our Parks proposal into one of the largest conservation laws in decades. The style is not ideological neutrality; it is a belief that durable policy often begins with a coalition no party can assemble alone.",
+    ],
+    civicQuestion:
+      "Can political independence create leverage when neither party can solve a problem by itself?",
+    achievements: [
+      {
+        eyebrow: "Enacted law",
+        title: "Co-wrote the Student Loan Certainty Act",
+        body:
+          "King helped craft the bipartisan 2013 law that replaced a looming student-loan rate spike with a market-linked formula and statutory caps for borrowers.",
+        sourceUrl:
+          "https://www.king.senate.gov/newsroom/press-releases/president-signs-bipartisan-student-loan-certainty-act-into-law",
+        sourceLabel: "Official Senate release",
+      },
+      {
+        eyebrow: "Enacted law",
+        title: "Put national-park repairs inside the Great American Outdoors Act",
+        body:
+          "The Great American Outdoors Act incorporated King's Restore Our Parks proposal, creating major funding to address deferred maintenance across the National Park System while permanently funding the Land and Water Conservation Fund.",
+        sourceUrl:
+          "https://www.king.senate.gov/newsroom/press-releases/king-hails-landmark-conservation-accomplishment-as-great-american-outdoors-act-signed-into-law",
+        sourceLabel: "Official Senate release",
+      },
+    ],
+  },
+
+  "tim-scott": {
+    strapline: "A South Carolina conservative who made economic geography itself a federal policy instrument.",
+    summary:
+      "Tim Scott's signature idea is deceptively simple: if capital persistently bypasses distressed communities, change the tax code so investment has a reason to look again. Opportunity Zones became law in 2017; nearly a decade later, he used the Banking Committee chairmanship to push an even larger housing package into statute.",
+    biography: [
+      "Scott rose from Charleston County government to the South Carolina House, the U.S. House and then the Senate, becoming one of the country's most prominent Black Republicans. His public politics center on a language of opportunity—credit, education, entrepreneurship, housing and the ability of families to accumulate assets rather than remain permanently dependent on public programs.",
+      "Whatever one thinks of that philosophy, Scott has done something many legislators never do: translate it into durable structures. Opportunity Zones embedded place-based investment incentives in the tax code. As Banking Committee chairman, he later negotiated the 21st Century ROAD to Housing Act, a sweeping bipartisan effort aimed at housing supply and homeownership.",
+    ],
+    civicQuestion:
+      "When a community lacks investment, should government spend directly—or rewrite the incentives that decide where private capital goes?",
+    achievements: [
+      {
+        eyebrow: "Enacted law",
+        title: "Authored the Opportunity Zones program",
+        body:
+          "Scott's Investing in Opportunity framework was enacted through the 2017 tax law, creating federal tax incentives for long-term investment in designated economically distressed census tracts.",
+        sourceUrl: "https://www.scott.senate.gov/issues/opportunity-zones/",
+        sourceLabel: "Official Senate issue page",
+      },
+      {
+        eyebrow: "Enacted law · 2026",
+        title: "Led the 21st Century ROAD to Housing Act",
+        body:
+          "As Senate Banking Committee chairman, Scott led the bipartisan housing package that became law in July 2026, addressing housing supply, federal barriers and homeownership across a broad set of programs.",
+        sourceUrl:
+          "https://www.scott.senate.gov/media-center/press-releases/sen-tim-scotts-21st-century-road-to-housing-act-becomes-law/",
+        sourceLabel: "Official Senate release",
+      },
+    ],
+  },
+
+  "ron-johnson": {
+    strapline: "A manufacturer-turned-senator whose governing instinct is to question the rulebook before accepting the system.",
+    summary:
+      "Ron Johnson entered the Senate from the private sector promising to treat government with the skepticism of an owner reading an unexplained invoice. His most consequential laws grew from that instinct in very different directions: experimental medicine for terminal patients, whistleblower protections and changes to how federal agencies manage transitions and hiring.",
+    biography: [
+      "Johnson spent decades helping run a Wisconsin plastics manufacturing company before winning a Senate seat in 2010. He built much of his institutional influence through the Homeland Security and Governmental Affairs Committee, where obscure questions about agency rules, records and oversight can become laws with effects far beyond a headline.",
+      "His politics are polarizing, especially on public health and election controversies, but a serious account of his Senate career also has to include the bipartisan administrative laws that survived those fights. Right to Try is the clearest example: a personal encounter with an ALS patient became a multi-year campaign to create a new federal pathway for some terminally ill patients to seek investigational treatments.",
+    ],
+    civicQuestion:
+      "When should government protect people from risk—and when should it let people choose risk for themselves?",
+    achievements: [
+      {
+        eyebrow: "Enacted law",
+        title: "Drove the federal Right to Try law",
+        body:
+          "Johnson repeatedly introduced and advanced the Right to Try framework until Congress enacted a federal pathway for eligible terminally ill patients to seek certain investigational treatments outside the traditional approval process.",
+        sourceUrl: "https://www.ronjohnson.senate.gov/issues/right-to-try/",
+        sourceLabel: "Official Senate issue page",
+      },
+      {
+        eyebrow: "Government reform",
+        title: "Turned oversight concerns into administrative law",
+        body:
+          "During his Homeland Security committee leadership, Johnson advanced laws on presidential transitions, whistleblower protection, improper payments and fair-chance federal hiring.",
+        sourceUrl: "https://www.ronjohnson.senate.gov/issues/accomplishments-report/",
+        sourceLabel: "Official Senate accomplishments report",
+      },
+    ],
+  },
+
+  "pete-ricketts": {
+    strapline: "A former governor bringing statehouse instincts into the Senate's battles over markets, regulation and federalism.",
+    summary:
+      "Pete Ricketts arrived in the Senate after eight years governing Nebraska, where tax policy, agriculture and business regulation were daily executive concerns rather than abstract committee topics. His early Senate record has carried that state-centered lens into digital finance, housing and regulatory rollback.",
+    biography: [
+      "Before politics, Ricketts worked his way through a family financial-services company that became TD Ameritrade, eventually serving as president and chief operating officer. As Nebraska governor he emphasized tax reduction, workforce programs and regulatory policy. He entered the Senate in 2023 and quickly found a lane on Banking and foreign-relations issues.",
+      "His legislative record is still comparatively young, which makes precision important. Some of his clearest wins are not sweeping bills with his name on the cover but amendments and congressional-review resolutions that changed the governing rule itself—exactly the kind of technical leverage senators often accumulate before the public learns their committee titles.",
+    ],
+    civicQuestion:
+      "How much federalism survives when national markets increasingly depend on rules written in Washington?",
+    achievements: [
+      {
+        eyebrow: "Enacted law · 2025",
+        title: "Reversed a CFPB digital-payments rule",
+        body:
+          "A Congressional Review Act resolution introduced by Ricketts became law in 2025, nullifying a CFPB rule governing large nonbank digital payment applications.",
+        sourceUrl:
+          "https://www.ricketts.senate.gov/news/press-releases/trump-signs-ricketts-consumer-payment-cra-into-law/",
+        sourceLabel: "Official Senate release",
+      },
+      {
+        eyebrow: "Enacted law · 2025",
+        title: "Put Nebraska's state-regulation experience into the GENIUS Act",
+        body:
+          "Ricketts secured an amendment in the federal stablecoin law creating an expedited certification path for states with qualifying existing regulatory frameworks.",
+        sourceUrl:
+          "https://www.ricketts.senate.gov/news/press-releases/ricketts-celebrates-genius-act-being-signed-into-law/",
+        sourceLabel: "Official Senate release",
+      },
+    ],
+  },
+
+  "gil-cisneros": {
+    strapline: "A Navy officer, education philanthropist and Pentagon personnel chief who returned to Congress with the institution already mapped from the inside.",
+    summary:
+      "Gil Cisneros' path through public service loops between uniform, Congress and the Pentagon. That makes his current legislative work unusually focused on the lived systems behind national defense: who serves, how families are treated, how forces are trained and whether military institutions reflect the country they defend.",
+    biography: [
+      "Cisneros enlisted in the Navy after high school, later earned a commission and served as an officer. After leaving active service he and his wife built education philanthropy focused on college access and Latino leadership. He first entered the House in 2019, served on Armed Services and Veterans' Affairs, then became Under Secretary of Defense for Personnel and Readiness before returning to Congress in 2025.",
+      "That round trip matters. Many lawmakers oversee agencies they have only encountered from hearings; Cisneros has sat on both sides of the table. His second congressional tenure has therefore emphasized personnel, military families, force readiness and the less visible human infrastructure underneath weapons systems and strategy.",
+    ],
+    civicQuestion:
+      "What changes when the person conducting congressional oversight has already run part of the bureaucracy being overseen?",
+    recordLabel: "Legislation & national service",
+    achievements: [
+      {
+        eyebrow: "NDAA committee work · 2026",
+        title: "Secured 29 defense priorities in committee",
+        body:
+          "Cisneros' office reported securing 29 priorities during the 2026 National Defense Authorization Act markup, including authorizations for servicemember and family resources and more than $369 million in funding priorities.",
+        sourceUrl:
+          "https://cisneros.house.gov/media/press-releases/rep-cisneros-secures-major-wins-ndaa-increases-pay-and-benefits-servicemembers",
+        sourceLabel: "Official House release",
+      },
+      {
+        eyebrow: "Bicameral legislation · 2026",
+        title: "Pushed protections for military families facing deportation",
+        body:
+          "Cisneros co-led the PROTECT Military Families Act, proposing a mandatory parole-in-place pathway for qualifying relatives of current and former service members.",
+        sourceUrl:
+          "https://cisneros.house.gov/media/press-releases/rep-cisneros-sen-duckworth-colleagues-introduce-protect-military-families-act",
+        sourceLabel: "Official House release",
+      },
+    ],
+  },
+
+  "troy-carter": {
+    strapline: "A New Orleans lawmaker treating disaster response, port work, health and civil rights as parts of the same question: who gets a fair chance to recover.",
+    summary:
+      "Troy Carter spent decades in Louisiana government before Congress, moving from the state House to New Orleans City Council to the state Senate. In Washington, that long local apprenticeship shows up in legislation about disasters, transportation credentials, health access and the particular vulnerabilities of Gulf Coast communities.",
+    biography: [
+      "Carter was the first Black representative elected from his Louisiana state House district, later represented historic New Orleans neighborhoods on the City Council and served as state Senate minority leader. He entered Congress in 2021 and now sits on Energy and Commerce while holding leadership roles in the Congressional Black Caucus and House floor operation.",
+      "His legislative style is rooted in the practical friction between a federal program and the person who needs it. A transportation credential can block a returning citizen from a job. FEMA can have money but not enough trained people to deploy it. Medicaid can cover two services yet force a child to return on another day. Carter's work repeatedly tries to find those seams and pull them open.",
+    ],
+    civicQuestion:
+      "How many barriers that look like personal failure are actually just badly designed public systems?",
+    achievements: [
+      {
+        eyebrow: "House passage · 2026",
+        title: "Moved the bipartisan TWICE Act through the House",
+        body:
+          "Carter and Clay Higgins led legislation to help incarcerated people complete parts of the Transportation Worker Identification Credential process before release, reducing a barrier to secure transportation-sector employment.",
+        sourceUrl:
+          "https://troycarter.house.gov/media/press-releases/bipartisan-twice-act-championed-reps-carter-higgins-passes-house",
+        sourceLabel: "Official House release",
+      },
+      {
+        eyebrow: "Committee action",
+        title: "Made FEMA staffing itself an accountability issue",
+        body:
+          "Carter's FEMA Workforce Planning Act advanced through the Transportation and Infrastructure Committee as part of a larger package of disaster and infrastructure measures, requiring regular workforce planning for federal disaster response.",
+        sourceUrl:
+          "https://troycarter.house.gov/media/press-releases/congressman-carter-passes-eight-bills-transportation-and-infrastructure",
+        sourceLabel: "Official House release",
+      },
+    ],
+  },
+
+  "mark-alford": {
+    strapline: "A former television anchor translating broadcast instincts into a congressional argument about small business, agriculture and the military.",
+    summary:
+      "Mark Alford came to Congress after decades behind a television desk, then built a political identity around rural Missouri, Whiteman Air Force Base, agriculture and the idea that federal bureaucracy often makes small institutions compete on unequal terms.",
+    biography: [
+      "Alford spent much of his career in Kansas City television before winning Missouri's 4th District in 2022. The transition from broadcaster to lawmaker preserved one obvious trait: he treats communication itself as part of representation, using weekly recap programming and a podcast to explain what he thinks Congress is doing and why.",
+      "On the legislative side, he has concentrated on the federal contracting system, small-business financing, food labeling, veterans' entrepreneurship and military priorities. Much of that work is still moving through committees or one chamber, so the profile labels those stages instead of converting momentum into imaginary laws.",
+    ],
+    civicQuestion:
+      "Does government become more accountable when lawmakers explain the machinery every week instead of only during campaigns?",
+    achievements: [
+      {
+        eyebrow: "House passage · 2025",
+        title: "Won House approval for small-business contracting transparency",
+        body:
+          "Alford co-led the Transparency and Predictability in Small Business Opportunities Act, which passed the House with requirements aimed at making federal contract opportunities and cancellations more transparent to small firms.",
+        sourceUrl:
+          "https://alford.house.gov/news/documentsingle.aspx?DocumentID=1251",
+        sourceLabel: "Official House release",
+      },
+      {
+        eyebrow: "Committee passage · 2026",
+        title: "Expanded what SBA loans could finance in the digital economy",
+        body:
+          "Alford's Small Business Technological Advancement Act advanced through committee, clarifying that SBA 7(a) financing may support operational technology such as cybersecurity, payroll and cloud software.",
+        sourceUrl:
+          "https://alford.house.gov/news/documentsingle.aspx?DocumentID=1614",
+        sourceLabel: "Official House release",
+      },
+    ],
+  },
+
+  "brian-fitzpatrick": {
+    strapline: "A former FBI agent whose most durable political brand is not moderation as mood, but bipartisanship as a legislative tactic.",
+    summary:
+      "Brian Fitzpatrick represents one of the country's most competitive districts and has made cross-party coalition work central to his House identity. His record shows what that can produce when the partnership survives long enough to reach statutory text: opioid interdiction, home-infusion coverage, first-responder education benefits and other narrowly targeted fixes.",
+    biography: [
+      "Before Congress, Fitzpatrick spent fourteen years as an FBI special agent working on public corruption, organized crime and counterterrorism. He entered the House in 2017 and became a leading figure in the Problem Solvers Caucus, eventually co-chairing it with Democrat Tom Suozzi.",
+      "His style is less about finding a philosophical midpoint than finding bills where a Republican and a Democrat can agree on the failure being repaired. Some of those fixes are small enough to disappear inside larger packages. That is precisely why they matter here: legislative craftsmanship is often most visible in the problems that stop recurring after a technical sentence changes.",
+    ],
+    civicQuestion:
+      "Is bipartisanship valuable because it sounds civil—or because it can move a bill that neither party could pass alone?",
+    achievements: [
+      {
+        eyebrow: "Enacted law",
+        title: "Authored a fentanyl-interdiction law",
+        body:
+          "Fitzpatrick's bipartisan INTERDICT Act became law in 2018, providing Customs and Border Protection with additional chemical screening equipment and scientific support to detect fentanyl and other synthetic opioids.",
+        sourceUrl:
+          "https://fitzpatrick.house.gov/2018/1/breaking-fitzpatrick-bill-signed-law",
+        sourceLabel: "Official House release",
+      },
+      {
+        eyebrow: "Enacted law · 2026",
+        title: "Closed a Medicare gap for home infusion therapy",
+        body:
+          "The Joe Fiandra Access to Home Infusion Act, led by Fitzpatrick and incorporated into the 2026 appropriations law, expanded Medicare coverage for qualifying home infusion pumps and drugs.",
+        sourceUrl:
+          "https://fitzpatrick.house.gov/2026/2/from-warrington-to-washington-fitzpatrick-led-joe-fiandra-home-infusion-act-signed-into-law",
+        sourceLabel: "Official House release",
+      },
+    ],
+  },
+
+  "tom-suozzi": {
+    strapline: "A suburban Democrat who keeps returning to the unfashionable proposition that divided government still requires deals.",
+    summary:
+      "Tom Suozzi has moved between local executive office and Congress with a politician's fixation on fiscal arithmetic, public services and coalition-building. His partnership with Republican Brian Fitzpatrick in the Problem Solvers Caucus turns that instinct into an institutional experiment: can members make disagreement itself productive?",
+    biography: [
+      "Suozzi served as mayor of Glen Cove and Nassau County executive before entering Congress, left the House during an unsuccessful run for governor, then returned in a 2024 special election. That local-government background remains visible in his federal priorities: taxes, infrastructure, immigration administration, Social Security and the basic question of whether a program can actually be paid for.",
+      "He is also drawn to historical recognition as a form of public policy. His Harlem Hellfighters legislation became law in 2021, awarding a Congressional Gold Medal to the Black World War I regiment whose service had long exceeded the recognition the country gave them. In his current term, the work is again heavily bipartisan—from Social Security solvency proposals to joint legislation with Fitzpatrick.",
+    ],
+    civicQuestion:
+      "Can a legislator defend strong partisan beliefs while still treating the other party as a governing partner?",
+    achievements: [
+      {
+        eyebrow: "Enacted law",
+        title: "Won a Congressional Gold Medal for the Harlem Hellfighters",
+        body:
+          "Suozzi's legislation honoring the predominantly Black World War I regiment became law in 2021, formally recognizing service and heroism that had long been obscured by segregation and racism.",
+        sourceUrl:
+          "https://suozzi.house.gov/media/press-releases/president-signs-suozzis-harlem-hellfighters-bill-awards-congressional-gold",
+        sourceLabel: "Official House release",
+      },
+      {
+        eyebrow: "Bipartisan legislation · 2026",
+        title: "Put Social Security solvency into a cross-party commission bill",
+        body:
+          "Suozzi and Republican Tom Cole introduced legislation creating a bipartisan commission charged with proposing a long-term solution before Social Security's projected trust-fund depletion.",
+        sourceUrl:
+          "https://suozzi.house.gov/media/press-releases/suozzi-introduces-bipartisan-legislation-secure-long-term-social-security",
+        sourceLabel: "Official House release",
+      },
+    ],
+  },
+
   "michael-d-brown": {
     strapline: "A senator without a Senate vote, representing citizens without full congressional representation.",
     summary:
