@@ -27,11 +27,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
   });
 
+  const title = episode?.title ?? "Episode";
+  const description =
+    episode?.description ??
+    (episode
+      ? `Listen to ${episode.title} from ${episode.podcast.title}.`
+      : undefined);
+
   return {
-    title: episode?.title ?? "Episode",
-    description:
-      episode?.description ??
-      (episode ? `Listen to ${episode.title} from ${episode.podcast.title}.` : undefined),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   };
 }
 
