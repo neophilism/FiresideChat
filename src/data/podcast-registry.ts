@@ -508,7 +508,7 @@ export const podcastRegistry: {
         "https://podcasts.apple.com/us/podcast/tennessee-talks-with-tim-burchett/id1604614351",
       verifiedAt: "2026-10-07",
       verificationNote:
-        "Apple identifies Congressman Tim Burchett as creator and links the show website to rss.com/podcasts/tennesseetalks; the RSS.com canonical feed endpoint is live-probed in this PR before promotion.",
+        "Apple identifies Congressman Tim Burchett as creator and links the show website to rss.com/podcasts/tennesseetalks; the canonical RSS.com feed endpoint was independently live-verified on 2026-10-07.",
       people: [{ personSlug: "tim-burchett", role: "HOST" }],
     },
     {
