@@ -60,11 +60,12 @@ jobs:
             "https://media.rss.com/the-pod-couple-episode-1/feed.xml"
             "https://rss.buzzsprout.com/2311905.rss"
           )
+          tmp_feed="$(mktemp)"
+          trap 'rm -f "$tmp_feed"' EXIT
           for feed in "${feeds[@]}"; do
             echo "Probing $feed"
-            curl --fail --location --silent --show-error --max-time 25 "$feed" \
-              | head -c 12000 \
-              | grep -Eq '<rss|<feed'
+            curl --fail --location --silent --show-error --max-time 25 "$feed" -o "$tmp_feed"
+            grep -Eq '<rss|<feed' "$tmp_feed"
           done
 
       - name: Generate Prisma client
