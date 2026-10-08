@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EpisodeShareActions } from "@/components/episode-share-actions";
 import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { PlayButton } from "@/components/player/play-button";
 import { TranscriptSegments } from "@/components/transcript-segments";
@@ -12,6 +13,7 @@ export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ t?: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -33,8 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function EpisodePage({ params }: Props) {
-  const { id } = await params;
+export default async function EpisodePage({ params, searchParams }: Props) {
+  const [{ id }, query] = await Promise.all([params, searchParams]);
+  const requestedStart = Number.parseInt(query.t ?? "0", 10);
+  const startAt =
+    Number.isInteger(requestedStart) && requestedStart > 0
+      ? requestedStart
+      : undefined;
   const episode = await db.episode.findUnique({
     where: { id },
     include: {
@@ -95,9 +102,14 @@ export default async function EpisodePage({ params }: Props) {
             {duration ? <span>{duration}</span> : null}
           </div>
           <div className="episode-detail-play">
-            <PlayButton episode={playerEpisode} />
-            <span>Listen from the beginning</span>
+            <PlayButton episode={playerEpisode} startAt={startAt} />
+            <span>
+              {startAt ? `Listen from ${Math.floor(startAt / 60)}:${String(
+                  startAt % 60,
+                ).padStart(2, "0")}` : "Listen from the beginning"}
+            </span>
           </div>
+          <EpisodeShareActions episodeId={episode.id} title={episode.title} />
         </div>
       </section>
 
