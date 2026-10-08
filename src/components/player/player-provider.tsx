@@ -80,31 +80,37 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     }
     if (!restored) return;
 
-    setCurrent(restored.episode);
-    setCurrentTime(restored.currentTime);
-    setDuration(restored.duration);
-    setVolumeState(restored.volume);
-    setPlaybackRateState(restored.playbackRate);
+    let removePositionListener = () => {};
+    const frame = window.requestAnimationFrame(() => {
+      setCurrent(restored.episode);
+      setCurrentTime(restored.currentTime);
+      setDuration(restored.duration);
+      setVolumeState(restored.volume);
+      setPlaybackRateState(restored.playbackRate);
 
-    audio.src = restored.episode.audioUrl;
-    audio.volume = restored.volume;
-    audio.playbackRate = restored.playbackRate;
+      audio.src = restored.episode.audioUrl;
+      audio.volume = restored.volume;
+      audio.playbackRate = restored.playbackRate;
 
-    const restorePosition = () => {
-      const bounded =
-        Number.isFinite(audio.duration) && audio.duration > 0
-          ? Math.min(restored.currentTime, audio.duration)
-          : restored.currentTime;
-      audio.currentTime = bounded;
-      setCurrentTime(bounded);
-      if (Number.isFinite(audio.duration)) setDuration(audio.duration);
-    };
+      const restorePosition = () => {
+        const bounded =
+          Number.isFinite(audio.duration) && audio.duration > 0
+            ? Math.min(restored.currentTime, audio.duration)
+            : restored.currentTime;
+        audio.currentTime = bounded;
+        setCurrentTime(bounded);
+        if (Number.isFinite(audio.duration)) setDuration(audio.duration);
+      };
 
-    audio.addEventListener("loadedmetadata", restorePosition, { once: true });
-    audio.load();
+      audio.addEventListener("loadedmetadata", restorePosition, { once: true });
+      removePositionListener = () =>
+        audio.removeEventListener("loadedmetadata", restorePosition);
+      audio.load();
+    });
 
     return () => {
-      audio.removeEventListener("loadedmetadata", restorePosition);
+      window.cancelAnimationFrame(frame);
+      removePositionListener();
     };
   }, []);
 
