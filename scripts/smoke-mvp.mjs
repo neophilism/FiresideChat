@@ -26,18 +26,40 @@ for (const check of checks) {
   }
 }
 
-const healthResponse = await fetch(`${baseUrl}/api/health`);
-const health = await healthResponse.json();
+for (const path of ["/api/health", "/api/health/ready"]) {
+  const healthResponse = await fetch(`${baseUrl}${path}`);
+  const health = await healthResponse.json();
 
+  if (
+    !healthResponse.ok ||
+    health?.ok !== true ||
+    health?.database !== "reachable"
+  ) {
+    failed = true;
+    console.error(`FAIL ${path}`, health);
+  } else {
+    console.log(`PASS ${path}`, health);
+  }
+}
+
+const liveResponse = await fetch(`${baseUrl}/api/health/live`);
+const live = await liveResponse.json();
+if (!liveResponse.ok || live?.ok !== true || live?.process !== "alive") {
+  failed = true;
+  console.error("FAIL /api/health/live", live);
+} else {
+  console.log("PASS /api/health/live", live);
+}
+
+const homepageResponse = await fetch(`${baseUrl}/`);
 if (
-  !healthResponse.ok ||
-  health?.ok !== true ||
-  health?.database !== "reachable"
+  homepageResponse.headers.get("x-content-type-options") !== "nosniff" ||
+  homepageResponse.headers.get("x-frame-options") !== "DENY"
 ) {
   failed = true;
-  console.error("FAIL /api/health", health);
+  console.error("FAIL security headers");
 } else {
-  console.log("PASS /api/health", health);
+  console.log("PASS security headers");
 }
 
 if (failed) process.exitCode = 1;
