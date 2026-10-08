@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EpisodeCard } from "@/components/episode-card";
 import { IllustratedPortrait } from "@/components/illustrated-portrait";
+import { profileForSlug } from "@/data/person-profiles";
 import { db } from "@/lib/db";
 import { officeLabel } from "@/lib/presentation";
 
@@ -18,7 +19,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     where: { slug },
     select: { fullName: true },
   });
-  return { title: person?.fullName ?? "Public servant" };
+  const profile = profileForSlug(slug);
+
+  return {
+    title: person?.fullName ?? "Public servant",
+    description:
+      profile?.summary ??
+      (person
+        ? `Listen to ${person.fullName}'s podcast archive on Fireside Chat.`
+        : undefined),
+  };
 }
 
 export default async function PersonPage({ params }: Props) {
@@ -43,9 +53,11 @@ export default async function PersonPage({ params }: Props) {
 
   if (!person) notFound();
 
+  const profile = profileForSlug(person.slug);
+
   return (
     <div className="detail-page">
-      <section className="person-hero">
+      <section className="person-hero person-hero-editorial">
         <IllustratedPortrait
           slug={person.slug}
           name={person.fullName}
@@ -57,12 +69,78 @@ export default async function PersonPage({ params }: Props) {
             {officeLabel(person.kind, person.isCurrent, person.state)}
           </p>
           <h1>{person.fullName}</h1>
-          <p className="lede compact-lede">
-            Hear {person.fullName} directly, in full-length conversations rather
-            than clips or commentary.
-          </p>
+          {profile ? (
+            <>
+              <p className="person-strapline">{profile.strapline}</p>
+              <p className="lede compact-lede">{profile.summary}</p>
+            </>
+          ) : (
+            <p className="lede compact-lede">
+              Hear {person.fullName} directly, in full-length conversations
+              rather than clips or commentary.
+            </p>
+          )}
         </div>
       </section>
+
+      {profile ? (
+        <>
+          <section className="section-block editorial-profile-section">
+            <div className="profile-story-grid">
+              <div>
+                <p className="section-label">The story</p>
+                <h2>Why this career matters.</h2>
+              </div>
+              <div className="profile-essay">
+                {profile.biography.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+
+            <blockquote className="civic-question">
+              <span>The civic question</span>
+              <p>{profile.civicQuestion}</p>
+            </blockquote>
+          </section>
+
+          <section className="section-block legislative-record-section">
+            <div className="section-heading legislative-heading">
+              <div>
+                <p className="section-label">
+                  {profile.recordLabel ?? "Legislative record"}
+                </p>
+                <h2>What changed—or what they tried to change.</h2>
+              </div>
+              <p className="section-explainer">
+                Status matters here. Enacted laws, chamber passage,
+                institution-building, oversight and unfinished campaigns are
+                labeled separately rather than blurred together.
+              </p>
+            </div>
+
+            <div className="achievement-grid">
+              {profile.achievements.map((achievement) => (
+                <article className="achievement-card" key={achievement.title}>
+                  <span className="achievement-eyebrow">
+                    {achievement.eyebrow}
+                  </span>
+                  <h3>{achievement.title}</h3>
+                  <p>{achievement.body}</p>
+                  <a
+                    className="achievement-source"
+                    href={achievement.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {achievement.sourceLabel} ↗
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+        </>
+      ) : null}
 
       <section className="section-block">
         <div className="section-heading">
