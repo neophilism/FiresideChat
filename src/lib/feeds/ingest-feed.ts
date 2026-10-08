@@ -5,7 +5,7 @@ import { fetchPublisherTranscript } from "./publisher-transcript";
 import { calculateRetryAt } from "./retry";
 import type { IngestionResult, NormalizedEpisode } from "./types";
 
-const UPSERT_BATCH_SIZE = 100;
+const UPSERT_BATCH_SIZE = 20;
 const MAX_ERROR_LENGTH = 2_000;
 
 function envPositiveInteger(name: string): number | undefined {
