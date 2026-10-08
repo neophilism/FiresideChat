@@ -19,8 +19,8 @@ export default async function Home() {
     latestRepublicanEpisode,
     chronologicalEpisodes,
     podcasts,
-    peopleCount,
     episodeCount,
+    episodeDuration,
   ] = await Promise.all([
     db.episode.findFirst({
       where: {
@@ -68,9 +68,18 @@ export default async function Home() {
         },
       },
     }),
-    db.person.count(),
-    db.episode.count(),
+    db.episode.count({
+      where: { podcast: { active: true } },
+    }),
+    db.episode.aggregate({
+      where: { podcast: { active: true } },
+      _sum: { durationSeconds: true },
+    }),
   ]);
+
+  const totalArchiveHours = Math.floor(
+    (episodeDuration._sum.durationSeconds ?? 0) / 3600,
+  );
 
   const featuredEpisodes = [
     latestDemocraticEpisode,
@@ -110,16 +119,16 @@ export default async function Home() {
           </form>
           <div className="hero-stats" aria-label="Archive statistics">
             <div>
-              <strong>{peopleCount}</strong>
-              <span>public servants</span>
-            </div>
-            <div>
-              <strong>{podcasts.length}</strong>
-              <span>verified shows</span>
+              <strong>{podcasts.length.toLocaleString()}</strong>
+              <span>Voices of Congress</span>
             </div>
             <div>
               <strong>{episodeCount.toLocaleString()}</strong>
-              <span>episodes</span>
+              <span>Episodes</span>
+            </div>
+            <div>
+              <strong>{totalArchiveHours.toLocaleString()}</strong>
+              <span>Hours Straight From the Source</span>
             </div>
           </div>
         </div>
