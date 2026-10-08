@@ -22,19 +22,19 @@ function dateTime(value: Date | null) {
   }).format(value);
 }
 
-function staleCutoff(hours: number) {
-  return new Date(Date.now() - hours * 60 * 60 * 1000);
-}
-
-function statusLabel(podcast: {
-  lastSuccessfulCheckAt: Date | null;
-  consecutiveFailures: number;
-  nextRetryAt: Date | null;
-}, staleCutoff: Date) {
+function statusLabel(
+  podcast: {
+    lastSuccessfulCheckAt: Date | null;
+    consecutiveFailures: number;
+    nextRetryAt: Date | null;
+  },
+  staleCutoff: Date,
+  now: Date,
+) {
   if (podcast.consecutiveFailures > 0) return "Failing";
   if (!podcast.lastSuccessfulCheckAt) return "Never synced";
   if (podcast.lastSuccessfulCheckAt < staleCutoff) return "Stale";
-  if (podcast.nextRetryAt && podcast.nextRetryAt > new Date()) return "Backoff";
+  if (podcast.nextRetryAt && podcast.nextRetryAt > now) return "Backoff";
   return "Healthy";
 }
 
@@ -47,10 +47,9 @@ export default async function AdminPage() {
   );
   const staleHours =
     Number.isInteger(staleHoursRaw) && staleHoursRaw > 0 ? staleHoursRaw : 36;
-  const staleBefore = staleCutoff(staleHours);
-
-  const [podcasts, transcriptGroups, recentRuns, failedTranscriptions] =
+  const [clockRows, podcasts, transcriptGroups, recentRuns, failedTranscriptions] =
     await Promise.all([
+      db.$queryRaw<Array<{ now: Date }>>`SELECT NOW() AS now`,
       db.podcast.findMany({
         where: { active: true },
         orderBy: { title: "asc" },
@@ -80,9 +79,13 @@ export default async function AdminPage() {
       }),
     ]);
 
+  const now = clockRows[0]?.now;
+  if (!now) throw new Error("Database clock query returned no rows");
+  const staleBefore = new Date(now.getTime() - staleHours * 60 * 60 * 1000);
+
   const feedRows = podcasts.map((podcast) => ({
     ...podcast,
-    health: statusLabel(podcast, staleBefore),
+    health: statusLabel(podcast, staleBefore, now),
   }));
   const unhealthy = feedRows.filter((podcast) => podcast.health !== "Healthy");
   const transcriptCounts = new Map(
