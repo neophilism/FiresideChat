@@ -3,6 +3,7 @@ const baseUrl = process.env.MVP_BASE_URL ?? "http://127.0.0.1:3000";
 const checks = [
   { path: "/", contains: "Hear them yourself." },
   { path: "/people", contains: "The voices in the archive." },
+  { path: "/episodes", contains: "Every conversation, newest first." },
   { path: "/people/ted-cruz", contains: "Ted Cruz" },
   { path: "/podcasts/verdict-with-ted-cruz", contains: "Verdict with Ted Cruz" },
   { path: "/search?q=Cruz", contains: "Ted Cruz" },
