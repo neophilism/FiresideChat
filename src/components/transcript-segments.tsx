@@ -40,6 +40,7 @@ export function TranscriptSegments({
 
         return (
           <li
+            id={`segment-${segment.id}`}
             key={segment.id}
             className={active ? "transcript-segment-active" : undefined}
           >
