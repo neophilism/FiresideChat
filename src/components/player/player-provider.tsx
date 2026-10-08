@@ -20,6 +20,7 @@ type PlayerContextValue = {
   volume: number;
   playbackRate: number;
   playEpisode: (episode: PlayerEpisode) => void;
+  playEpisodeAt: (episode: PlayerEpisode, seconds: number) => void;
   toggle: () => void;
   seek: (seconds: number) => void;
   skip: (seconds: number) => void;
@@ -52,6 +53,36 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       }
 
       void audio.play().catch(() => setPlaying(false));
+    },
+    [current],
+  );
+
+  const playEpisodeAt = useCallback(
+    (episode: PlayerEpisode, seconds: number) => {
+      const audio = audioRef.current;
+      if (!audio || !Number.isFinite(seconds)) return;
+
+      const target = Math.max(0, seconds);
+      const seekAndPlay = () => {
+        const bounded = Number.isFinite(audio.duration) && audio.duration > 0
+          ? Math.min(target, audio.duration)
+          : target;
+        audio.currentTime = bounded;
+        setCurrentTime(bounded);
+        void audio.play().catch(() => setPlaying(false));
+      };
+
+      if (current?.id !== episode.id) {
+        setCurrent(episode);
+        audio.src = episode.audioUrl;
+        setCurrentTime(0);
+        setDuration(0);
+        audio.addEventListener("loadedmetadata", seekAndPlay, { once: true });
+        audio.load();
+        return;
+      }
+
+      seekAndPlay();
     },
     [current],
   );
@@ -140,6 +171,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       volume,
       playbackRate,
       playEpisode,
+      playEpisodeAt,
       toggle,
       seek,
       skip,
@@ -154,6 +186,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       volume,
       playbackRate,
       playEpisode,
+      playEpisodeAt,
       toggle,
       seek,
       skip,
