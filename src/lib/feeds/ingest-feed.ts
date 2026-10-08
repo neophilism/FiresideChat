@@ -250,12 +250,27 @@ export async function ingestPodcastBySlug(
             create: {
               podcastId: podcast.id,
               guid: episode.guid,
+              transcriptStatus: episode.publisherTranscript ? "AVAILABLE" : "MISSING",
               ...episodeData(episode),
             },
             update: episodeData(episode),
           }),
         ),
       );
+    }
+
+    const transcriptGuids = parsed.episodes
+      .filter((episode) => episode.publisherTranscript)
+      .map((episode) => episode.guid);
+    if (transcriptGuids.length > 0) {
+      await db.episode.updateMany({
+        where: {
+          podcastId: podcast.id,
+          guid: { in: transcriptGuids },
+          transcriptStatus: "MISSING",
+        },
+        data: { transcriptStatus: "AVAILABLE" },
+      });
     }
 
     await ingestPublisherTranscripts(podcast.id);
