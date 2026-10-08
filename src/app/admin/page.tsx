@@ -201,8 +201,9 @@ export default async function AdminPage() {
         </div>
 
         <div className="admin-transcript-grid">
-          {["COMPLETE", "AVAILABLE", "QUEUED", "PROCESSING", "MISSING", "FAILED"].map(
-            (status) => (
+          {(
+            ["COMPLETE", "AVAILABLE", "QUEUED", "PROCESSING", "MISSING", "FAILED"] as const
+          ).map((status) => (
               <article key={status}>
                 <strong>{(transcriptCounts.get(status) ?? 0).toLocaleString()}</strong>
                 <span>{status.toLowerCase()}</span>
