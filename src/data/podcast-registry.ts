@@ -189,6 +189,86 @@ export const podcastRegistry: {
       isCurrent: true,
     },
     {
+      slug: "ruben-gallego",
+      fullName: "Ruben Gallego",
+      kind: "SENATE",
+      state: "AZ",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "angus-king",
+      fullName: "Angus King",
+      kind: "SENATE",
+      state: "ME",
+      party: "Independent",
+      isCurrent: true,
+    },
+    {
+      slug: "tim-scott",
+      fullName: "Tim Scott",
+      kind: "SENATE",
+      state: "SC",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "ron-johnson",
+      fullName: "Ron Johnson",
+      kind: "SENATE",
+      state: "WI",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "pete-ricketts",
+      fullName: "Pete Ricketts",
+      kind: "SENATE",
+      state: "NE",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "gil-cisneros",
+      fullName: "Gil Cisneros",
+      kind: "HOUSE",
+      state: "CA",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "troy-carter",
+      fullName: "Troy A. Carter",
+      kind: "HOUSE",
+      state: "LA",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
+      slug: "mark-alford",
+      fullName: "Mark Alford",
+      kind: "HOUSE",
+      state: "MO",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "brian-fitzpatrick",
+      fullName: "Brian Fitzpatrick",
+      kind: "HOUSE",
+      state: "PA",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
+      slug: "tom-suozzi",
+      fullName: "Tom Suozzi",
+      kind: "HOUSE",
+      state: "NY",
+      party: "Democratic",
+      isCurrent: true,
+    },
+    {
       slug: "al-franken",
       fullName: "Al Franken",
       kind: "SENATE",
@@ -510,6 +590,145 @@ export const podcastRegistry: {
       verificationNote:
         "Apple identifies Congressman Tim Burchett as creator and links the show website to rss.com/podcasts/tennesseetalks; the canonical RSS.com feed endpoint was independently live-verified on 2026-10-07.",
       people: [{ personSlug: "tim-burchett", role: "HOST" }],
+    },
+    {
+      slug: "unscripted-with-tim-burchett",
+      title: "Unscripted with Tim Burchett",
+      rssUrl: "https://anchor.fm/s/106cc7b4c/podcast/rss",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/unscripted-with-tim-burchett/id1823959003",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata identifies Tim Burchett as the artist and exposes the canonical Anchor RSS feed.",
+      people: [{ personSlug: "tim-burchett", role: "HOST" }],
+    },
+    {
+      slug: "real-talk-with-ruben",
+      title: "Real Talk with Ruben",
+      rssUrl: "https://api.riverside.fm/hosting/r1lIhYeW.rss",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/real-talk-with-ruben/id1888294647",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata identifies Senator Ruben Gallego as the artist and exposes the canonical Riverside RSS feed.",
+      people: [{ personSlug: "ruben-gallego", role: "HOST" }],
+    },
+    {
+      slug: "inside-maine-with-senator-angus-king",
+      title: "Inside Maine with Senator Angus King",
+      rssUrl: "https://www.king.senate.gov/podcast/feed?new",
+      websiteUrl: "https://www.king.senate.gov/podcast/",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/inside-maine-with-senator-angus-king/id1089371119",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata identifies U.S. Senator Angus King as the artist and exposes the official Senate-hosted RSS feed.",
+      people: [{ personSlug: "angus-king", role: "HOST" }],
+    },
+    {
+      slug: "opportunity-with-tim-scott",
+      title: "Opportunity With Tim Scott",
+      rssUrl: "https://feeds.simplecast.com/csy2Vjm1",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/opportunity-with-tim-scott/id1519108611",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata identifies Senator Tim Scott as the artist and exposes the canonical Simplecast feed.",
+      people: [{ personSlug: "tim-scott", role: "HOST" }],
+    },
+    {
+      slug: "hey-wisconsin",
+      title: "Hey, Wisconsin",
+      rssUrl:
+        "https://feeds.soundcloud.com/users/soundcloud:users:225913226/sounds.rss",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/hey-wisconsin/id1114542739",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata identifies the Senator Ron Johnson show and exposes its canonical SoundCloud RSS feed.",
+      people: [{ personSlug: "ron-johnson", role: "HOST" }],
+    },
+    {
+      slug: "the-nebraska-way",
+      title: "The Nebraska Way",
+      rssUrl:
+        "https://feeds.soundcloud.com/users/soundcloud:users:657762987/sounds.rss",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/the-nebraska-way/id1471046353",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata exposes the historical Nebraska Way SoundCloud RSS feed; the show was hosted by Pete Ricketts.",
+      people: [{ personSlug: "pete-ricketts", role: "HOST" }],
+    },
+    {
+      slug: "who-dem",
+      title: "Who Dem?",
+      rssUrl: "https://anchor.fm/s/101b1e1d8/podcast/rss",
+      active: true,
+      publishingStatus: "UNKNOWN",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/who-dem/id1803142795",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata exposes the canonical Anchor feed; Congressman Gil Cisneros' launch materials verify the host relationship.",
+      people: [{ personSlug: "gil-cisneros", role: "COHOST" }],
+    },
+    {
+      slug: "what-makes-america-tick",
+      title: "\"What Makes America Tick?\" with Congressman Troy A. Carter, Sr.",
+      rssUrl: "https://anchor.fm/s/103c70cdc/podcast/rss",
+      websiteUrl: "https://troycarter.house.gov/about",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/what-makes-america-tick-with-congressman-troy-a-carter-sr/id1809799553",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple metadata identifies Congressman Troy A. Carter, Sr. as artist and exposes the canonical Anchor feed; his official House biography identifies him as founder and host.",
+      people: [{ personSlug: "troy-carter", role: "HOST" }],
+    },
+    {
+      slug: "the-pod-couple",
+      title: "The Pod Couple",
+      rssUrl: "https://media.rss.com/the-pod-couple-episode-1/feed.xml",
+      websiteUrl:
+        "https://problemsolverscaucus.house.gov/news/documentsingle.aspx?DocumentID=889",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl:
+        "https://problemsolverscaucus.house.gov/news/documentsingle.aspx?DocumentID=889",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "The Problem Solvers Caucus officially identifies co-chairs Brian Fitzpatrick and Tom Suozzi as co-hosts; Apple metadata exposes the canonical RSS.com feed.",
+      people: [
+        { personSlug: "brian-fitzpatrick", role: "COHOST" },
+        { personSlug: "tom-suozzi", role: "COHOST" },
+      ],
+    },
+    {
+      slug: "mark-alfords-capitol-recap",
+      title: "Mark Alford's Capitol Recap",
+      rssUrl: "https://rss.buzzsprout.com/2311905.rss",
+      websiteUrl: "https://alford.house.gov/capital-recap/",
+      active: true,
+      publishingStatus: "ACTIVE",
+      verificationUrl: "https://alford.house.gov/capital-recap/",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Congressman Alford's official House site identifies Capitol Recap as his podcast; Apple metadata exposes the canonical Buzzsprout feed.",
+      people: [{ personSlug: "mark-alford", role: "HOST" }],
     },
     {
       slug: "the-al-franken-podcast",
