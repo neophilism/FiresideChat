@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run prisma:generate && next build",
+    "prestart": "DATABASE_URL=\"${DIRECT_URL:-$DATABASE_URL}\" npm run db:deploy && DATABASE_URL=\"${DIRECT_URL:-$DATABASE_URL}\" npm run db:seed",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
