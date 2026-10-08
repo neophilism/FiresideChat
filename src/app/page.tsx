@@ -7,6 +7,7 @@ import { db } from "@/lib/db";
 import { selectHomepageEpisodes } from "@/lib/homepage-selection";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const episodeInclude = {
   podcast: {
