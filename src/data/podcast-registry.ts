@@ -181,6 +181,14 @@ export const podcastRegistry: {
       isCurrent: true,
     },
     {
+      slug: "tim-burchett",
+      fullName: "Tim Burchett",
+      kind: "HOUSE",
+      state: "TN",
+      party: "Republican",
+      isCurrent: true,
+    },
+    {
       slug: "al-franken",
       fullName: "Al Franken",
       kind: "SENATE",
@@ -490,6 +498,20 @@ export const podcastRegistry: {
       people: [{ personSlug: "guy-reschenthaler", role: "HOST" }],
     },
     {
+      slug: "tennessee-talks-with-tim-burchett",
+      title: "Tennessee Talks with Tim Burchett",
+      rssUrl: "https://media.rss.com/tennesseetalks/feed.xml",
+      websiteUrl: "https://rss.com/podcasts/tennesseetalks",
+      active: true,
+      publishingStatus: "INACTIVE",
+      verificationUrl:
+        "https://podcasts.apple.com/us/podcast/tennessee-talks-with-tim-burchett/id1604614351",
+      verifiedAt: "2026-10-07",
+      verificationNote:
+        "Apple identifies Congressman Tim Burchett as creator and links the show website to rss.com/podcasts/tennesseetalks; the canonical RSS.com feed endpoint was independently live-verified on 2026-10-07.",
+      people: [{ personSlug: "tim-burchett", role: "HOST" }],
+    },
+    {
       slug: "the-al-franken-podcast",
       title: "The Al Franken Podcast",
       rssUrl: "https://audioboom.com/channels/5155312.rss",
@@ -664,11 +686,11 @@ export const podcastRegistry: {
     },
     {
       person: "Tim Burchett",
-      show: "Tennessee Talks with Tim Burchett / Unscripted with Tim Burchett",
+      show: "Unscripted with Tim Burchett",
       sourceUrl:
-        "https://podcasts.apple.com/us/podcast/tennessee-talks-with-tim-burchett/id1604614351",
+        "https://podcasts.apple.com/us/podcast/unscripted-with-tim-burchett/id1823959003",
       reason:
-        "Both host relationships are verified; canonical feeds still need recovery before adding the shows separately.",
+        "The host relationship and 2025 audio series are verified; its canonical public RSS feed still needs recovery before separate ingestion.",
     },
     {
       person: "Troy Carter",
