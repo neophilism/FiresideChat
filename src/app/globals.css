@@ -129,7 +129,7 @@ a {
 .site-nav a:hover,
 .text-link:hover,
 .episode-kicker a:hover,
-.show-person:hover {
+.show-podcast:hover {
   color: var(--red);
 }
 
@@ -520,7 +520,7 @@ h3 {
   font-size: 0.61rem;
 }
 
-.show-person {
+.show-podcast {
   display: inline-block;
   margin-top: 0.32rem;
   color: var(--muted);
