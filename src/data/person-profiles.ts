@@ -979,6 +979,45 @@ export const personProfiles: Record<string, PersonProfile> = {
     ],
   },
 
+  "tim-burchett": {
+    strapline: "An East Tennessee political original who treats plain speech as both style and governing weapon.",
+    summary:
+      "Tim Burchett came to Congress after years in Tennessee state and local government with a deliberately unvarnished political persona. Behind the one-liners is a record that moves between veterans' services, federal oversight, aviation rules, anti-trafficking law and an unusually persistent interest in forcing opaque institutions into public view.",
+    biography: [
+      "Burchett built his career far from Washington's conventional pipeline: small business, sixteen years in the Tennessee legislature and eight years as Knox County mayor before winning a House seat in 2018. In Congress he has leaned into the role of institutional skeptic, frequently asking why a federal program exists, where the money went and who is responsible when an agency cannot answer a basic question.",
+      "That instinct has produced both bipartisan legislation and attention-grabbing oversight. Several bills he sponsored or helped advance have become law, including measures affecting veterans with PTSD, veterans' complaint tracking, child sexual exploitation, Parkinson's disease planning and consumer mortgage privacy. His current committee work makes the tension explicit: a politician suspicious of bureaucracy is now one of the lawmakers responsible for auditing it.",
+    ],
+    civicQuestion:
+      "Can distrust of institutions improve government when it is paired with the patience to rewrite the rules rather than merely denounce them?",
+    achievements: [
+      {
+        eyebrow: "Enacted law",
+        title: "Put service-dog therapy into a VA pilot program",
+        body:
+          "Burchett's official House biography credits the PAWS for Veterans Therapy Act among the measures he sponsored or cosponsored that became law, requiring the Department of Veterans Affairs to establish a pilot program pairing eligible veterans with canine-training therapy for PTSD.",
+        sourceUrl: "https://burchett.house.gov/about",
+        sourceLabel: "Official House biography",
+      },
+      {
+        eyebrow: "Enacted law",
+        title: "Created a digital complaint tracker for veterans",
+        body:
+          "The Patient Advocate Tracker Act established an information-technology system that lets veterans electronically file complaints and follow their status, turning a casework frustration into a statutory transparency requirement.",
+        sourceUrl: "https://burchett.house.gov/about",
+        sourceLabel: "Official House biography",
+      },
+      {
+        eyebrow: "House passage · 2026",
+        title: "Built a bipartisan audit for vulnerable federal-state programs",
+        body:
+          "Burchett and Ro Khanna co-led legislation requiring recurring GAO assessments of federally funded, state-administered programs for fraud and misuse. The House passed the measure in June 2026.",
+        sourceUrl:
+          "https://burchett.house.gov/media/press-releases/congressman-burchetts-fraud-bill-passes-house",
+        sourceLabel: "Official House release",
+      },
+    ],
+  },
+
   "michael-d-brown": {
     strapline: "A senator without a Senate vote, representing citizens without full congressional representation.",
     summary:
