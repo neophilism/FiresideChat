@@ -45,12 +45,6 @@ jobs:
       - name: Validate registry
         run: npm run registry:validate
 
-      - name: Live-probe Tennessee Talks RSS candidate
-        run: |
-          curl --fail --location --silent --show-error --max-time 20 \
-            https://media.rss.com/tennesseetalks/feed.xml \
-            | grep -Eq '<rss|<feed'
-
       - name: Generate Prisma client
         run: npm run prisma:generate
 
