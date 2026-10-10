@@ -30,6 +30,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install discovery test dependencies
+        run: python -m pip install --disable-pip-version-check PyYAML==6.0.2
+      - name: Regression-test former-member matching
+        run: python scripts/test_discover_former_podcasts.py
       - name: Query Apple for verified show IDs and feed addresses
         run: python scripts/resolve-priority-podcast-feeds.py
       - name: Save canonical feed lookup evidence
