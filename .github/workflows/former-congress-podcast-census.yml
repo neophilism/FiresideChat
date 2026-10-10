@@ -1,0 +1,47 @@
+name: Historical congressional podcast census
+
+on:
+  push:
+    branches:
+      - research/systematic-former-member-census-20261010
+    paths:
+      - scripts/discover-former-podcasts.py
+      - .github/workflows/former-congress-podcast-census.yml
+  workflow_dispatch:
+  schedule:
+    - cron: "21 5 1 * *"
+
+permissions:
+  contents: read
+
+jobs:
+  former-members-discovery:
+    name: Search historical roster (shard ${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install YAML dependency
+        run: python -m pip install --disable-pip-version-check PyYAML==6.0.2
+      - name: Audit historical former-member roster and search podcast directory
+        run: |
+          python scripts/discover-former-podcasts.py \
+            --shards 8 \
+            --shard ${{ matrix.shard }} \
+            --sleep 3 \
+            --out-dir census-results
+      - name: Preserve audit reports (including partial results on API failure)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: former-congress-census-shard-${{ matrix.shard }}
+          path: census-results/*
+          if-no-files-found: warn
+          retention-days: 30
