@@ -246,7 +246,7 @@ Test groups required per milestone: source inclusion/exclusion (guests, cohosts,
 
 **Never equate the number of indexed episodes, portraits, transcript URLs, or original PR milestones with “every eligible congressional podcast has been captured.”** Accuracy of roster, host eligibility, archive history, transcription completeness and continual updating must be independently demonstrated.
 
-## Approved additional capability FC-P21 — Congressional podcast production services inquiries (October 10, 2026)
+### FC-P21 — Congressional podcast production services inquiries (October 10, 2026)
 
 **Scope addition, not retroactive original MVP:** Add a discoverable /podcast-production page with a clear link in public site navigation and on the homepage, aimed at current members of Congress who do not yet operate a podcast. The independent production service may respond to authorized congressional offices. Do not imply official congressional endorsement or that a submission commits a contract.
 
