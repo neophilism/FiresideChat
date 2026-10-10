@@ -192,3 +192,35 @@ model IngestionRun {
   @@index([podcastId, startedAt])
   @@index([status])
 }
+
+
+enum InquiryEmailStatus {
+  PENDING
+  SENDING
+  SENT
+  FAILED
+}
+
+model PodcastProductionInquiry {
+  id                 String             @id @default(cuid())
+  memberName         String
+  chamber            String
+  state              String
+  district           String?
+  officeKey          String
+  contactEmailHash   String
+  clientHash         String
+  protectedDetails   String
+  emailStatus        InquiryEmailStatus @default(PENDING)
+  emailSentAt        DateTime?
+  emailAttempts      Int                @default(0)
+  emailLastAttemptAt DateTime?
+  emailLastError     String?
+  submittedAt        DateTime           @default(now())
+  reviewedAt         DateTime?
+
+  @@index([officeKey, submittedAt])
+  @@index([clientHash, submittedAt])
+  @@index([contactEmailHash, submittedAt])
+  @@index([emailStatus, emailLastAttemptAt])
+}
