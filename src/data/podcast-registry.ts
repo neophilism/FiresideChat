@@ -932,7 +932,6 @@ export const podcastRegistry: {
         "BBS Radio identifies former D.C. Shadow Senator Michael D. Brown as host and exposes this endpoint as the show's Audio RSS Feed.",
       people: [{ personSlug: "michael-d-brown", role: "HOST" }],
     },
-  ],
     {
       "slug": "ron-paul-liberty-report",
       "title": "Ron Paul Liberty Report",
