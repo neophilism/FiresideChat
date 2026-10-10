@@ -3,9 +3,10 @@ import { fetchFeed } from "./fetch-feed";
 import { parseFeed } from "./parse-feed";
 import { fetchPublisherTranscript } from "./publisher-transcript";
 import { calculateRetryAt } from "./retry";
+import { runConcurrentBatch } from "./run-concurrent-batch";
 import type { IngestionResult, NormalizedEpisode } from "./types";
 
-const UPSERT_BATCH_SIZE = 20;
+const UPSERT_BATCH_SIZE = 8;
 const MAX_ERROR_LENGTH = 2_000;
 
 function envPositiveInteger(name: string): number | undefined {
@@ -238,8 +239,11 @@ export async function ingestPodcastBySlug(
     const existingGuids = new Set(existing.map((episode) => episode.guid));
 
     for (const batch of chunks(parsed.episodes, UPSERT_BATCH_SIZE)) {
-      await db.$transaction(
-        batch.map((episode) =>
+      // Independent, idempotent upserts avoid Prisma's default 5-second
+      // transaction timeout when a publisher returns hundreds of episodes.
+      // Wait for all writes to settle before recording any failed ingestion.
+      await runConcurrentBatch(
+        batch.map((episode) => () =>
           db.episode.upsert({
             where: {
               podcastId_guid: {
