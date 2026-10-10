@@ -58,40 +58,74 @@ export async function transcribeMissingEpisodes(options: {
   );
   const retryBefore = new Date(Date.now() - retryMinutes * 60_000);
 
-  const episodes = await db.episode.findMany({
+  const externalMaxAttempts = positiveInteger(
+    process.env.EXTERNAL_TRANSCRIPT_MAX_ATTEMPTS, 3);
+  const startOfDay = new Date();
+  startOfDay.setUTCHours(0, 0, 0, 0);
+  const startOfMonth = new Date(Date.UTC(
+    startOfDay.getUTCFullYear(), startOfDay.getUTCMonth(), 1));
+  const [dailyUsage, monthlyUsage] = await Promise.all([
+    db.episode.aggregate({
+      where: { transcriptionLastAttemptAt: { gte: startOfDay } },
+      _sum: { durationSeconds: true },
+    }),
+    db.episode.aggregate({
+      where: { transcriptionLastAttemptAt: { gte: startOfMonth } },
+      _sum: { durationSeconds: true },
+    }),
+  ]);
+  const dailyLimit = positiveInteger(process.env.TRANSCRIPTION_DAILY_MAX_MINUTES, 180) * 60;
+  const monthlyLimit = positiveInteger(process.env.TRANSCRIPTION_MONTHLY_MAX_MINUTES, 1800) * 60;
+  let budgetLeft = Math.max(0, Math.min(
+    dailyLimit - (dailyUsage._sum.durationSeconds ?? 0),
+    monthlyLimit - (monthlyUsage._sum.durationSeconds ?? 0),
+  ));
+  const staleProcessing = new Date(Date.now() - 4 * 60 * 60 * 1000);
+  const candidates = await db.episode.findMany({
     where: {
       podcast: { active: true },
-      publisherTranscriptUrl: null,
+      transcript: { is: null },
       transcriptionAttempts: { lt: maxAttempts },
-      OR: [
-        { transcriptStatus: "MISSING" },
-        { transcriptStatus: "FAILED" },
-      ],
       AND: [
+        {
+          OR: [
+            { publisherTranscriptUrl: null },
+            { publisherTranscriptAttempts: { gte: externalMaxAttempts } },
+          ],
+        },
+        {
+          OR: [
+            { episodeUrl: null },
+            { transcriptDiscoveryAttempts: { gte: externalMaxAttempts } },
+          ],
+        },
+        {
+          OR: [
+            { transcriptStatus: { in: ["MISSING", "FAILED"] } },
+            {
+              transcriptStatus: "PROCESSING",
+              transcriptionLastAttemptAt: { lte: staleProcessing },
+            },
+          ],
+        },
         {
           OR: [
             { transcriptionLastAttemptAt: null },
             { transcriptionLastAttemptAt: { lte: retryBefore } },
           ],
         },
-        {
-          OR: [
-            { transcript: { is: null } },
-            { transcript: { is: { source: "GENERATED" } } },
-          ],
-        },
       ],
     },
     orderBy: [{ publishedAt: "desc" }, { id: "asc" }],
-    take: limit,
+    take: Math.min(100, Math.max(limit * 5, limit)),
   });
-
-  if (episodes.length > 0) {
-    await db.episode.updateMany({
-      where: { id: { in: episodes.map((episode) => episode.id) } },
-      data: { transcriptStatus: "QUEUED" },
-    });
-  }
+  const episodes = candidates.filter((episode) => {
+    const estimatedSeconds = episode.durationSeconds && episode.durationSeconds > 0
+      ? episode.durationSeconds : 90 * 60;
+    if (estimatedSeconds > budgetLeft) return false;
+    budgetLeft -= estimatedSeconds;
+    return true;
+  }).slice(0, limit);
 
   const result: GeneratedTranscriptionRun = {
     enabled: true,
@@ -107,28 +141,20 @@ export async function transcribeMissingEpisodes(options: {
       include: { transcript: true },
     });
 
-    if (
-      !episode ||
-      episode.publisherTranscriptUrl ||
-      episode.transcript?.source === "PUBLISHER"
-    ) {
-      if (episode) {
-        await db.episode.update({
-          where: { id: episode.id },
-          data: {
-            transcriptStatus:
-              episode.transcript?.source === "PUBLISHER"
-                ? "COMPLETE"
-                : "AVAILABLE",
-          },
-        });
-      }
+    if (!episode || episode.transcript?.source === "PUBLISHER" || episode.transcript) {
       result.skipped += 1;
       continue;
     }
 
-    await db.episode.update({
-      where: { id: episode.id },
+    // Claim with a compare-and-swap: multiple web workers must not pay to
+    // transcribe the same audio simultaneously.
+    const claim = await db.episode.updateMany({
+      where: {
+        id: episode.id,
+        transcriptionAttempts: selected.transcriptionAttempts,
+        transcriptStatus: selected.transcriptStatus,
+        transcript: { is: null },
+      },
       data: {
         transcriptStatus: "PROCESSING",
         transcriptionAttempts: { increment: 1 },
@@ -136,6 +162,10 @@ export async function transcribeMissingEpisodes(options: {
         transcriptionLastError: null,
       },
     });
+    if (claim.count !== 1) {
+      result.skipped += 1;
+      continue;
+    }
 
     try {
       const transcript = await transcribeAudioWithOpenAI({
@@ -145,7 +175,7 @@ export async function transcribeMissingEpisodes(options: {
         model: process.env.TRANSCRIPTION_MODEL ?? "whisper-1",
         maxBytes: positiveInteger(
           process.env.TRANSCRIPTION_MAX_AUDIO_BYTES,
-          24 * 1024 * 1024,
+          350 * 1024 * 1024,
         ),
         timeoutMs: positiveInteger(
           process.env.TRANSCRIPTION_TIMEOUT_MS,
@@ -160,17 +190,13 @@ export async function transcribeMissingEpisodes(options: {
 
       if (
         !latest ||
-        latest.publisherTranscriptUrl ||
         latest.transcript?.source === "PUBLISHER"
       ) {
         if (latest) {
           await db.episode.update({
             where: { id: latest.id },
             data: {
-              transcriptStatus:
-                latest.transcript?.source === "PUBLISHER"
-                  ? "COMPLETE"
-                  : "AVAILABLE",
+              transcriptStatus: latest.transcript ? "COMPLETE" : "FAILED",
             },
           });
         }
