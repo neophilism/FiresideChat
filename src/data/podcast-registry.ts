@@ -341,6 +341,93 @@ export const podcastRegistry: {
       isCurrent: false,
     },
   ],
+    {
+      "slug": "ron-paul",
+      "fullName": "Ron Paul",
+      "kind": "HOUSE",
+      "state": "TX",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "matt-gaetz",
+      "fullName": "Matt Gaetz",
+      "kind": "HOUSE",
+      "state": "FL",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "adam-kinzinger",
+      "fullName": "Adam Kinzinger",
+      "kind": "HOUSE",
+      "state": "IL",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "heidi-heitkamp",
+      "fullName": "Heidi Heitkamp",
+      "kind": "SENATE",
+      "state": "ND",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "jon-tester",
+      "fullName": "Jon Tester",
+      "kind": "SENATE",
+      "state": "MT",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "hillary-clinton",
+      "fullName": "Hillary Rodham Clinton",
+      "kind": "SENATE",
+      "state": "NY",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "bill-clinton",
+      "fullName": "Bill Clinton",
+      "kind": "PRESIDENT",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "tulsi-gabbard",
+      "fullName": "Tulsi Gabbard",
+      "kind": "HOUSE",
+      "state": "HI",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "joe-scarborough",
+      "fullName": "Joe Scarborough",
+      "kind": "HOUSE",
+      "state": "FL",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "sean-duffy",
+      "fullName": "Sean Duffy",
+      "kind": "HOUSE",
+      "state": "WI",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "sherrod-brown",
+      "fullName": "Sherrod Brown",
+      "kind": "SENATE",
+      "state": "OH",
+      "party": "Democratic",
+      "isCurrent": false
+    },
   podcasts: [
     {
       slug: "the-ed-markey-podcast",
@@ -846,7 +933,265 @@ export const podcastRegistry: {
       people: [{ personSlug: "michael-d-brown", role: "HOST" }],
     },
   ],
+    {
+      "slug": "ron-paul-liberty-report",
+      "title": "Ron Paul Liberty Report",
+      "rssUrl": "https://feeds.soundcloud.com/users/soundcloud:users:153940103/sounds.rss",
+      "websiteUrl": "https://www.ronpaullibertyreport.com/",
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://www.podbean.com/podcast-detail/nctjq-357b1/Ron-Paul-Liberty-Report-Podcast",
+      "verificationNote": "The podcast directory identifies former Rep. Ron Paul as the creator and publishes this exact SoundCloud RSS address.",
+      "people": [
+        {
+          "personSlug": "ron-paul",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "the-matt-gaetz-show",
+      "title": "The Matt Gaetz Show",
+      "rssUrl": "https://www.spreaker.com/show/6461238/episodes/feed",
+      "websiteUrl": "https://www.spreaker.com/podcast/the-matt-gaetz-show--6461238",
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://podstatus.com/podcasts/the-matt-gaetz-show-29217",
+      "verificationNote": "Spreaker and Podstatus identify former Rep. Matt Gaetz as the show's presenter and publish the exact show-specific Spreaker feed.",
+      "people": [
+        {
+          "personSlug": "matt-gaetz",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "the-anchormen-show-with-matt-gaetz",
+      "title": "The Anchormen Show with Matt Gaetz (formerly Firebrand)",
+      "rssUrl": "https://anchor.fm/s/ea4136c/podcast/rss",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/the-anchormen-show-with-matt-gaetz/id1512848110",
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://www.podbean.com/podcast-detail/38hjz-cc1cf/The-Anchormen-Show-with-Matt-Gaetz-Podcast",
+      "verificationNote": "Publisher directories identify Matt Gaetz as host, document the rebranding of Firebrand into Anchormen, and give the exact Anchor RSS feed. This is distinct from his OAN program.",
+      "people": [
+        {
+          "personSlug": "matt-gaetz",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "the-kinzinger-report",
+      "title": "The Kinzinger Report",
+      "rssUrl": "https://feeds.redcircle.com/f8897293-bba3-4bfb-beac-6582a4e21176",
+      "websiteUrl": "https://redcircle.com/shows/the-kinzinger-report",
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://podstatus.com/podcasts/the-kinzinger-report-1400053",
+      "verificationNote": "Podstatus identifies former Rep. Adam Kinzinger as host and publishes this exact RedCircle feed.",
+      "people": [
+        {
+          "personSlug": "adam-kinzinger",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "the-hot-dish",
+      "title": "The Hot Dish",
+      "rssUrl": "https://feeds.transistor.fm/the-hot-dish",
+      "websiteUrl": "https://thehotdish.transistor.fm/",
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://thehotdish.transistor.fm/people",
+      "verificationNote": "The publisher names former Senator Heidi Heitkamp a recurring host; the podcast is hosted on Transistor, whose canonical feed path corresponds to the show's slug.",
+      "people": [
+        {
+          "personSlug": "heidi-heitkamp",
+          "role": "COHOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "grounded-with-jon-tester",
+      "title": "Grounded with Jon Tester & Maritsa Georgiou",
+      "rssUrl": "https://feed.podbean.com/groundedpodcast/feed.xml",
+      "websiteUrl": "https://groundedpodcast.podbean.com/",
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://groundedpodcast.podbean.com/",
+      "verificationNote": "Podbean's publisher page identifies former Senator Jon Tester as co-host; Podbean documents the canonical feed format for groundedpodcast.podbean.com.",
+      "people": [
+        {
+          "personSlug": "jon-tester",
+          "role": "COHOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "you-and-me-both-with-hillary-clinton",
+      "title": "You and Me Both with Hillary Clinton",
+      "rssUrl": "https://feeds.megaphone.fm/HSW5162563163",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/you-and-me-both-with-hillary-clinton/id1531768983",
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/you-and-me-both-with-hillary-clinton/id1531768983",
+      "verificationNote": "Podcast directories credit former Senator Hillary Clinton as host and list this Megaphone feed; retained as a historical series.",
+      "people": [
+        {
+          "personSlug": "hillary-clinton",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "why-am-i-telling-you-this-with-bill-clinton",
+      "title": "Why Am I Telling You This? with Bill Clinton",
+      "rssUrl": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/075d44aa-9a1e-41aa-8055-ae280053272e/00d87679-75e5-4544-b86a-ae2800532740/podcast.rss",
+      "websiteUrl": "https://omny.fm/shows/why-am-i-telling-you-this-with-bill-clinton/playlists/podcast",
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podnews.net/podcast/i6313",
+      "verificationNote": "Podcast directories and Omny identify former President Bill Clinton as host; the exact Omny feed was recovered from Podnews's RSS link.",
+      "people": [
+        {
+          "personSlug": "bill-clinton",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "the-tulsi-gabbard-show",
+      "title": "The Tulsi Gabbard Show",
+      "rssUrl": "https://feeds.redcircle.com/32ce4f6e-2809-4a1a-82dd-69e0baec3936",
+      "websiteUrl": "https://redcircle.com/shows/this-is-tulsi",
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://www.podbean.com/podcast-detail/t87uy-192ff5/The-Tulsi-Gabbard-Show-Podcast",
+      "verificationNote": "Apple lists former Rep. Tulsi Gabbard as the host and the podcast directory supplies the exact RedCircle RSS feed; a historical series.",
+      "people": [
+        {
+          "personSlug": "tulsi-gabbard",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "morning-joe",
+      "title": "Morning Joe",
+      "rssUrl": "https://podcastfeeds.nbcnews.com/msnbc-morning-joe",
+      "websiteUrl": "https://www.ms.now/morning-joe",
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://plinkhq.com/i/974299441/e/1000784355695",
+      "verificationNote": "Publisher metadata identifies former Rep. Joe Scarborough as a regular host. Plink publishes this official podcast RSS endpoint; news broadcasts have a matching audio podcast feed.",
+      "people": [
+        {
+          "personSlug": "joe-scarborough",
+          "role": "COHOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "from-the-kitchen-table-the-duffys",
+      "title": "From the Kitchen Table: The Duffys",
+      "rssUrl": "https://feeds.megaphone.fm/FOXM2989303860",
+      "websiteUrl": "https://radio.foxnews.com/podcast/from-the-kitchen-table/",
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podstatus.com/podcasts/from-the-kitchen-table-the-duffys-24944",
+      "verificationNote": "Fox/Apple identify former Rep. Sean Duffy as co-host, and Podstatus provides the exact Megaphone RSS URL. The series concluded in 2024.",
+      "people": [
+        {
+          "personSlug": "sean-duffy",
+          "role": "COHOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "canarycast-with-sherrod-brown",
+      "title": "Canarycast",
+      "rssUrl": "https://feeds.soundcloud.com/users/soundcloud%3Ausers%3A334970098/sounds.rss",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/canarycast/id1292084414",
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podnews.net/podcast/i51cl",
+      "verificationNote": "Apple and Podnews credit former Senator Sherrod Brown as host; the exact SoundCloud RSS URL comes from the Podnews RSS link. Historical 2017–2018 series.",
+      "people": [
+        {
+          "personSlug": "sherrod-brown",
+          "role": "HOST"
+        }
+      ],
+      "active": true,
+      "verifiedAt": "2026-10-09"
+    },
   candidates: [
+    {
+      "person": "Claire McCaskill",
+      "show": "How to Win 2024",
+      "sourceUrl": "https://www.ms.now/how-to-win",
+      "reason": "Former Senator McCaskill co-hosted this historic series, but its RSS is now shared with a newer Jen Psaki series. A title/episode-date filter is required before ingestion to prevent attributing unrelated episodes to her."
+    },
+    {
+      "person": "Peter Roskam",
+      "show": "The Cloakroom with Peter Roskam",
+      "sourceUrl": "https://www.bakerlaw.com/podcasts/the-cloakroom/",
+      "reason": "Former Rep. Roskam is the verified host; the BakerHosts RSS is shared with unrelated legal shows. Add only when a show-specific feed or safe episode filter is available."
+    },
+    {
+      "person": "Cori Bush and Jamaal Bowman",
+      "show": "Bowman and Bush",
+      "sourceUrl": "https://rollcall.com/2025/07/31/where-are-they-now-4/",
+      "reason": "Both former House members host the web/video series. A stable publicly ingestable episode RSS/audio feed is not yet established."
+    },
+    {
+      "person": "Paul Hodes",
+      "show": "Beyond Politics",
+      "sourceUrl": "https://beyondpoliticspodcast.com/about",
+      "reason": "Former Rep. Hodes was a verified co-host; the continuing publisher now credits Matt Robison alone. Need host-date boundaries to avoid misattribution of episodes after Hodes departed."
+    },
+    {
+      "person": "Paul Hodes",
+      "show": "Capitol Close Up",
+      "sourceUrl": "https://beyondpoliticspodcast.com/capitolcloseuppodcast",
+      "reason": "Former Rep. Hodes participated as a recurring host; identify the canonical archive feed and confirm recurring-host boundaries."
+    },
+    {
+      "person": "Sherrod Brown",
+      "show": "Additional historical Sherrod Brown programs",
+      "sourceUrl": "https://podcasts.apple.com/us/podcast/canarycast/id1292084414",
+      "reason": "Canarycast has been added; watch for any separately distributed additional official podcasts, rather than equating guest appearances to hosted shows."
+    },
+    {
+      "person": "Jon Porter",
+      "show": "PoliticsAside",
+      "sourceUrl": "https://podcasts.apple.com/us/podcast/politicsaside/id1817902599",
+      "reason": "The former representative is identified as a show host by Apple; recover the exact canonical RSS and check archival audio accessibility before automated ingestion."
+    },
+    {
+      "person": "Patrick J. Murphy",
+      "show": "Warrior Money",
+      "sourceUrl": "https://podcasts.apple.com/us/podcast/warrior-money/id1772610042",
+      "reason": "Former Rep. Murphy appears as a host; verify the specific member identity and discover an exact open RSS feed."
+    },
+    {
+      "person": "Denver Riggleman",
+      "show": "Coalition of the Sane",
+      "sourceUrl": "https://podcasts.apple.com/us/podcast/coalition-of-the-sane/id1805455641",
+      "reason": "Former Rep. Riggleman hosts this series; recover the canonical audio RSS feed before ingestion."
+    },
 
 
 
