@@ -483,6 +483,30 @@ export const podcastRegistry: {
       "party": "Republican",
       "isCurrent": false
     },
+    {
+      "slug": "cori-bush",
+      "fullName": "Cori Bush",
+      "kind": "HOUSE",
+      "state": "MO",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "jamaal-bowman",
+      "fullName": "Jamaal Bowman",
+      "kind": "HOUSE",
+      "state": "NY",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "john-kasich",
+      "fullName": "John Kasich",
+      "kind": "HOUSE",
+      "state": "OH",
+      "party": "Republican",
+      "isCurrent": false
+    },
   ],
   podcasts: [
     {
@@ -1311,6 +1335,44 @@ export const podcastRegistry: {
         }
       ]
     },
+    {
+      "slug": "bowman-and-bush",
+      "title": "Bowman and Bush",
+      "rssUrl": "https://api.substack.com/feed/podcast/2325511/s/197831.rss",
+      "websiteUrl": "https://zeteo.com/s/bowman-and-bush",
+      "active": true,
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/bowman-and-bush/id1801534903",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Publisher Zeteo explicitly identifies former Representatives Cori Bush and Jamaal Bowman as series cohosts. Apple's show-specific listing confirms their participation, and Apple LookUp ID 1801534903 returns this exact show-specific Substack RSS feed.",
+      "people": [
+        {
+          "personSlug": "cori-bush",
+          "role": "COHOST"
+        },
+        {
+          "personSlug": "jamaal-bowman",
+          "role": "COHOST"
+        }
+      ]
+    },
+    {
+      "slug": "kasich-and-klepper",
+      "title": "Kasich & Klepper",
+      "rssUrl": "https://feeds.megaphone.fm/TREE3290263903",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/kasich-klepper/id1606026612",
+      "active": true,
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/kasich-klepper/id1606026612",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Apple identifies former Rep. John Kasich and Jordan Klepper as cohosts of this 2022-2024 series; Apple LookUp ID 1606026612 resolves this exact Megaphone RSS.",
+      "people": [
+        {
+          "personSlug": "john-kasich",
+          "role": "COHOST"
+        }
+      ]
+    },
   ],
   candidates: [
     {
@@ -1324,12 +1386,6 @@ export const podcastRegistry: {
       "show": "The Cloakroom with Peter Roskam",
       "sourceUrl": "https://www.bakerlaw.com/podcasts/the-cloakroom/",
       "reason": "Former Rep. Roskam is the verified host; the BakerHosts RSS is shared with unrelated legal shows. Add only when a show-specific feed or safe episode filter is available."
-    },
-    {
-      "person": "Cori Bush and Jamaal Bowman",
-      "show": "Bowman and Bush",
-      "sourceUrl": "https://rollcall.com/2025/07/31/where-are-they-now-4/",
-      "reason": "Both former House members host the web/video series. A stable publicly ingestable episode RSS/audio feed is not yet established."
     },
     {
       "person": "Paul Hodes",
