@@ -427,6 +427,62 @@ export const podcastRegistry: {
       "party": "Democratic",
       "isCurrent": false
     },
+    {
+      "slug": "tim-hutchinson",
+      "fullName": "Tim Hutchinson",
+      "kind": "SENATE",
+      "state": "AR",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "steve-pearce",
+      "fullName": "Steve Pearce",
+      "kind": "HOUSE",
+      "state": "NM",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "jon-porter",
+      "fullName": "Jon Porter",
+      "kind": "HOUSE",
+      "state": "NV",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "denver-riggleman",
+      "fullName": "Denver Riggleman",
+      "kind": "HOUSE",
+      "state": "VA",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "patrick-j-murphy",
+      "fullName": "Patrick J. Murphy",
+      "kind": "HOUSE",
+      "state": "PA",
+      "party": "Democratic",
+      "isCurrent": false
+    },
+    {
+      "slug": "marjorie-taylor-greene",
+      "fullName": "Marjorie Taylor Greene",
+      "kind": "HOUSE",
+      "state": "GA",
+      "party": "Republican",
+      "isCurrent": false
+    },
+    {
+      "slug": "george-santos",
+      "fullName": "George Santos",
+      "kind": "HOUSE",
+      "state": "NY",
+      "party": "Republican",
+      "isCurrent": false
+    },
   ],
   podcasts: [
     {
@@ -1135,6 +1191,125 @@ export const podcastRegistry: {
       ],
       "active": true,
       "verifiedAt": "2026-10-09"
+    },
+    {
+      "slug": "cigar-caucus",
+      "title": "Cigar Caucus",
+      "rssUrl": "https://api.riverside.fm/hosting/n0rKAZd6.rss",
+      "websiteUrl": "https://www.cigarcaucushub.com/",
+      "active": true,
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/cigar-caucus/id1869131540",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Apple lists former Sen. Tim Hutchinson as creator, the official publisher identifies him as host, and iTunes LookUp exposes the canonical Riverside RSS. The publisher explicitly describes a pause after 44 episodes.",
+      "people": [
+        {
+          "personSlug": "tim-hutchinson",
+          "role": "HOST"
+        }
+      ]
+    },
+    {
+      "slug": "inside-new-mexico-with-steve-pearce",
+      "title": "Inside New Mexico with Steve Pearce",
+      "rssUrl": "https://anchor.fm/s/9960eac/podcast/rss",
+      "websiteUrl": "https://newmexico.gop/",
+      "active": true,
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/inside-new-mexico-with-steve-pearce/id1455383209",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Apple and Podnews identify former Rep. Steve Pearce as weekly host; iTunes LookUp returns the exact Anchor/Spotify RSS. Historical podcast archive through 2025.",
+      "people": [
+        {
+          "personSlug": "steve-pearce",
+          "role": "HOST"
+        }
+      ]
+    },
+    {
+      "slug": "politicsaside-with-jon-porter",
+      "title": "PoliticsAside",
+      "rssUrl": "https://rss.buzzsprout.com/1983668.rss",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/politicsaside/id1622471150",
+      "active": true,
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/politicsaside/id1622471150",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Apple identifies former Rep. Jon Porter as host and creator; iTunes LookUp returns the exact show-specific Buzzsprout RSS. The archived show published through 2024.",
+      "people": [
+        {
+          "personSlug": "jon-porter",
+          "role": "HOST"
+        }
+      ]
+    },
+    {
+      "slug": "coalition-of-the-sane",
+      "title": "Coalition of the Sane",
+      "rssUrl": "https://feeds.megaphone.fm/MTH7739677395",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/coalition-of-the-sane/id1741663279",
+      "active": true,
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/coalition-of-the-sane/id1741663279",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Apple identifies former Rep. Denver Riggleman as program host; iTunes LookUp provides the show's dedicated Megaphone RSS. Archive includes episodes from 2024.",
+      "people": [
+        {
+          "personSlug": "denver-riggleman",
+          "role": "HOST"
+        }
+      ]
+    },
+    {
+      "slug": "warrior-money",
+      "title": "Warrior Money",
+      "rssUrl": "https://feeds.megaphone.fm/YFL2979942126",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/warrior-money/id1779749359",
+      "active": true,
+      "publishingStatus": "UNKNOWN",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/warrior-money/id1779749359",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Apple explicitly names former Rep. Patrick J. Murphy and Dan Kunze as co-hosts; iTunes LookUp supplies the canonical Megaphone RSS.",
+      "people": [
+        {
+          "personSlug": "patrick-j-murphy",
+          "role": "COHOST"
+        }
+      ]
+    },
+    {
+      "slug": "mtg-with-marjorie-taylor-greene",
+      "title": "MTG",
+      "rssUrl": "https://anchor.fm/s/9e2ddedc/podcast/rss",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/mtg/id1629021100",
+      "active": true,
+      "publishingStatus": "INACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/mtg/id1629021100",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "Apple lists former Rep. Marjorie Taylor Greene as creator and speaker; iTunes LookUp supplies the historical Anchor RSS. Twenty-six episodes published in 2022.",
+      "people": [
+        {
+          "personSlug": "marjorie-taylor-greene",
+          "role": "HOST"
+        }
+      ]
+    },
+    {
+      "slug": "doing-time-with-george-santos",
+      "title": "Doing Time with George Santos (formerly Pants On Fire)",
+      "rssUrl": "https://feeds.megaphone.fm/IMP8216678538",
+      "websiteUrl": "https://podcasts.apple.com/us/podcast/doing-time-with-george-santos/id1784810554",
+      "active": true,
+      "publishingStatus": "UNKNOWN",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/doing-time-with-george-santos/id1784810554",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "The former Rep. George Santos hosts this podcast, previously named Pants On Fire; Apple's latest metadata identifies the series as Doing Time and returns its canonical Megaphone feed. Treat its two titles as one series, not separate shows.",
+      "people": [
+        {
+          "personSlug": "george-santos",
+          "role": "HOST"
+        }
+      ]
     },
   ],
   candidates: [
