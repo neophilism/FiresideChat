@@ -137,7 +137,17 @@ def matches(name: dict, hit: dict) -> tuple[bool, str]:
     given = normalize(name["first"])
     family = normalize(name["last"])
     names = [normalize(q) for q in queries_for(name)]
-    fields = {"show-title": title, "creator": creator}
+    # Publishers often own the Apple listing and omit the host from its
+    # title/artist fields. Apple may instead identify that person in its
+    # narrative descriptions (e.g. Zeteo or Treefort shows).
+    # Keep such hits for *manual* review, never automatic registration.
+    fields = {
+        "show-title": title,
+        "creator": creator,
+        "show-description": normalize(hit.get("collectionDescription", "")),
+        "description": normalize(hit.get("description", "")),
+        "summary": normalize(hit.get("summary", "")),
+    }
     for field, haystack in fields.items():
         for candidate in names:
             if candidate and re.search(r"(?<!\w)" + re.escape(candidate) + r"(?!\w)", haystack):
