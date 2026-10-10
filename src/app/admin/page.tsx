@@ -47,7 +47,7 @@ export default async function AdminPage() {
   );
   const staleHours =
     Number.isInteger(staleHoursRaw) && staleHoursRaw > 0 ? staleHoursRaw : 36;
-  const [clockRows, podcasts, transcriptGroups, recentRuns, failedTranscriptions] =
+  const [clockRows, podcasts, transcriptGroups, recentRuns, failedTranscriptions, pendingPublisher, pendingDiscovery] =
     await Promise.all([
       db.$queryRaw<Array<{ now: Date }>>`SELECT NOW() AS now`,
       db.podcast.findMany({
@@ -76,6 +76,12 @@ export default async function AdminPage() {
         include: {
           podcast: { select: { title: true, slug: true } },
         },
+      }),
+      db.episode.count({
+        where: { publisherTranscriptUrl: { not: null }, transcript: { is: null } },
+      }),
+      db.episode.count({
+        where: { episodeUrl: { not: null }, publisherTranscriptUrl: null, transcript: { is: null } },
       }),
     ]);
 
@@ -201,6 +207,14 @@ export default async function AdminPage() {
         </div>
 
         <div className="admin-transcript-grid">
+          <article>
+            <strong>{pendingPublisher.toLocaleString()}</strong>
+            <span>Publisher links awaiting recovery</span>
+          </article>
+          <article>
+            <strong>{pendingDiscovery.toLocaleString()}</strong>
+            <span>Episodes eligible for website discovery</span>
+          </article>
           {(
             ["COMPLETE", "AVAILABLE", "QUEUED", "PROCESSING", "MISSING", "FAILED"] as const
           ).map((status) => (

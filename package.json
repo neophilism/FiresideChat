@@ -19,6 +19,7 @@
     "db:seed": "prisma db seed",
     "registry:validate": "tsx scripts/validate-registry.ts",
     "ingest:feeds": "tsx scripts/ingest-feeds.ts",
+    "backfill:transcripts": "tsx scripts/backfill-transcripts.ts",
     "postinstall": "prisma generate",
     "predb:seed": "npm run prisma:generate",
     "preingest:feeds": "npm run prisma:generate",
@@ -40,7 +41,8 @@
     "next": "16.3.5",
     "pg": "^8.16.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "ffmpeg-static": "5.3.0"
   },
   "devDependencies": {
     "@types/node": "^24.7.0",

@@ -78,6 +78,56 @@ function parseTimedTranscript(body: string): ParsedPublisherTranscript {
   };
 }
 
+
+function htmlToText(html: string) {
+  return html
+    .replace(/<(script|style|nav|footer|header)\b[^>]*>[\s\S]*?<\/\1>/gi, "")
+    .replace(/<\s*br\b[^>]*\/?>/gi, "\n")
+    .replace(/<\/(?:p|div|section|article|li|h[1-6])\s*>/gi, "\n\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#(\d+);/g, (_, code: string) => {
+      const point = Number(code);
+      return point > 0 && point < 0x110000 && !(point >= 0xd800 && point <= 0xdfff)
+        ? String.fromCodePoint(point) : "";
+    })
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+function parseJsonTranscript(body: string): ParsedPublisherTranscript {
+  const payload: unknown = JSON.parse(body);
+  const root = payload && typeof payload === "object" && !Array.isArray(payload)
+    ? payload as Record<string, unknown> : {};
+  const entries = Array.isArray(payload) ? payload
+    : Array.isArray(root.segments) ? root.segments
+    : Array.isArray(root.transcript) ? root.transcript : [];
+  const segments: ParsedPublisherTranscript["segments"] = [];
+  for (const item of entries) {
+    if (!item || typeof item !== "object" || Array.isArray(item)) continue;
+    const entry = item as Record<string, unknown>;
+    const text = entry.body ?? entry.text;
+    const start = Number(entry.startTime ?? entry.start ?? NaN);
+    const end = Number(entry.endTime ?? entry.end ?? NaN);
+    if (typeof text === "string" && text.trim() && Number.isFinite(start) &&
+        Number.isFinite(end) && start >= 0 && end >= start) {
+      segments.push({ startSeconds: start, endSeconds: end, text: text.trim() });
+    }
+  }
+  if (segments.length > 0) return {
+    fullText: segments.map((segment) => segment.text).join("\n"), segments,
+  };
+  const text = root.text ?? root.fullText ?? root.transcript;
+  if (typeof text === "string" && text.trim()) {
+    return { fullText: htmlToText(text), segments: [] };
+  }
+  throw new Error("JSON publisher transcript contains no readable text");
+}
+
 export function parsePublisherTranscript(
   body: string,
   mimeType: string | null,
@@ -97,6 +147,23 @@ export function parsePublisherTranscript(
     looksTimed
   ) {
     return parseTimedTranscript(trimmed.replace(/^WEBVTT[^\n]*\n?/, ""));
+  }
+
+  if (
+    normalizedType === "application/json" ||
+    normalizedType.endsWith("+json") ||
+    /^\s*\{\s*"(?:segments|transcript|text|fullText)"\s*:/.test(trimmed)
+  ) {
+    return parseJsonTranscript(trimmed);
+  }
+
+  if (
+    normalizedType === "text/html" ||
+    /<(?:html|article|div|p)\b/i.test(trimmed)
+  ) {
+    const fullText = htmlToText(trimmed);
+    if (!fullText) throw new Error("HTML publisher transcript contained no text");
+    return { fullText, segments: [] };
   }
 
   if (
@@ -122,7 +189,7 @@ export async function fetchPublisherTranscript(
 ): Promise<ParsedPublisherTranscript> {
   const response = await fetch(reference.url, {
     headers: {
-      Accept: "text/vtt, application/x-subrip, text/plain;q=0.9, */*;q=0.2",
+      Accept: "text/vtt, application/x-subrip, application/json, text/html, text/plain;q=0.9, */*;q=0.2",
       "User-Agent":
         options.userAgent ??
         process.env.FEED_USER_AGENT ??
@@ -142,9 +209,25 @@ export async function fetchPublisherTranscript(
     throw new Error("Publisher transcript exceeds the configured size limit");
   }
 
-  const bytes = new Uint8Array(await response.arrayBuffer());
-  if (bytes.byteLength > maxBytes) {
-    throw new Error("Publisher transcript exceeds the configured size limit");
+  if (!response.body) throw new Error("Publisher transcript has no body");
+  const reader = response.body.getReader();
+  let total = 0;
+  const chunks: Uint8Array[] = [];
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) {
+      await reader.cancel();
+      throw new Error("Publisher transcript exceeds the configured size limit");
+    }
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
   }
 
   const body = new TextDecoder("utf-8", { fatal: false }).decode(bytes);

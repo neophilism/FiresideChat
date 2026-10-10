@@ -131,6 +131,12 @@ model Episode {
   publisherTranscriptMimeType String?
   transcriptStatus          TranscriptStatus @default(MISSING)
   transcriptionAttempts     Int              @default(0)
+  publisherTranscriptAttempts       Int       @default(0)
+  publisherTranscriptLastAttemptAt  DateTime?
+  publisherTranscriptLastError      String?
+  transcriptDiscoveryAttempts       Int       @default(0)
+  transcriptDiscoveryLastAttemptAt  DateTime?
+  transcriptDiscoveryLastError      String?
   transcriptionLastAttemptAt DateTime?
   transcriptionLastError    String?
   createdAt                 DateTime         @default(now())

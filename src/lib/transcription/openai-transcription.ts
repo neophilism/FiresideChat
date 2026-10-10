@@ -1,6 +1,7 @@
+import { readFile } from "node:fs/promises";
+import { withTranscriptionChunks } from "./ffmpeg-audio";
+
 const OPENAI_TRANSCRIPT_URL = "https://api.openai.com/v1/audio/transcriptions";
-const OPENAI_MAX_AUDIO_BYTES = 25 * 1024 * 1024;
-const DEFAULT_AUDIO_LIMIT_BYTES = 24 * 1024 * 1024;
 const DEFAULT_TIMEOUT_MS = 120_000;
 
 export type GeneratedTranscript = {
@@ -64,97 +65,6 @@ export function normalizeOpenAITranscript(
   };
 }
 
-function fileNameForAudio(url: string, mimeType: string | null) {
-  const supportedExtensions = new Set([
-    ".mp3",
-    ".mp4",
-    ".mpeg",
-    ".mpga",
-    ".m4a",
-    ".wav",
-    ".webm",
-  ]);
-
-  try {
-    const name = new URL(url).pathname.split("/").filter(Boolean).at(-1);
-    if (name) {
-      const extension = name.includes(".")
-        ? `.${name.split(".").at(-1)?.toLowerCase()}`
-        : "";
-      if (supportedExtensions.has(extension)) return name;
-    }
-  } catch {
-    // Fall through to a MIME-derived filename.
-  }
-
-  if (mimeType?.includes("wav")) return "episode.wav";
-  if (mimeType?.includes("webm")) return "episode.webm";
-  if (mimeType?.includes("mp4") || mimeType?.includes("m4a")) return "episode.m4a";
-  return "episode.mp3";
-}
-
-async function boundedAudioDownload(
-  url: string,
-  options: {
-    maxBytes: number;
-    timeoutMs: number;
-    userAgent?: string;
-  },
-) {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent":
-        options.userAgent ??
-        process.env.FEED_USER_AGENT ??
-        "FiresideChat/1.0 (+https://github.com/neophilism/FiresideChat)",
-    },
-    redirect: "follow",
-    signal: AbortSignal.timeout(options.timeoutMs),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Episode audio returned HTTP ${response.status}`);
-  }
-
-  const declaredBytes = Number(response.headers.get("content-length") ?? "0");
-  if (declaredBytes > options.maxBytes) {
-    throw new Error(
-      `Episode audio is too large for automatic transcription (${declaredBytes} bytes)`,
-    );
-  }
-
-  if (!response.body) throw new Error("Episode audio response had no body");
-
-  const reader = response.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let total = 0;
-
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    total += value.byteLength;
-    if (total > options.maxBytes) {
-      await reader.cancel();
-      throw new Error(
-        `Episode audio is too large for automatic transcription (>${options.maxBytes} bytes)`,
-      );
-    }
-    chunks.push(value);
-  }
-
-  const bytes = new Uint8Array(total);
-  let offset = 0;
-  for (const chunk of chunks) {
-    bytes.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-
-  return {
-    bytes,
-    mimeType: response.headers.get("content-type"),
-  };
-}
-
 export async function transcribeAudioWithOpenAI(options: {
   audioUrl: string;
   audioMimeType: string | null;
@@ -164,47 +74,44 @@ export async function transcribeAudioWithOpenAI(options: {
   timeoutMs?: number;
   userAgent?: string;
 }): Promise<GeneratedTranscript> {
-  const maxBytes = Math.min(
-    options.maxBytes ?? DEFAULT_AUDIO_LIMIT_BYTES,
-    OPENAI_MAX_AUDIO_BYTES,
-  );
-  const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
-
-  const downloaded = await boundedAudioDownload(options.audioUrl, {
-    maxBytes,
-    timeoutMs,
-    userAgent: options.userAgent,
+  // OpenAI's audio transcription endpoint has a 25 MiB upload ceiling.
+  // Lossy 32kbps, mono, 15-minute chunks stay well below that limit,
+  // even when the original episode is hundreds of megabytes.
+  return withTranscriptionChunks(options.audioUrl, {
+    maxBytes: options.maxBytes ?? 350 * 1024 * 1024,
+  }, async (chunks) => {
+    const textParts: string[] = [];
+    const segments: GeneratedTranscript["segments"] = [];
+    let language: string | null = null;
+    for (const chunk of chunks) {
+      const source = await readFile(chunk.path);
+      const form = new FormData();
+      form.append("file", new Blob([new Uint8Array(source)], { type: "audio/mpeg" }), "podcast-segment.mp3");
+      form.append("model", options.model ?? "whisper-1");
+      form.append("response_format", "verbose_json");
+      form.append("timestamp_granularities[]", "segment");
+      const response = await fetch(OPENAI_TRANSCRIPT_URL, {
+        method: "POST",
+        headers: { Authorization: "Bearer " + options.apiKey },
+        body: form,
+        signal: AbortSignal.timeout(options.timeoutMs ?? DEFAULT_TIMEOUT_MS),
+      });
+      if (!response.ok) {
+        const errorBody = (await response.text()).slice(0, 1_000);
+        throw new Error("Transcription provider returned HTTP " + response.status + ": " + errorBody);
+      }
+      const parsed = normalizeOpenAITranscript(
+        (await response.json()) as OpenAITranscriptResponse);
+      textParts.push(parsed.fullText);
+      language ??= parsed.language;
+      for (const segment of parsed.segments) {
+        segments.push({
+          startSeconds: segment.startSeconds + chunk.startSeconds,
+          endSeconds: segment.endSeconds + chunk.startSeconds,
+          text: segment.text,
+        });
+      }
+    }
+    return { fullText: textParts.join("\n\n"), language, segments };
   });
-
-  const mimeType =
-    options.audioMimeType ??
-    downloaded.mimeType?.split(";")[0]?.trim() ??
-    "audio/mpeg";
-  const fileName = fileNameForAudio(options.audioUrl, mimeType);
-
-  const form = new FormData();
-  form.append("file", new Blob([downloaded.bytes], { type: mimeType }), fileName);
-  form.append("model", options.model ?? "whisper-1");
-  form.append("response_format", "verbose_json");
-  form.append("timestamp_granularities[]", "segment");
-
-  const response = await fetch(OPENAI_TRANSCRIPT_URL, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${options.apiKey}`,
-    },
-    body: form,
-    signal: AbortSignal.timeout(timeoutMs),
-  });
-
-  if (!response.ok) {
-    const errorBody = (await response.text()).slice(0, 1_000);
-    throw new Error(
-      `Transcription provider returned HTTP ${response.status}: ${errorBody}`,
-    );
-  }
-
-  return normalizeOpenAITranscript(
-    (await response.json()) as OpenAITranscriptResponse,
-  );
 }

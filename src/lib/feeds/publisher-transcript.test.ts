@@ -55,3 +55,25 @@ test("rejects unsupported binary transcript types", () => {
     /Unsupported publisher transcript type/,
   );
 });
+
+test("accepts Podcasting 2.0 JSON segment transcripts", () => {
+  const parsed = parsePublisherTranscript(
+    JSON.stringify({ segments: [
+      { startTime: 1.5, endTime: 3, body: "First statement" },
+      { startTime: 3, endTime: 5.2, body: "Second statement" },
+    ] }),
+    "application/json",
+  );
+  assert.equal(parsed.fullText, "First statement\nSecond statement");
+  assert.equal(parsed.segments[0].startSeconds, 1.5);
+});
+
+test("imports HTML transcripts while dropping navigation and scripts", () => {
+  const parsed = parsePublisherTranscript(
+    "<html><nav>Menu</nav><article><p>Hello Congress.</p><p>Next point &amp; more.</p></article><script>alert(1)</script></html>",
+    "text/html",
+  );
+  assert.match(parsed.fullText, /Hello Congress/);
+  assert.match(parsed.fullText, /Next point & more/);
+  assert.doesNotMatch(parsed.fullText, /alert|Menu/);
+});
