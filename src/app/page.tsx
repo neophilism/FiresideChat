@@ -122,6 +122,11 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="studio-home-cta" aria-labelledby="production-cta-title">
+        <div><p className="section-label">For members of Congress</p><h2 id="production-cta-title">Thinking about starting a podcast?</h2>
+          <p>Fireside Chat also helps congressional offices explore podcast production, from planning to launch.</p></div>
+        <Link href="/podcast-production">Request production services →</Link>
+      </section>
       <section className="principle-band">
         <p className="section-label">One simple principle</p>
         <h2>Less interpretation. More primary source.</h2>
