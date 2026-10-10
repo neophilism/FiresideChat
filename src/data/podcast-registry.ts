@@ -340,7 +340,6 @@ export const podcastRegistry: {
       party: "Democratic",
       isCurrent: false,
     },
-  ],
     {
       "slug": "ron-paul",
       "fullName": "Ron Paul",
@@ -428,6 +427,7 @@ export const podcastRegistry: {
       "party": "Democratic",
       "isCurrent": false
     },
+  ],
   podcasts: [
     {
       slug: "the-ed-markey-podcast",
@@ -1137,6 +1137,7 @@ export const podcastRegistry: {
       "active": true,
       "verifiedAt": "2026-10-09"
     },
+  ],
   candidates: [
     {
       "person": "Claire McCaskill",
