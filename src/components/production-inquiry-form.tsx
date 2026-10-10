@@ -47,7 +47,7 @@ export function ProductionInquiryForm() {
   return (
     <form className="studio-inquiry-form" onSubmit={(event) => { void submit(event); }}>
       <div className="studio-field-pair">
-        <label>Member of Congress's full name <span aria-hidden="true">*</span>
+        <label>Member of Congress&apos;s full name <span aria-hidden="true">*</span>
           <input name="memberName" required minLength={3} maxLength={120} placeholder="Representative or Senator's name" autoComplete="name" />
         </label>
         <label>Office <span aria-hidden="true">*</span>
@@ -68,10 +68,10 @@ export function ProductionInquiryForm() {
         ) : <input name="district" type="hidden" value="" />}
       </div>
       <div className="studio-field-pair">
-        <label>Contact person's name <span aria-hidden="true">*</span>
+        <label>Contact person&apos;s name <span aria-hidden="true">*</span>
           <input name="contactName" required minLength={2} maxLength={120} autoComplete="name" />
         </label>
-        <label>Contact's role <span aria-hidden="true">*</span>
+        <label>Contact&apos;s role <span aria-hidden="true">*</span>
           <select name="contactRole" required>
             <option value="STAFF">Congressional staff member</option>
             <option value="MEMBER">Member of Congress</option>
@@ -89,7 +89,7 @@ export function ProductionInquiryForm() {
       </div>
       <label>What kind of show are you considering? <span aria-hidden="true">*</span>
         <select name="productionFormat" required defaultValue="UNDECIDED">
-          <option value="UNDECIDED">I'd like guidance</option>
+          <option value="UNDECIDED">I&apos;d like guidance</option>
           <option value="INTERVIEWS">Interview and conversation show</option>
           <option value="SOLO">Solo commentary or briefings</option>
           <option value="MIXED">A mix of formats</option>
