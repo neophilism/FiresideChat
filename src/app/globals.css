@@ -2048,3 +2048,48 @@ h3 {
     text-align: left;
   }
 }
+
+
+/* Congressional studio production inquiry — only intended CTA and private admin use. */
+.studio-production-page .search-hero, .studio-production-section { max-width: 1000px; margin-inline: auto; }
+.studio-production-section { padding: clamp(1.5rem, 4vw, 3rem); background: var(--panel); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); }
+.studio-production-intro { max-width: 62ch; margin-bottom: 2.5rem; }
+.studio-production-intro h2 { line-height: 1.12; }
+.studio-inquiry-form { display: grid; gap: 1.25rem; max-width: 800px; font-family: var(--sans); }
+.studio-field-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.studio-inquiry-form label { display: grid; gap: .45rem; font-weight: 700; font-size: .91rem; }
+.studio-inquiry-form label small { color: var(--muted); font-weight: 400; }
+.studio-inquiry-form input:not([type="checkbox"]), .studio-inquiry-form select, .studio-inquiry-form textarea {
+  display: block; width: 100%; border: 1px solid var(--line-dark); border-radius: 9px;
+  padding: .85rem .9rem; font-family: var(--sans); font-size: 1rem; color: var(--ink); background: #fff;
+}
+.studio-inquiry-form textarea { min-height: 132px; resize: vertical; }
+.studio-inquiry-form input:focus-visible, .studio-inquiry-form textarea:focus-visible, .studio-inquiry-form select:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.studio-consents { display: grid; gap: .9rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+.studio-consents label { display: flex; align-items: flex-start; gap: .65rem; font-size: .88rem; font-weight: 500; line-height: 1.5; }
+.studio-consents input { flex-shrink: 0; margin-top: .25rem; accent-color: var(--navy); }
+.studio-submit { justify-self: start; min-height: 48px; padding: .8rem 1.4rem; border: none; border-radius: 9px; color: #fff; background: var(--navy); font-weight: 700; cursor: pointer; }
+.studio-submit:hover { background: var(--red); }
+.studio-submit:disabled { cursor: progress; opacity: .6; }
+.studio-privacy-note { color: var(--muted); font-size: .83rem; line-height: 1.6; max-width: 80ch; }
+.studio-error { padding: 1rem; border: 1px solid #bd2432; color: #79111a; background: #fff0f1; border-radius: 8px; }
+.studio-success { max-width: 800px; padding: 2rem; background: #eff8f3; border: 1px solid #4a8b65; border-radius: 13px; }
+.studio-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(100%); white-space: nowrap; }
+.studio-home-cta { display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: clamp(2rem, 5vw, 4rem); margin: 2rem auto 4rem; max-width: 1240px; background: #fffaf2; border: 1px solid var(--line-dark); border-radius: 16px; }
+.studio-home-cta h2 { margin: 0 0 1rem; }
+.studio-home-cta p { max-width: 66ch; }
+.studio-home-cta a { display: inline-flex; padding: .9rem 1.1rem; border-radius: 8px; color: white; background: var(--navy); text-decoration: none; font-family: var(--sans); font-weight: 700; }
+.studio-home-cta a:hover { background: var(--red); }
+.studio-footer-link { display: block; font-size: .78rem; margin-top: .6rem; text-decoration: underline; }
+.production-inquiry-admin .search-hero { max-width: 960px; }
+.studio-admin-card { background: var(--panel); border: 1px solid var(--line); padding: 1.5rem; margin-top: 1rem; border-radius: 12px; overflow-wrap: anywhere; }
+.studio-admin-card header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.studio-admin-card header strong { font-size: 1.2rem; }
+.studio-admin-card header span, .studio-admin-card small { color: var(--muted); font-family: var(--sans); font-size: .82rem; }
+.studio-request-message { white-space: pre-wrap; background: var(--paper); border-left: 3px solid var(--gold); padding: 1rem; }
+@media (max-width: 720px) {
+  .studio-field-pair { grid-template-columns: 1fr; }
+  .studio-home-cta { margin-inline: 1rem; }
+  .studio-submit { justify-self: stretch; }
+  .site-nav { flex-wrap: wrap; gap: .7rem; }
+}

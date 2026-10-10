@@ -45,3 +45,9 @@ Local setup requires Docker PostgreSQL or configured DATABASE_URL. Production cr
 
 ## Release/handoff exit criteria
 Every current/former Congressional and presidential roster row is counted and transparently classified; every verified qualifying podcast is imported or specifically blocked; available episode history is preserved and correctly host-attributed; free publisher and accessible online transcripts have been exhausted/reconciled; authorized STT completes or carries an accurate backlog/expense blocker; timestamp search and persistent player work on the live site; repeatable feed and transcript updates are observed; Neon backup/restore, security and administrator operations pass; Engine Room separately reports PR merged, deployed, imported and verified status.
+
+## October 10 addition: FC-P21 — Congressional podcast production inquiries
+
+Implementation branch: feature/podcast-production-inquiries-20261010 (check latest merged status). Read [data-flow/security analysis](E2EESA_INQUIRY_SECURITY.md). The production services form, Neon encrypted intake, outbox mail notification and Engine Room red banner are separate deploy/verification gates. Needed server-side keys: PODCAST_INQUIRY_ENCRYPTION_KEY (random 32-byte hex in FiresideChat), ENGINE_ROOM_INQUIRY_TOKEN (matching 32-byte hex in both FiresideChat and Engine Room), and, for actual emails, RESEND_API_KEY and an authorized verified PODCAST_INQUIRY_FROM_EMAIL on FiresideChat. Never store keys or signed URLs here.
+
+**Not done merely by merging:** verified form persisted on live Neon, real mail received at the destination, Engine Room private query and red alert render. Record that evidence before treating this as complete. Missing email-provider credentials/sender verification is an explicit external blocker; the durable queue and red Room alert should still function with the first two keys configured.

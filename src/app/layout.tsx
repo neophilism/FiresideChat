@@ -34,6 +34,7 @@ export default function RootLayout({
                 <Link href="/episodes">Episodes</Link>
                 <Link href="/people">People</Link>
                 <Link href="/search">Search</Link>
+                <Link href="/podcast-production">Production services</Link>
               </nav>
 
               <form className="header-search" action="/search">
@@ -48,6 +49,7 @@ export default function RootLayout({
               <div>
                 <Link className="footer-brand" href="/">Fireside Chat</Link>
                 <span>Hear them yourself.</span>
+                <Link className="studio-footer-link" href="/podcast-production">Starting a podcast? Request production help.</Link>
               </div>
               <p>
                 Independent, nonpartisan, and not affiliated with or endorsed by

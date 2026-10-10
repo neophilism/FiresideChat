@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { retryInquiryEmails } from "@/lib/production-inquiry-mail";
 import { ingestPodcastBySlug } from "@/lib/feeds/ingest-feed";
 import { backfillExternalTranscripts } from "./external-transcripts";
 import { transcribeMissingEpisodes } from "./generated-transcription";
@@ -61,6 +62,8 @@ export function startTranscriptRecoveryScheduler() {
     running = true;
     try {
       await refreshDuePodcastFeeds();
+      const inquiryDelivery = await retryInquiryEmails();
+      if (inquiryDelivery.attempted) console.info("Podcast inquiry notification delivery:", JSON.stringify(inquiryDelivery));
       const external = await backfillExternalTranscripts();
       console.info("Transcript background recovery:", JSON.stringify(external));
       if (process.env.TRANSCRIPTION_ENABLED === "true" && process.env.OPENAI_API_KEY) {

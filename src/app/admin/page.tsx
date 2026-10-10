@@ -146,6 +146,12 @@ export default async function AdminPage() {
       </section>
 
       <section className="section-block admin-section">
+        <div className="section-heading"><div><p className="section-label">Studio business</p><h2>Congressional podcast production inquiries</h2></div>
+          <Link href="/admin/production-inquiries">View private requests and contact details →</Link>
+        </div>
+      </section>
+
+      <section className="section-block admin-section">
         <div className="section-heading">
           <div>
             <p className="section-label">Source health</p>
