@@ -20,3 +20,10 @@ test("does not mistake guest descriptions and private URLs for transcript links"
 test("does not ingest unrelated links merely containing the word transcript", () => {
   assert.deepEqual(findTranscriptLinks('<a href="/transcript-repo">Home</a>', "https://example.org/e/1"), []);
 });
+
+test("does not import the whole episode page for a #transcript anchor", () => {
+  assert.deepEqual(
+    findTranscriptLinks('<a href="#transcript">Read transcript</a>', "https://example.org/ep/5"),
+    [],
+  );
+});

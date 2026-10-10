@@ -108,6 +108,15 @@ export function findTranscriptLinks(html: string, baseUrl: string): string[] {
     if (!/\b(transcript|read transcript|captions|subtitles)\b/i.test(label)) continue;
     const url = safePublicUrl(href.replace(/&amp;/g, "&"), baseUrl);
     if (!url || url === baseUrl || urls.includes(url)) continue;
+    const source = new URL(baseUrl);
+    const target = new URL(url);
+    if (target.origin === source.origin &&
+        target.pathname === source.pathname &&
+        target.search === source.search && target.hash) {
+      // A #transcript link is an in-page anchor, NOT a standalone transcript.
+      // Avoid importing an entire page's show notes as a transcript.
+      continue;
+    }
     urls.push(url);
   }
   const links = /<link\b([^>]+)>/gi;

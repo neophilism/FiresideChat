@@ -34,6 +34,8 @@ while the service is awake. The GitHub Actions workflow
 endpoint twice an hour to wake sleeping instances. Render sleep and GitHub
 scheduler delays mean this is **best effort**, not a strict real-time guarantee.
 
+The free web worker also refreshes up to five stale/never-synced RSS feeds per cycle, aiming for a 24-hour feed freshness window. Leave `STARTUP_ARCHIVE_SYNC=false` in Render once this worker is deployed; the web service should not block its health checks on a full archive refresh at every wake-up.
+
 The free worker attempts up to `PUBLISHER_BACKFILL_PER_RUN` (default 80) RSS
 transcripts and `TRANSCRIPT_DISCOVERY_PER_RUN` (default 15) episode-page
 lookups per cycle. It persists attempt counters, backoff and last errors so a
