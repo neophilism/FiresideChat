@@ -141,11 +141,27 @@ export default async function EpisodePage({ params }: Props) {
           )
         ) : (
           <div className="empty-state">
-            <strong>Transcript not available yet.</strong>
+            <strong>
+              {episode.transcriptStatus === "PROCESSING"
+                ? "Transcript processing."
+                : episode.transcriptStatus === "AVAILABLE"
+                  ? "Publisher transcript queued for import."
+                  : "Transcript recovery in progress."}
+            </strong>
             <span>
-              Publisher transcripts appear here automatically when the feed
-              provides one.
+              Fireside Chat checks publisher transcript links and the episode
+              website before trying speech-to-text when configured.
             </span>
+            {episode.publisherTranscriptUrl ? (
+              <a
+                className="text-link"
+                href={episode.publisherTranscriptUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open the publisher transcript directly
+              </a>
+            ) : null}
           </div>
         )}
       </section>
