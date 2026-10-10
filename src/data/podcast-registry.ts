@@ -507,6 +507,14 @@ export const podcastRegistry: {
       "party": "Republican",
       "isCurrent": false
     },
+    {
+      "slug": "peter-roskam",
+      "fullName": "Peter Roskam",
+      "kind": "HOUSE",
+      "state": "IL",
+      "party": "Republican",
+      "isCurrent": false
+    },
   ],
   podcasts: [
     {
@@ -1373,6 +1381,23 @@ export const podcastRegistry: {
         }
       ]
     },
+    {
+      "slug": "the-cloakroom-with-peter-roskam",
+      "title": "The Cloakroom with Peter Roskam",
+      "rssUrl": "https://feeds.captivate.fm/bakerhosts/the-cloakroom-with-peter-roskam/",
+      "websiteUrl": "https://www.bakerlaw.com/podcasts/the-cloakroom/",
+      "active": true,
+      "publishingStatus": "ACTIVE",
+      "verificationUrl": "https://podcasts.apple.com/us/podcast/the-cloakroom-with-peter-roskam-bakerhosts/id1759425935",
+      "verifiedAt": "2026-10-10",
+      "verificationNote": "BakerHostetler explicitly identifies former Congressman Peter Roskam as host, and Apple LookUp ID 1759425935 resolves this SHOW-SPECIFIC Captivate feed (not the general mixed BakerHosts podcast feed).",
+      "people": [
+        {
+          "personSlug": "peter-roskam",
+          "role": "HOST"
+        }
+      ]
+    },
   ],
   candidates: [
     {
@@ -1380,12 +1405,6 @@ export const podcastRegistry: {
       "show": "How to Win 2024",
       "sourceUrl": "https://www.ms.now/how-to-win",
       "reason": "Former Senator McCaskill co-hosted this historic series, but its RSS is now shared with a newer Jen Psaki series. A title/episode-date filter is required before ingestion to prevent attributing unrelated episodes to her."
-    },
-    {
-      "person": "Peter Roskam",
-      "show": "The Cloakroom with Peter Roskam",
-      "sourceUrl": "https://www.bakerlaw.com/podcasts/the-cloakroom/",
-      "reason": "Former Rep. Roskam is the verified host; the BakerHosts RSS is shared with unrelated legal shows. Add only when a show-specific feed or safe episode filter is available."
     },
     {
       "person": "Paul Hodes",
