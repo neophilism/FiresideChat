@@ -8,6 +8,8 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 PRIORITY = {
+    1759425935: ("Peter Roskam", "The Cloakroom with Peter Roskam - BakerHosts"),
+    1877621582: ("Claire McCaskill", "How to Win"),
     1801534903: ("Cori Bush and Jamaal Bowman", "Bowman and Bush"),
     1606026612: ("John Kasich", "Kasich & Klepper"),
     1869131540: ("Tim Hutchinson", "Cigar Caucus"),
