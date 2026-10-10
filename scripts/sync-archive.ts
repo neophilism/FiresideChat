@@ -29,6 +29,8 @@ async function main() {
 
   results.push(await runStep("Feed ingestion", "ingest:feeds"));
 
+  results.push(await runStep("Publisher and episode-page transcript recovery", "backfill:transcripts"));
+
   results.push(
     await runStep("Generated transcript fallback", "transcribe:missing"),
   );
