@@ -4,6 +4,10 @@ Fireside Chat is a nonpartisan podcast player and searchable archive for podcast
 
 The product is organized around public servants rather than shows. A person may host multiple podcasts over time, while their Fireside Chat page remains the durable home for episodes, transcripts, accomplishments, and eventually official contact information.
 
+**Complete development and independent-account handoff plan:** [docs/DEVELOPMENT_PLAN.md](docs/DEVELOPMENT_PLAN.md). It preserves the original 11-step MVP roadmap and adds 20 fully scoped work packages for the exhaustive current/former congressional and presidential podcast census, feed/episode backfill, online transcript recovery, optional authorized automatic transcription, and production monitoring.
+
+**Critical distinction:** a verified show in the registry is not automatically an imported episode; an episode is not automatically transcribed. The plan requires auditable coverage of both. See [docs/operations.md](docs/operations.md) and [docs/former-member-census.md](docs/former-member-census.md) for operational details.
+
 ## MVP roadmap
 
 1. Application and PostgreSQL data foundation
