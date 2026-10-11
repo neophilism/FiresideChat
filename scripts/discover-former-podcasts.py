@@ -152,12 +152,15 @@ def matches(name: dict, hit: dict) -> tuple[bool, str]:
         for candidate in names:
             if candidate and re.search(r"(?<!\w)" + re.escape(candidate) + r"(?!\w)", haystack):
                 return True, field
-    # Do not let "Senator X appeared as a guest" become a verified show.
+    # Matching first and last as *independent* tokens creates false leads when
+    # one presenter supplies the first name and another supplies the surname:
+    # "Justin Williams and John Dyer" must never match John Williams.
+    # Accept a narrowly defined middle initial within a single name span.
     if given and family:
+        initials = r"(?<!\\w)" + re.escape(given) + r" [a-z] " + re.escape(family) + r"(?!\\w)"
         for field, haystack in fields.items():
-            parts = haystack.split()
-            if given in parts and family in parts:
-                return True, field + "-tokens"
+            if re.search(initials, haystack):
+                return True, field + "-middle-initial"
     return False, ""
 
 
