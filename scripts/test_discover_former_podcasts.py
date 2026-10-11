@@ -52,5 +52,54 @@ class DiscoveryMatchingTests(unittest.TestCase):
         )
 
 
+    def test_different_presenters_cannot_supply_name_tokens(self):
+        williams = {"first": "John", "last": "Williams", "full_name": "John Williams"}
+        self.assertEqual(
+            module.matches(williams, {"artistName": "Justin Williams and John Dyer"}),
+            (False, ""),
+        )
+        self.assertEqual(
+            module.matches(williams, {"collectionName": "John Dyer with Justin Williams"}),
+            (False, ""),
+        )
+
+    def test_cross_presenter_description_remains_unmatched(self):
+        anderson = {"first": "John", "last": "Anderson", "full_name": "John Anderson"}
+        self.assertEqual(
+            module.matches(
+                anderson,
+                {"collectionDescription": "Brandon Anderson and John Kehayias host the show."},
+            ),
+            (False, ""),
+        )
+
+    def test_genuine_full_name_in_publisher_description_still_matches(self):
+        williams = {"first": "John", "last": "Williams", "full_name": "John Williams"}
+        self.assertEqual(
+            module.matches(
+                williams,
+                {
+                    "artistName": "Independent Media",
+                    "collectionDescription": "Presented by former representative John Williams.",
+                },
+            ),
+            (True, "show-description"),
+        )
+
+    def test_single_middle_initial_in_a_presenters_name(self):
+        williams = {"first": "John", "last": "Williams", "full_name": "John Williams"}
+        self.assertEqual(
+            module.matches(williams, {"artistName": "John R. Williams"}),
+            (True, "creator-middle-initial"),
+        )
+
+    def test_separate_initial_cannot_bridge_two_presenters(self):
+        williams = {"first": "John", "last": "Williams", "full_name": "John Williams"}
+        self.assertEqual(
+            module.matches(williams, {"artistName": "John R Jones and Amy Williams"}),
+            (False, ""),
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
