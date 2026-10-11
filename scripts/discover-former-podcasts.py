@@ -157,7 +157,7 @@ def matches(name: dict, hit: dict) -> tuple[bool, str]:
     # "Justin Williams and John Dyer" must never match John Williams.
     # Accept a narrowly defined middle initial within a single name span.
     if given and family:
-        initials = r"(?<!\\w)" + re.escape(given) + r" [a-z] " + re.escape(family) + r"(?!\\w)"
+        initials = r"(?<!\w)" + re.escape(given) + r" [a-z] " + re.escape(family) + r"(?!\w)"
         for field, haystack in fields.items():
             if re.search(initials, haystack):
                 return True, field + "-middle-initial"
