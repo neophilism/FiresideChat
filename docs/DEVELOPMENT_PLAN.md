@@ -1,3 +1,5 @@
+> **Canonical PR roadmap:** [`registry/roadmap.json`](../registry/roadmap.json). Historical complete development specifications remain below; new PRs and counts must be entered only in the canonical file.
+
 # FiresideChat — complete original and expanded development plan, podcast census, transcript recovery, and independent-account handoff
 
 **Repository:** neophilism/FiresideChat  
