@@ -15,3 +15,7 @@ Read in this order: [docs/DEVELOPMENT_PLAN.md](docs/DEVELOPMENT_PLAN.md), [docs/
 8. Preserve independent/public-service nonpartisanship, source-backed profiles, and the established visual portrait direction. Do not expand this into comments, user accounts, debate, or partisan analysis without new direction.
 
 Only stop for missing credentials, access restrictions, explicit paid-compute approval, failing CI or a real unresolved product decision. Other unblocked work should continue.
+
+## Shared PR registry
+
+Use `registry/prs.json` as the sole active PR plan for Boardroom and Engine Room. Follow `registry/PR_FORMAT.md` and run `node scripts/validate-pr-registry.mjs`. Preserve stable IDs, scope, counts, dependencies, acceptance and contribution-only evidence. `registry/roadmap.json` is retired; never recreate a duplicate milestone plan. This contract supersedes older file-path guidance.
