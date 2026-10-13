@@ -61,6 +61,7 @@ export function buildCoverageInventory(input: CoverageInventoryInput) {
   const databasePublishing = zeroRecord(PUBLISHING_STATES);
   for (const feed of input.database.feeds) {
     databasePublishing[feed.publishingStatus] += 1;
+    if (!feed.active) continue;
     if (feed.nextRetryAt && feed.nextRetryAt.getTime() > checkedAtMs) databaseFeedHealth.retryBlocked += 1;
     if (feed.consecutiveFailures > 0) databaseFeedHealth.failing += 1;
     else if (!feed.lastSuccessfulCheckAt) databaseFeedHealth.neverSynced += 1;
