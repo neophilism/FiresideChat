@@ -115,7 +115,7 @@ For a machine-readable production snapshot:
 npm run archive:status
 ```
 
-This reports active/healthy/stale/failing feeds, latest successful ingestion time, episode count, transcript coverage, and unresolved transcript failures.
+This emits the FC-P01 machine-readable coverage inventory. It keeps committed registry facts separate from the configured PostgreSQL snapshot; reports current officials by class (with D.C. shadow senators separate), qualified people, verified/candidate shows, publishing and feed-health states, episodes, known duration, transcript status/source, latest successful ingestion, deployed commit when Render provides it, and the actual best-effort scheduling policy. It never prints the database URL, credentials, inquiry details or transcript text.
 
 ## Failure response
 
