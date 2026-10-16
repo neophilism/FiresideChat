@@ -1,9 +1,13 @@
 {
-  "schemaVersion": 1,
   "repository": "neophilism/FiresideChat",
-  "roadmapVersion": 1,
+  "title": "FiresideChat",
   "planVerified": true,
   "plannedPrCount": 32,
+  "sourceFiles": [
+    "docs/DEVELOPMENT_PLAN.md"
+  ],
+  "schemaVersion": 1,
+  "roadmapVersion": 1,
   "observedAt": "2026-10-11T17:39:04.772Z",
   "units": [
     {
@@ -13,7 +17,11 @@
       "prs": [
         1
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-02",
@@ -22,7 +30,11 @@
       "prs": [
         2
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-03",
@@ -31,7 +43,11 @@
       "prs": [
         3
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-04",
@@ -40,7 +56,11 @@
       "prs": [
         5
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-05",
@@ -50,7 +70,11 @@
         24,
         33
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-06",
@@ -61,7 +85,11 @@
         13,
         23
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-07",
@@ -70,7 +98,11 @@
       "prs": [
         12
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-08",
@@ -79,7 +111,11 @@
       "prs": [
         17
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-09",
@@ -89,7 +125,11 @@
         14,
         15
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-10",
@@ -98,7 +138,11 @@
       "prs": [
         18
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "MVP-11",
@@ -107,13 +151,21 @@
       "prs": [
         19
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P01",
       "title": "Current production truth and master coverage inventory",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P02",
@@ -123,7 +175,11 @@
         41,
         46
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P03",
@@ -134,25 +190,41 @@
         42,
         45
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P04",
       "title": "Host/cohost/official-production verification queue",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P05",
       "title": "Historical/ambiguous feed and changed-host disambiguation",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P06",
       "title": "Priority missing public-official catalog review",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P07",
@@ -163,13 +235,21 @@
         30,
         32
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P08",
       "title": "Video-only shows and atypical podcast publication",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P09",
@@ -178,7 +258,11 @@
       "prs": [
         39
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P10",
@@ -187,37 +271,61 @@
       "prs": [
         47
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P11",
       "title": "Additional online transcript discovery before generation",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P12",
       "title": "Reliable automatic speech-to-text fallback",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P13",
       "title": "Cost planning and full backlog throughput",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P14",
       "title": "Transcript integrity, correction and timestamp QA",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P15",
       "title": "Search that spans the entire verified historical archive",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P16",
@@ -227,13 +335,21 @@
         27,
         28
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P17",
       "title": "Protected editorial and operations dashboard",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P18",
@@ -242,7 +358,11 @@
       "prs": [
         48
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P19",
@@ -251,13 +371,21 @@
       "prs": [
         21
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P20",
       "title": "Exhaustive archival coverage acceptance and handoff closure",
       "origin": "addition",
-      "prs": []
+      "prs": [],
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     },
     {
       "id": "FC-P21",
@@ -266,7 +394,11 @@
       "prs": [
         49
       ],
-      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability"
+      "mappingEvidence": "Reviewed GitHub PR title/scope against the explicitly named planned capability",
+      "contributingPrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
     }
   ],
   "pullRequests": [
