@@ -8,9 +8,11 @@ const DEFAULT_PUBLISHER_LIMIT = 80;
 const DEFAULT_DISCOVERY_LIMIT = 15;
 const RETRY_MINUTES = 180;
 
-function positiveInt(value: string | undefined, fallback: number) {
-  const n = Number.parseInt(value ?? "", 10);
-  return Number.isInteger(n) && n > 0 ? n : fallback;
+function positiveInt(value: string | undefined, fallback: number, ceiling = 500) {
+  // parseInt accepts malformed values such as "500evil" and unbounded quantities.
+  if (typeof value !== "string" || !/^[1-9][0-9]{0,5}$/.test(value)) return fallback;
+  const n = Number(value);
+  return Number.isSafeInteger(n) && n <= ceiling ? n : fallback;
 }
 
 function errorMessage(error: unknown) {
@@ -86,12 +88,16 @@ async function workerPool<T>(items: T[], concurrency: number, fn: (item: T) => P
 export async function backfillExternalTranscripts(options: {
   publisherLimit?: number; discoveryLimit?: number; concurrency?: number;
 } = {}): Promise<ExternalRecoveryResult> {
-  const publisherLimit = options.publisherLimit ??
-    positiveInt(process.env.PUBLISHER_BACKFILL_PER_RUN, DEFAULT_PUBLISHER_LIMIT);
-  const discoveryLimit = options.discoveryLimit ??
-    positiveInt(process.env.TRANSCRIPT_DISCOVERY_PER_RUN, DEFAULT_DISCOVERY_LIMIT);
-  const maxAttempts = positiveInt(process.env.EXTERNAL_TRANSCRIPT_MAX_ATTEMPTS, 3);
-  const concurrency = Math.min(5, options.concurrency ?? 3);
+  const publisherLimit = positiveInt(
+    String(options.publisherLimit ?? process.env.PUBLISHER_BACKFILL_PER_RUN ?? ""),
+    DEFAULT_PUBLISHER_LIMIT, 500
+  );
+  const discoveryLimit = positiveInt(
+    String(options.discoveryLimit ?? process.env.TRANSCRIPT_DISCOVERY_PER_RUN ?? ""),
+    DEFAULT_DISCOVERY_LIMIT, 100
+  );
+  const maxAttempts = positiveInt(process.env.EXTERNAL_TRANSCRIPT_MAX_ATTEMPTS, 3, 10);
+  const concurrency = positiveInt(String(options.concurrency ?? ""), 3, 5);
   const retryBefore = new Date(Date.now() - RETRY_MINUTES * 60_000);
   const result: ExternalRecoveryResult = {
     publisher: { selected: 0, recovered: 0, failed: 0, skipped: 0 },
