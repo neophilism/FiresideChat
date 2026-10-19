@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/admin-auth";
 import { HostReviewError } from "@/lib/host-review";
-import { addHostEvidence, reviewHostCandidate, submitHostCandidate } from "@/lib/host-review-store";
+import { addHostEvidence, amendHostClaim, reviewHostCandidate, submitHostCandidate } from "@/lib/host-review-store";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
     if (data.action === "submit") await submitHostCandidate(data);
     else if (data.action === "evidence") await addHostEvidence(data);
     else if (data.action === "review") await reviewHostCandidate(data);
+    else if (data.action === "amend") await amendHostClaim(data);
     else throw new HostReviewError("INVALID_ACTION");
     return NextResponse.redirect(new URL("/admin/host-reviews?updated=1", request.url), 303);
   } catch (error) {

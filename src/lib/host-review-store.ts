@@ -65,6 +65,36 @@ export async function addHostEvidence(input: Record<string, unknown>): Promise<v
     }});
   });
 }
+/** Amend an unapproved candidate without rewriting its immutable source citations. */
+export async function amendHostClaim(input: Record<string, unknown>): Promise<void> {
+  const candidateId = id(input.candidateId);
+  const expectedRevision = revision(input.revision);
+  const reason = note(input.amendNote);
+  await db.$transaction(async (tx) => {
+    const row = await tx.hostReviewCandidate.findUnique({where:{id:candidateId}});
+    if (!row || row.revision !== expectedRevision ||
+        !["PENDING","NEEDS_EVIDENCE"].includes(row.status))
+      throw new HostReviewError("STALE_OR_CLOSED_CANDIDATE");
+    // Immutable official identity and show key must not be silently remapped.
+    const candidate = parseCandidate({
+      officialKey:row.officialKey, officialName:row.officialName, identitySourceUrl:row.identitySourceUrl,
+      showKey:row.showKey, showTitle:row.showTitle, feedCandidateUrl:row.feedCandidateUrl,
+      proposedRole:input.proposedRole, hostStartOn:input.hostStartOn, hostEndOn:input.hostEndOn,
+    });
+    const updated = await tx.hostReviewCandidate.updateMany({
+      where:{id:candidateId,revision:expectedRevision,status:{in:["PENDING","NEEDS_EVIDENCE"]}},
+      data:{identityKey:candidateKey(candidate),proposedRole:candidate.proposedRole,
+        hostStartOn:date(candidate.hostStartOn),hostEndOn:date(candidate.hostEndOn),
+        revision:{increment:1},status:"PENDING",reviewedAt:null,reviewerRef:null,reviewNote:null},
+    });
+    if (updated.count !== 1) throw new HostReviewError("CONCURRENT_REVIEW");
+    await tx.hostReviewAudit.create({data:{
+      candidateId, action:"CLAIM_AMENDED", revision:expectedRevision+1, actorRef,
+      note:reason,
+    }});
+  });
+}
+
 export async function reviewHostCandidate(input: Record<string, unknown>): Promise<void> {
   const candidateId = id(input.candidateId);
   const expectedRevision = revision(input.revision);

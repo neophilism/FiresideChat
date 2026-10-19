@@ -25,8 +25,19 @@ export function NewHostCandidateForm() {
   </form>;
 }
 
-export function HostEvidenceAndReviewForms({candidateId,revision}:{candidateId:string;revision:number}) {
+export function HostEvidenceAndReviewForms({candidateId,revision,role,starts,ends}:{candidateId:string;revision:number;role:string;starts:string;ends:string}) {
   return <section aria-label="Private evidence and review actions">
+    <form action="/api/admin/host-reviews" method="post">
+      <input type="hidden" name="action" value="amend" />
+      <input type="hidden" name="candidateId" value={candidateId} />
+      <input type="hidden" name="revision" value={revision} />
+      <h3>Correct the unapproved role and host dates</h3>
+      <p><label>Proposed role <select name="proposedRole" defaultValue={role}>{roles.map(r=><option value={r} key={r}>{r}</option>)}</select></label></p>
+      <p><label>Role starts <input type="date" name="hostStartOn" defaultValue={starts} /></label></p>
+      <p><label>Role ends, if known <input type="date" name="hostEndOn" defaultValue={ends} /></label></p>
+      <p><label>Why is the claim changing? <textarea name="amendNote" required minLength={20} maxLength={2000} /></label></p>
+      <button type="submit">Update pending claim</button>
+    </form>
     <form action="/api/admin/host-reviews" method="post">
       <input name="action" type="hidden" value="evidence" />
       <input name="candidateId" type="hidden" value={candidateId} />

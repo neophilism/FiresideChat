@@ -18,3 +18,5 @@ The private mutation endpoint is `POST /api/admin/host-reviews` (form-encoded). 
 Schema is additive; apply the checked-in PostgreSQL migration through the normal deployment process. Do not call schema existence or a passing unit test proof of production data being migrated. Integration testing with an isolated PostgreSQL database and actual admin session remains necessary. No external/independent security review is claimed.
 
 The pure reviewer contract is in `src/lib/host-review.ts`; negative/period/multi-host tests are in `tests/host-review.test.ts`. The main repository validation CI is authoritative for the exact committed head only; tests not included by its command must be run separately or included in the scripted suite. Unverified entries must never be auto-enabled or advertised as verified official podcasts.
+
+Unapproved role dates and the claimed role can be amended via the private form with a revision check and `CLAIM_AMENDED` audit entry. Once a candidate has been verified, rejected or excluded, updates are closed; corrections need a new explicitly reviewed candidate rather than silent overwrites.

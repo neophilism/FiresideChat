@@ -45,7 +45,7 @@ export default async function HostReviewsPage({searchParams}:Props) {
         {row.evidence.length===0?<p>No evidence submitted.</p>:null}
         <p>Audit: {row.audit.map(a=>a.action+" revision "+a.revision).join("; ") || "None recorded"}</p>
         {row.reviewNote?<p>Reviewer rationale: {row.reviewNote}</p>:null}
-      {row.status==="PENDING"||row.status==="NEEDS_EVIDENCE" ? <HostEvidenceAndReviewForms candidateId={row.id} revision={row.revision} /> : null}
+      {row.status==="PENDING"||row.status==="NEEDS_EVIDENCE" ? <HostEvidenceAndReviewForms candidateId={row.id} revision={row.revision} role={row.proposedRole} starts={row.hostStartOn?.toISOString().slice(0,10) ?? ""} ends={row.hostEndOn?.toISOString().slice(0,10) ?? ""} /> : null}
       </article>)}
       {reviews.length===0?<p>No candidates on this page.</p>:null}
       <p>{page>1?<Link href={"/admin/host-reviews?page="+(page-1)}>Previous</Link>:null}

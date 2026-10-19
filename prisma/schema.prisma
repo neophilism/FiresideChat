@@ -253,6 +253,7 @@ enum HostReviewStatus {
 enum HostReviewAction {
   SUBMITTED
   EVIDENCE_ADDED
+  CLAIM_AMENDED
   VERIFIED
   EXCLUDED_GUEST
   NEEDS_EVIDENCE
