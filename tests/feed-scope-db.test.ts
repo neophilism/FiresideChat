@@ -9,7 +9,7 @@ import { loadFeedScope, reviewedEpisodeWhere } from "../src/lib/feed-scope-store
 const disposable=process.env.GITHUB_ACTIONS==="true" &&
   process.env.DATABASE_URL==="postgresql://postgres:postgres@localhost:5432/fireside_chat?schema=public";
 test("feed source review persists evidence with revision CAS and never publishes by itself",{skip:!disposable},async t=>{
- const podcast=await db.podcast.findFirst({select:{id:true,rssUrl:true}});
+ const podcast=await db.podcast.findFirst({select:{id:true,rssUrl:true,feedEtag:true,feedLastModified:true,resolvedFeedUrl:true}});
  const person=await db.person.findFirst({select:{id:true}});
  if(!podcast||!person){t.skip("Seeded officials and shows unavailable");return;}
  const suffix=randomBytes(8).toString("hex");
@@ -43,10 +43,18 @@ test("feed source review persists evidence with revision CAS and never publishes
     expectedCurrentUrl:"https://wrong.example/feed"}),/FEED_CHANGED_SINCE_REVIEW/);
   const before=await db.podcast.findUniqueOrThrow({where:{id:podcast.id}});
   assert.equal(before.rssUrl,podcast.rssUrl,"A review alone never activates a feed");
+  const oldEpisodeCount=await db.episode.count({where:{podcastId:podcast.id}});
+  await activateReviewedFeed({scopeId:id,revision:"3",expectedCurrentUrl:podcast.rssUrl});
+  const active=await db.podcast.findUniqueOrThrow({where:{id:podcast.id}});
+  assert.equal(active.rssUrl,feedUrl,"Activation requires explicit operator action");
+  assert.equal(active.feedEtag,null,"New feed must not use stale conditional GET headers");
+  assert.equal(await db.episode.count({where:{podcastId:podcast.id}}),oldEpisodeCount,"Feed migration must retain historical episodes");
   const visibility=await reviewedEpisodeWhere(podcast.id,person.id);
   assert.ok("OR" in visibility,"Public visibility must be explicitly scoped by reviewed feed");
  } finally {
   if(id)await db.$transaction(async tx=>{
+    if(podcast)await tx.podcast.update({where:{id:podcast.id},data:{rssUrl:podcast.rssUrl,
+      feedEtag:podcast.feedEtag,feedLastModified:podcast.feedLastModified,resolvedFeedUrl:podcast.resolvedFeedUrl}});
     await tx.feedScopeAudit.deleteMany({where:{scopeId:id}});
     await tx.feedScopeEpisode.deleteMany({where:{scopeId:id}});
     await tx.feedScopeHost.deleteMany({where:{scopeId:id}});
