@@ -118,6 +118,7 @@ model PodcastPerson {
 model Episode {
   id               String           @id @default(cuid())
   podcastId        String
+  sourceFeedUrl    String?
   guid             String
   title            String
   description      String?
@@ -148,6 +149,7 @@ model Episode {
   @@unique([podcastId, guid])
   @@index([publishedAt])
   @@index([podcastId, publishedAt])
+  @@index([podcastId, sourceFeedUrl])
   @@index([transcriptStatus])
 }
 
