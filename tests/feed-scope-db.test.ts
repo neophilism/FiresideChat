@@ -49,6 +49,10 @@ test("feed source review persists evidence with revision CAS and never publishes
   assert.equal(active.rssUrl,feedUrl,"Activation requires explicit operator action");
   assert.equal(active.feedEtag,null,"New feed must not use stale conditional GET headers");
   assert.equal(await db.episode.count({where:{podcastId:podcast.id}}),oldEpisodeCount,"Feed migration must retain historical episodes");
+  const audit=await db.feedScopeAudit.findMany({where:{scopeId:id},orderBy:{revision:"asc"}});
+  assert.deepEqual(audit.map(a=>a.event),["SUBMITTED","HOST_EVIDENCE_ADDED","EPISODE_EVIDENCE_ADDED","APPROVED","ACTIVATED"]);
+  assert.equal((await db.feedScopeRecord.findUniqueOrThrow({where:{id}})).revision,4);
+  await assert.rejects(activateReviewedFeed({scopeId:id,revision:"3",expectedCurrentUrl:feedUrl}),/FEED_NOT_APPROVED/);
   const visibility=await reviewedEpisodeWhere(podcast.id,person.id);
   assert.ok("OR" in visibility,"Public visibility must be explicitly scoped by reviewed feed");
  } finally {

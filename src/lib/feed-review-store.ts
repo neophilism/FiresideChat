@@ -96,10 +96,22 @@ export async function activateReviewedFeed(input:Record<string,unknown>):Promise
    const podcast=await tx.podcast.findUnique({where:{id:record.podcastId}});
    if(!podcast||podcast.rssUrl!==expectedCurrentUrl)
      throw new FeedReviewError("FEED_CHANGED_SINCE_REVIEW");
-   // The original episodes are deliberately retained under their original GUIDs and provenance.
-   await tx.podcast.update({where:{id:record.podcastId},data:{
+   // Replaying activation for the same canonical source is harmless and does not reset the ETag.
+   if(podcast.rssUrl===record.feedUrl)return;
+   const lock=await tx.feedScopeRecord.updateMany({
+     where:{id:scopeId,revision,status:"APPROVED"},data:{revision:{increment:1}},
+   });
+   if(lock.count!==1)throw new FeedReviewError("STALE_OR_CLOSED_FEED_REVIEW");
+   // The original episodes are retained under their original GUIDs and source provenance.
+   const changed=await tx.podcast.updateMany({where:{
+     id:record.podcastId,rssUrl:expectedCurrentUrl,
+   },data:{
      rssUrl:record.feedUrl,feedEtag:null,feedLastModified:null,resolvedFeedUrl:null,
      nextRetryAt:null,consecutiveFailures:0,lastError:null,
    }});
+   if(changed.count!==1)throw new FeedReviewError("FEED_CHANGED_SINCE_REVIEW");
+   await tx.feedScopeAudit.create({data:{scopeId,revision:revision+1,
+     actorRef,event:"ACTIVATED",note:"Approved source activated; historical episodes retained. Previous feed: "+expectedCurrentUrl},
+   });
  });
 }

@@ -243,6 +243,7 @@ enum FeedScopeEvent {
   HOST_EVIDENCE_ADDED
   APPROVED
   REJECTED
+  ACTIVATED
 }
 model FeedScopeRecord {
   id               String            @id @default(cuid())

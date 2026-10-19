@@ -22,3 +22,5 @@ The first URL of a newly accepted feed might not yet have its original historica
 ## CI and release evidence
 
 `tests/feed-scope.test.ts`, `tests/feed-disambiguation.test.ts`, and `tests/feed-review.test.ts` cover source identity drift, missing evidence, role dates, overlapping hosts, and conflicting GUIDs. The database integration test `tests/feed-scope-db.test.ts` runs only with `GITHUB_ACTIONS=true` and exactly the known ephemeral PostgreSQL CI URL. It verifies transactional evidence, replay protection, and nonactivation; it does not access production. `npm test`, `npm run lint`, `npm run typecheck`, `npm run build` and registry check are necessary current-head software gates; they are not proof that any new official content has been ingested or source-verified.
+
+Feed activation is a compare-and-swap transaction on the approved review revision and the current canonical feed URL. The separate ACTIVATED audit event records the source switch without touching old episode rows. Replaying a completed activation with the current revision is idempotent and does not reset HTTP caching headers; stale replay with a preactivation revision is rejected.
