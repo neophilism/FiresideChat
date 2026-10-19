@@ -26,3 +26,5 @@ The authenticated operations view supports status-specific pending/needs-evidenc
 `approvedHostsForEpisode` projects separately authenticated role/date decisions into a read-only per-episode official-key list; it cannot write a person/show link. It deduplicates the same official on a shared show and excludes guest-only and pre-host episodes.
 
 Rejection is also source-backed: without a timely citation, operators must request more evidence rather than entering a final negative verdict. Network-only credits and guest appearances cannot silently prove a host relationship.
+
+An opt-in ephemeral PostgreSQL integration test exercises transaction revisions, append-only audit and nonpublication. It runs only within repository GitHub Actions against the exact local CI database URL; outside that isolated environment it explicitly skips, never writing synthetic verification records to production.
