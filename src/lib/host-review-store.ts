@@ -20,7 +20,7 @@ function revision(value: unknown): number {
   if (!Number.isSafeInteger(n)) throw new HostReviewError("INVALID_REVIEW_REVISION");
   return n;
 }
-export async function submitHostCandidate(input: Record<string, unknown>): Promise<string> {
+export async function submitHostCandidate(input: Record<string, unknown>, origin: "ADMIN" | "BATCH" = "ADMIN"): Promise<string> {
   const candidate = parseCandidate(input);
   const evidence = input.sourceUrl ? parseEvidence(input) : null;
   // Role and source metadata remain unverified until authenticated operator decision.
@@ -39,7 +39,7 @@ export async function submitHostCandidate(input: Record<string, unknown>): Promi
         excerpt: evidence.excerpt, observedOn: date(evidence.observedOn)!},
     });
     await tx.hostReviewAudit.create({
-      data: {candidateId: row.id, action:"SUBMITTED", revision:0, actorRef,
+      data: {candidateId: row.id, action:"SUBMITTED", revision:0, actorRef:origin==="BATCH"?"explicit-batch-import":actorRef,
         note: "Candidate entered into private source-review queue; not published."},
     });
     return row.id;

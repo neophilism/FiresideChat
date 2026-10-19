@@ -28,3 +28,9 @@ The authenticated operations view supports status-specific pending/needs-evidenc
 Rejection is also source-backed: without a timely citation, operators must request more evidence rather than entering a final negative verdict. Network-only credits and guest appearances cannot silently prove a host relationship.
 
 An opt-in ephemeral PostgreSQL integration test exercises transaction revisions, append-only audit and nonpublication. It runs only within repository GitHub Actions against the exact local CI database URL; outside that isolated environment it explicitly skips, never writing synthetic verification records to production.
+
+## Offline review-lead staging
+
+For a source-backed officeholder/show candidate inventory, use `npm run host-review:batch -- --dry-run file.jsonl` first. Each JSONL row follows the NewHostCandidateForm field names. This checks up to 1,000 rows / 2 MB and rejects duplicate identity+show+start keys before any database write. It does **not** discover real shows or verify hosts.
+
+An operator may explicitly stage valid leads as **PENDING only** using `HOST_REVIEW_BATCH_APPLY=yes npm run host-review:batch -- --apply file.jsonl` with an already authorized DATABASE_URL, outside CI. Duplicate existing candidates are left unchanged; any nonduplicate failure stops the bounded run for investigation. No private feed is fetched, podcast is published or official role approved. The audit labels these submissions as a CLI import rather than falsely attributing them to a web admin session.
