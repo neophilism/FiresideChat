@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { candidateKey, decideReview, hostPeriodIncludes, parseCandidate, parseEvidence, sourceUrl } from "../src/lib/host-review";
+import { approvedHostsForEpisode, candidateKey, decideReview, hostPeriodIncludes, parseCandidate, parseEvidence, sourceUrl } from "../src/lib/host-review";
 const base = {officialKey:"BIOGUIDE:A123456",officialName:"Alex Morgan",identitySourceUrl:"https://bioguide.congress.gov/official",
   showKey:"civic-hour",showTitle:"Civic Hour",proposedRole:"HOST",feedCandidateUrl:"",hostStartOn:"2024-05-01",hostEndOn:""};
 const host = parseCandidate(base);
@@ -50,4 +50,20 @@ test("cohost and official production require exact role evidence; conflicts rema
   assert.equal(decideReview(production,[{...hostProof,kind:"OFFICIAL_PRODUCTION"}],"VERIFY",reviewerNote,"2026-10-19"),"VERIFIED");
   assert.throws(()=>decideReview(host,[hostProof,{...hostProof,kind:"GUEST_APPEARANCE"}],"EXCLUDE_GUEST",reviewerNote,"2026-10-19"),/CONFLICTING_ROLE_EVIDENCE/);
   assert.throws(()=>parseEvidence({kind:"NETWORK_ONLY",sourceUrl:"https://example.org/",excerpt:"short",observedOn:"2026-10-18"}),/INVALID_TEXT/);
+});
+
+test("shared-show episode projection includes verified cohosts, not earlier or unrelated episodes",()=>{
+  const cohost = parseCandidate({...base,officialKey:"BIOGUIDE:B123456",proposedRole:"COHOST"});
+  const hostPeriodLater = parseCandidate({...base,officialKey:"BIOGUIDE:C123456",hostStartOn:"2025-06-01"});
+  const guest = parseCandidate({...base,officialKey:"BIOGUIDE:D123456",proposedRole:"GUEST"});
+  const records = [
+    {candidate:host,status:"VERIFIED" as const},
+    {candidate:cohost,status:"VERIFIED" as const},
+    {candidate:hostPeriodLater,status:"VERIFIED" as const},
+    {candidate:guest,status:"EXCLUDED_GUEST" as const},
+    {candidate:host,status:"VERIFIED" as const},
+  ];
+  assert.deepEqual(approvedHostsForEpisode(records,"civic-hour","2025-04-01"),["BIOGUIDE:A123456","BIOGUIDE:B123456"]);
+  assert.deepEqual(approvedHostsForEpisode(records,"civic-hour","2025-07-01"),["BIOGUIDE:A123456","BIOGUIDE:B123456","BIOGUIDE:C123456"]);
+  assert.deepEqual(approvedHostsForEpisode(records,"unrelated-network-show","2025-07-01"),[]);
 });

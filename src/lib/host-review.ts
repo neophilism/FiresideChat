@@ -104,3 +104,18 @@ export function hostPeriodIncludes(candidate: CandidateInput, status: ReviewStat
   return status === "VERIFIED" && Boolean(candidate.hostStartOn) &&
     episodeDay >= candidate.hostStartOn! && (!candidate.hostEndOn || episodeDay <= candidate.hostEndOn);
 }
+
+/** Read-only date-bound projection. It does not mutate PodcastPerson or make feeds public. */
+export function approvedHostsForEpisode(
+  reviews: readonly { candidate: CandidateInput; status: ReviewStatus }[],
+  showKey: string, publishedOn: string,
+): string[] {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(showKey)) return fail("INVALID_SHOW_KEY");
+  day(publishedOn);
+  const eligible = new Set<string>();
+  for (const review of reviews) {
+    if (review.candidate.showKey !== showKey) continue;
+    if (hostPeriodIncludes(review.candidate, review.status, publishedOn)) eligible.add(review.candidate.officialKey);
+  }
+  return [...eligible].sort();
+}

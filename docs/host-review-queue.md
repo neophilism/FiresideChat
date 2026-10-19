@@ -22,3 +22,5 @@ The pure reviewer contract is in `src/lib/host-review.ts`; negative/period/multi
 Unapproved role dates and the claimed role can be amended via the private form with a revision check and `CLAIM_AMENDED` audit entry. Once a candidate has been verified, rejected or excluded, updates are closed; corrections need a new explicitly reviewed candidate rather than silent overwrites.
 
 The authenticated operations view supports status-specific pending/needs-evidence/approved/guest-excluded/rejected queues with stable pagination. Verification and rejection always require distinct evidence and audited operator action.
+
+`approvedHostsForEpisode` projects separately authenticated role/date decisions into a read-only per-episode official-key list; it cannot write a person/show link. It deduplicates the same official on a shared show and excludes guest-only and pre-host episodes.
