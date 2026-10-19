@@ -76,7 +76,7 @@ const matchingEvidence: Record<"HOST" | "COHOST" | "OFFICIAL_PRODUCER", Evidence
   HOST: "HOST_CREDIT", COHOST: "COHOST_CREDIT", OFFICIAL_PRODUCER: "OFFICIAL_PRODUCTION",
 };
 export function decideReview(candidate: CandidateInput, evidence: readonly EvidenceInput[],
-    decision: ReviewDecision, note: string, reviewedOn: string): ReviewStatus {
+    decision: ReviewDecision, note: string, reviewedOn: string): Exclude<ReviewStatus, "PENDING"> {
   const explanation = asText(note, 2000, 20);
   if (!explanation) return fail("MISSING_REVIEW_RATIONALE");
   const today = day(reviewedOn) as string;
