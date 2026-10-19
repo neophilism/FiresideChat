@@ -91,6 +91,8 @@ export function decideReview(candidate: CandidateInput, evidence: readonly Evide
   }
   if (decision === "EXCLUDE_GUEST") {
     if (!timely.some(e => e.kind === "GUEST_APPEARANCE")) return fail("NO_GUEST_EVIDENCE");
+    const roleKind = matchingEvidence[candidate.proposedRole as keyof typeof matchingEvidence];
+    if (roleKind && timely.some(e => e.kind === roleKind)) return fail("CONFLICTING_ROLE_EVIDENCE");
     return "EXCLUDED_GUEST";
   }
   if (decision === "REQUEST_EVIDENCE") return "NEEDS_EVIDENCE";

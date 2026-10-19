@@ -41,3 +41,13 @@ test("untrusted and malformed URL, dates and identities reject",()=>{
   assert.throws(()=>parseCandidate({...base,hostStartOn:"2026-02-30"}),/INVALID_DAY/);
   assert.throws(()=>parseCandidate({...base,hostEndOn:"2023-01-01"}),/INVALID_HOST_PERIOD/);
 });
+
+test("cohost and official production require exact role evidence; conflicts remain unapproved",()=>{
+  const cohost=parseCandidate({...base,proposedRole:"COHOST"});
+  assert.throws(()=>decideReview(cohost,[hostProof],"VERIFY",reviewerNote,"2026-10-19"),/NO_MATCHING_ROLE_EVIDENCE/);
+  assert.equal(decideReview(cohost,[{...hostProof,kind:"COHOST_CREDIT"}],"VERIFY",reviewerNote,"2026-10-19"),"VERIFIED");
+  const production=parseCandidate({...base,proposedRole:"OFFICIAL_PRODUCER"});
+  assert.equal(decideReview(production,[{...hostProof,kind:"OFFICIAL_PRODUCTION"}],"VERIFY",reviewerNote,"2026-10-19"),"VERIFIED");
+  assert.throws(()=>decideReview(host,[hostProof,{...hostProof,kind:"GUEST_APPEARANCE"}],"EXCLUDE_GUEST",reviewerNote,"2026-10-19"),/CONFLICTING_ROLE_EVIDENCE/);
+  assert.throws(()=>parseEvidence({kind:"NETWORK_ONLY",sourceUrl:"https://example.org/",excerpt:"short",observedOn:"2026-10-18"}),/INVALID_TEXT/);
+});
