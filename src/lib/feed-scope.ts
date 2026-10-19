@@ -81,3 +81,11 @@ export function canPreserveLegacyEpisode(previous:{
  return previous.audioUrl===episode.audioUrl &&
    previous.publishedAt.getTime()===episode.publishedAt.getTime();
 }
+
+/** A reviewed podcast may only recover transcripts for its explicitly scoped source. */
+export function transcriptScopePredicate(scope:FeedScope):{sourceFeedUrl:string;guid?:{in:string[]}}{
+ validateFeedScope(scope);
+ if(scope.status!=="APPROVED")throw new Error("TRANSCRIPT_SCOPE_UNAPPROVED");
+ return {sourceFeedUrl:scope.feedUrl,
+   ...(scope.mode==="SHARED"?{guid:{in:scope.episodes.map(e=>e.guid)}}:{})};
+}

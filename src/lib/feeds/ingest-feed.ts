@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { loadFeedScope } from "@/lib/feed-scope-store";
-import { filterScopedFeed, canPreserveLegacyEpisode } from "@/lib/feed-scope";
+import { filterScopedFeed, canPreserveLegacyEpisode, transcriptScopePredicate, type FeedScope } from "@/lib/feed-scope";
 import { fetchFeed } from "./fetch-feed";
 import { parseFeed } from "./parse-feed";
 import { fetchPublisherTranscript } from "./publisher-transcript";
@@ -47,11 +47,12 @@ function episodeData(episode: NormalizedEpisode) {
   };
 }
 
-async function ingestPublisherTranscripts(podcastId: string) {
+async function ingestPublisherTranscripts(podcastId: string, scope?: FeedScope) {
   const limit = envPositiveInteger("PUBLISHER_TRANSCRIPTS_PER_RUN") ?? 20;
   const episodes = await db.episode.findMany({
     where: {
       podcastId,
+      ...(scope?transcriptScopePredicate(scope):{}),
       publisherTranscriptUrl: { not: null },
       OR: [
         { transcriptStatus: { not: "COMPLETE" } },
@@ -197,7 +198,7 @@ export async function ingestPodcastBySlug(
 
     if (fetched.status === "not-modified") {
       if (feedScope && fetched.finalUrl !== feedScope.feedUrl) throw new Error("FEED_IDENTITY_CHANGED");
-      await ingestPublisherTranscripts(podcast.id);
+      await ingestPublisherTranscripts(podcast.id,feedScope??undefined);
 
       await db.$transaction([
         db.podcast.update({
@@ -301,7 +302,7 @@ export async function ingestPodcastBySlug(
       });
     }
 
-    await ingestPublisherTranscripts(podcast.id);
+    await ingestPublisherTranscripts(podcast.id,feedScope??undefined);
 
     const episodesCreated = parsed.episodes.filter(
       (episode) => !existingGuids.has(episode.guid),

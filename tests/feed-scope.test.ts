@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { canPreserveLegacyEpisode, eligibleOfficialIds, filterScopedFeed, validateFeedScope, type FeedScope } from "../src/lib/feed-scope";
+import { canPreserveLegacyEpisode, transcriptScopePredicate, eligibleOfficialIds, filterScopedFeed, validateFeedScope, type FeedScope } from "../src/lib/feed-scope";
 import type { NormalizedEpisode,ParsedFeed } from "../src/lib/feeds/types";
 const episode=(guid:string,day:string):NormalizedEpisode=>({
  guid,title:guid,description:null,publishedAt:new Date(day+"T12:00:00.000Z"),sourceUpdatedAt:null,
@@ -51,4 +51,14 @@ test("reviewed feed origin preserves matching legacy history without source subs
    publishedAt:current.publishedAt},current,scope.feedUrl),false);
  assert.equal(canPreserveLegacyEpisode({sourceFeedUrl:scope.feedUrl,audioUrl:current.audioUrl,
    publishedAt:new Date("2024-01-01T00:00:00Z")},current,scope.feedUrl),false);
+});
+
+test("publisher transcript recovery cannot escape approved shared-feed GUID scope",()=>{
+ assert.deepEqual(transcriptScopePredicate(scope),{
+   sourceFeedUrl:scope.feedUrl,guid:{in:["official-b"]},
+ });
+ assert.deepEqual(transcriptScopePredicate({...scope,mode:"DEDICATED",episodes:[]}),{
+   sourceFeedUrl:scope.feedUrl,
+ });
+ assert.throws(()=>transcriptScopePredicate({...scope,status:"PENDING"}),/TRANSCRIPT_SCOPE_UNAPPROVED/);
 });
