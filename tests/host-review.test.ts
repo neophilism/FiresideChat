@@ -67,3 +67,9 @@ test("shared-show episode projection includes verified cohosts, not earlier or u
   assert.deepEqual(approvedHostsForEpisode(records,"civic-hour","2025-07-01"),["BIOGUIDE:A123456","BIOGUIDE:B123456","BIOGUIDE:C123456"]);
   assert.deepEqual(approvedHostsForEpisode(records,"unrelated-network-show","2025-07-01"),[]);
 });
+
+test("rejection requires observed source evidence, otherwise review remains pending",()=>{
+  assert.throws(()=>decideReview(host,[],"REJECT",reviewerNote,"2026-10-19"),/NO_REJECTION_EVIDENCE/);
+  assert.equal(decideReview(host,[{...hostProof,kind:"NETWORK_ONLY"}],"REJECT",reviewerNote,"2026-10-19"),"REJECTED");
+  assert.equal(decideReview(host,[],"REQUEST_EVIDENCE",reviewerNote,"2026-10-19"),"NEEDS_EVIDENCE");
+});

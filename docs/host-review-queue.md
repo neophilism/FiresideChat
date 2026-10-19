@@ -24,3 +24,5 @@ Unapproved role dates and the claimed role can be amended via the private form w
 The authenticated operations view supports status-specific pending/needs-evidence/approved/guest-excluded/rejected queues with stable pagination. Verification and rejection always require distinct evidence and audited operator action.
 
 `approvedHostsForEpisode` projects separately authenticated role/date decisions into a read-only per-episode official-key list; it cannot write a person/show link. It deduplicates the same official on a shared show and excludes guest-only and pre-host episodes.
+
+Rejection is also source-backed: without a timely citation, operators must request more evidence rather than entering a final negative verdict. Network-only credits and guest appearances cannot silently prove a host relationship.

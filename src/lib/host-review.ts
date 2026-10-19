@@ -96,6 +96,7 @@ export function decideReview(candidate: CandidateInput, evidence: readonly Evide
     return "EXCLUDED_GUEST";
   }
   if (decision === "REQUEST_EVIDENCE") return "NEEDS_EVIDENCE";
+  if (timely.length === 0) return fail("NO_REJECTION_EVIDENCE");
   return "REJECTED";
 }
 /** Endpoints can gate per-episode attribution; shared multi-host shows yield one check per official. */
