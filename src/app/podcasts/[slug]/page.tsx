@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { EpisodeCard } from "@/components/episode-card";
 import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { db } from "@/lib/db";
-import { reviewedEpisodeWhere } from "@/lib/feed-scope-store";
+import { reviewedEpisodeWhere, feedAttributionForPodcast } from "@/lib/feed-scope-store";
 import { officeLabel } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
@@ -55,22 +55,27 @@ export default async function PodcastPage({ params, searchParams }: Props) {
     skip: (pageNumber - 1) * PAGE_SIZE,
     take: PAGE_SIZE,
   });
+  const attribution=await feedAttributionForPodcast(podcast.id);
+  const reviewedIds=attribution?[...new Set(episodes.flatMap(e=>attribution(e)))]:[];
+  const reviewedPeople=reviewedIds.length?await db.person.findMany({where:{id:{in:reviewedIds}}}):[];
+  const personById=new Map([...podcast.people.map(p=>p.person),...reviewedPeople].map(p=>[p.id,p]));
+  const presenter=attribution?(reviewedPeople[0]??person):person;
 
   return (
     <div className="detail-page">
       <section className="show-hero">
         <IllustratedPortrait
-          slug={person.slug}
-          name={person.fullName}
+          slug={presenter.slug}
+          name={presenter.fullName}
           className="illustrated-portrait-hero"
           large
         />
         <div>
           <p className="eyebrow">
-            {officeLabel(person.kind, person.isCurrent, person.state)}
+            {attribution?"Reviewed host periods":officeLabel(person.kind, person.isCurrent, person.state)}
           </p>
           <h1>{podcast.title}</h1>
-          <p className="show-byline">with {person.fullName}</p>
+          <p className="show-byline">{attribution?"Source-reviewed host credits, episode by episode":"with "+person.fullName}</p>
           <p className="lede compact-lede">
             {podcast.feedDescription ?? podcast.description ?? "Listen to the complete show archive."}
           </p>
@@ -96,14 +101,11 @@ export default async function PodcastPage({ params, searchParams }: Props) {
         {episodes.length > 0 ? (
           <>
             <div className="episode-list">
-              {episodes.map((episode) => (
-                <EpisodeCard
-                  key={episode.id}
-                  episode={episode}
-                  podcast={podcast}
-                  person={person}
-                />
-              ))}
+              {episodes.map((episode) => {
+                const credited=attribution?attribution(episode).map(id=>personById.get(id)).find(p=>p):person;
+                if(!credited)return null;
+                return <EpisodeCard key={episode.id} episode={episode} podcast={podcast} person={credited}/>;
+              })}
             </div>
             {totalPages > 1 ? (
               <nav className="pagination" aria-label="Episode pages">

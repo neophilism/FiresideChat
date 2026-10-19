@@ -80,3 +80,24 @@ export async function archiveVisibleWhere():Promise<Prisma.EpisodeWhereInput> {
  }
  return {OR:branches};
 }
+
+/** Provide per-episode reviewed host IDs; unlike the first show contact, these match role periods. */
+export async function feedAttributionForPodcast(podcastId:string):Promise<((episode:{
+ guid:string;publishedAt:Date;sourceFeedUrl:string|null,
+})=>string[])|null>{
+ const records=await db.feedScopeRecord.findMany({where:{podcastId},include:{hosts:true,episodes:true}});
+ if(records.length===0)return null;
+ return episode=>{
+   const date=episode.publishedAt.toISOString().slice(0,10);
+   const ids=new Set<string>();
+   for(const record of records){
+     if(record.status!=="APPROVED"||record.feedUrl!==episode.sourceFeedUrl)continue;
+     if(record.mode==="SHARED"&&!record.episodes.some(e=>e.guid===episode.guid))continue;
+     for(const host of record.hosts){
+       const from=host.fromOn.toISOString().slice(0,10),to=host.toOn?.toISOString().slice(0,10);
+       if(date>=from&&(!to||date<=to))ids.add(host.personId);
+     }
+   }
+   return [...ids].sort();
+ };
+}

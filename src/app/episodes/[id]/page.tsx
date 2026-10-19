@@ -5,7 +5,7 @@ import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { PlayButton } from "@/components/player/play-button";
 import { TranscriptSegments } from "@/components/transcript-segments";
 import { db } from "@/lib/db";
-import { reviewedEpisodeWhere } from "@/lib/feed-scope-store";
+import { reviewedEpisodeWhere, feedAttributionForPodcast } from "@/lib/feed-scope-store";
 import { formatDate, formatDuration, officeLabel } from "@/lib/presentation";
 import { portraitUrlForSlug } from "@/lib/portraits";
 
@@ -61,7 +61,10 @@ export default async function EpisodePage({ params }: Props) {
   if ((await db.episode.count({where:{id:episode.id,
       ...await reviewedEpisodeWhere(episode.podcastId)}}))!==1) notFound();
 
-  const person = episode.podcast.people[0]?.person;
+  const attribution=await feedAttributionForPodcast(episode.podcastId);
+  const person=attribution
+    ? await db.person.findFirst({where:{id:{in:attribution(episode)}},orderBy:{id:"asc"}})
+    : episode.podcast.people[0]?.person;
   if (!person) notFound();
 
   const duration = formatDuration(episode.durationSeconds);
