@@ -59,3 +59,24 @@ export async function reviewedEpisodeWhere(
   if(alternatives.length===0)return {id:{in:[]}};
   return {OR:alternatives};
 }
+
+/** Global published episode filter for search, transcript search and archive browsing. */
+export async function archiveVisibleWhere():Promise<Prisma.EpisodeWhereInput> {
+ const records=await db.feedScopeRecord.findMany({include:{hosts:true,episodes:true}});
+ if(records.length===0)return {};
+ const reviewedIds=[...new Set(records.map(r=>r.podcastId))];
+ const branches:Prisma.EpisodeWhereInput[]=[{podcastId:{notIn:reviewedIds}}];
+ for(const record of records) {
+   if(record.status!=="APPROVED"||record.hosts.length===0)continue;
+   const hosts:Prisma.EpisodeWhereInput[]=record.hosts.map(h=>({
+     publishedAt:{gte:h.fromOn,...(h.toOn?{lt:nextDay(h.toOn.toISOString().slice(0,10))}:{})},
+   }));
+   if(record.mode==="SHARED"&&record.episodes.length===0)continue;
+   branches.push({
+     podcastId:record.podcastId,sourceFeedUrl:record.feedUrl,
+     ...(record.mode==="SHARED"?{guid:{in:record.episodes.map(e=>e.guid)}}:{}),
+     OR:hosts,
+   });
+ }
+ return {OR:branches};
+}
