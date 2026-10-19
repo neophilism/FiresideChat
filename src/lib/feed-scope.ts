@@ -71,3 +71,13 @@ export function eligibleOfficialIds(scope:FeedScope,episode:{guid:string;publish
  const on=episode.publishedAt.toISOString().slice(0,10);
  return [...new Set(scope.hosts.filter(h=>on>=h.fromDay&&(!h.toDay||on<=h.toDay)).map(h=>h.officialId))].sort();
 }
+
+/** Do not overwrite another feed's GUID; legacy rows may be tagged only if media and date agree exactly. */
+export function canPreserveLegacyEpisode(previous:{
+ sourceFeedUrl:string|null;audioUrl:string;publishedAt:Date;
+},episode:Pick<NormalizedEpisode,"audioUrl"|"publishedAt">,approvedFeedUrl:string):boolean {
+ if(!previous||!previous.publishedAt||!episode.publishedAt||!previous.audioUrl)return false;
+ if(previous.sourceFeedUrl!==null&&previous.sourceFeedUrl!==approvedFeedUrl)return false;
+ return previous.audioUrl===episode.audioUrl &&
+   previous.publishedAt.getTime()===episode.publishedAt.getTime();
+}

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { eligibleOfficialIds, filterScopedFeed, validateFeedScope, type FeedScope } from "../src/lib/feed-scope";
+import { canPreserveLegacyEpisode, eligibleOfficialIds, filterScopedFeed, validateFeedScope, type FeedScope } from "../src/lib/feed-scope";
 import type { NormalizedEpisode,ParsedFeed } from "../src/lib/feeds/types";
 const episode=(guid:string,day:string):NormalizedEpisode=>({
  guid,title:guid,description:null,publishedAt:new Date(day+"T12:00:00.000Z"),sourceUpdatedAt:null,
@@ -39,4 +39,16 @@ test("fake approval, malformed windows and duplicate episode proofs fail closed"
  assert.throws(()=>validateFeedScope({...scope,hosts:[{...scope.hosts[0],toDay:"2024-01-01"}]}),/INVALID_HOST_PERIOD/);
  assert.throws(()=>validateFeedScope({...scope,episodes:[...scope.episodes,...scope.episodes]}),/INVALID_EPISODE_APPROVAL/);
  assert.throws(()=>validateFeedScope({...scope,episodes:[]}),/SHARED_FEED_NEEDS_EPISODE_EVIDENCE/);
+});
+
+test("reviewed feed origin preserves matching legacy history without source substitution",()=>{
+ const current=episode("official-b","2025-03-01");
+ assert.equal(canPreserveLegacyEpisode({sourceFeedUrl:null,audioUrl:current.audioUrl,publishedAt:current.publishedAt},
+   current,scope.feedUrl),true);
+ assert.equal(canPreserveLegacyEpisode({sourceFeedUrl:"https://different.example/feed",audioUrl:current.audioUrl,
+   publishedAt:current.publishedAt},current,scope.feedUrl),false);
+ assert.equal(canPreserveLegacyEpisode({sourceFeedUrl:null,audioUrl:"https://different.example/audio",
+   publishedAt:current.publishedAt},current,scope.feedUrl),false);
+ assert.equal(canPreserveLegacyEpisode({sourceFeedUrl:scope.feedUrl,audioUrl:current.audioUrl,
+   publishedAt:new Date("2024-01-01T00:00:00Z")},current,scope.feedUrl),false);
 });
