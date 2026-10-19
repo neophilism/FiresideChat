@@ -2,6 +2,7 @@ import Link from "next/link";
 import { EpisodeCard } from "@/components/episode-card";
 import { IllustratedPortrait } from "@/components/illustrated-portrait";
 import { db } from "@/lib/db";
+import { archiveVisibleWhere } from "@/lib/feed-scope-store";
 import { officeLabel } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
@@ -59,6 +60,7 @@ export default async function SearchPage({ searchParams }: Props) {
     );
   }
 
+  const publicEpisodeWhere=await archiveVisibleWhere();
   const [people, podcasts, episodes, transcriptSegments, plainTranscripts] =
     await Promise.all([
     db.person.findMany({
@@ -79,10 +81,10 @@ export default async function SearchPage({ searchParams }: Props) {
     }),
     db.episode.findMany({
       where: {
-        OR: [
+        AND:[publicEpisodeWhere,{OR: [
           { title: { contains: q, mode: "insensitive" } },
           { description: { contains: q, mode: "insensitive" } },
-        ],
+        ]}],
       },
       include: {
         podcast: { include: { people: { include: { person: true } } } },
@@ -91,7 +93,8 @@ export default async function SearchPage({ searchParams }: Props) {
       take: 40,
     }),
     db.transcriptSegment.findMany({
-      where: { text: { contains: q, mode: "insensitive" } },
+      where: { text: { contains: q, mode: "insensitive" },
+        transcript: { is: { episode: { is: publicEpisodeWhere } } } },
       include: {
         transcript: {
           include: {
@@ -111,6 +114,7 @@ export default async function SearchPage({ searchParams }: Props) {
       where: {
         fullText: { contains: q, mode: "insensitive" },
         segments: { none: {} },
+        episode: { is: publicEpisodeWhere },
       },
       include: {
         episode: {
