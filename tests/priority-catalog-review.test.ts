@@ -33,3 +33,15 @@ test("precise source blocker requires independent evidence, not generic unknown"
  assert.throws(()=>validatePriorityReview({...blocked,blockerEvidenceUrl:null}),/SOURCE_BLOCKER_NOT_PRECISE/);
  assert.throws(()=>validatePriorityReview({...blocked,blockerReason:"missing"}),/SOURCE_BLOCKER_NOT_PRECISE/);
 });
+
+test("source blockers cannot smuggle unproved host claims or guest credits",()=>{
+ const base:PriorityOfficialShowReview={...pending,outcome:"PRECISE_SOURCE_BLOCKER",
+  officialIdentityKey:"BIOGUIDE:A123456",identitySourceUrl:"https://bioguide.congress.gov/source",
+  lastObservedOn:"2026-10-19",blockerCode:"RSS_UNAVAILABLE",
+  blockerEvidenceUrl:"https://publisher.example/no-feed",
+  blockerReason:"Primary publisher confirms the RSS is currently missing."};
+ assert.throws(()=>validatePriorityReview({...base,role:"HOST"}),/BLOCKED_ROLE_REQUIRES_CITATION/);
+ assert.throws(()=>validatePriorityReview({...base,role:"GUEST",roleSourceUrl:"https://publisher.example/guest",hostedFrom:"2026-01-01"}),/BLOCKED_ROLE_REQUIRES_CITATION/);
+ assert.doesNotThrow(()=>validatePriorityReview({...base,role:"HOST",
+  roleSourceUrl:"https://publisher.example/host",hostedFrom:"2025-01-01"}));
+});

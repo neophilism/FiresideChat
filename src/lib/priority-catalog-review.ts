@@ -44,6 +44,13 @@ export function validatePriorityReview(record:PriorityOfficialShowReview):void {
    typeof record.blockerReason!=="string"||record.blockerReason.trim().length<20||
    !https(record.blockerEvidenceUrl)||record.importedEpisodeCount!==0)
    throw new Error("SOURCE_BLOCKER_NOT_PRECISE");
+ if(record.role!==null){
+   if(!["HOST","COHOST","OFFICIAL_PRODUCER"].includes(record.role)||
+     !https(record.roleSourceUrl)||!day(record.hostedFrom)||
+     (record.hostedUntil!==null&&(!day(record.hostedUntil)||record.hostedUntil<record.hostedFrom!)))
+      throw new Error("BLOCKED_ROLE_REQUIRES_CITATION");
+ } else if(record.roleSourceUrl!==null||record.hostedFrom!==null||record.hostedUntil!==null)
+   throw new Error("BLOCKED_ROLE_REQUIRES_CITATION");
 }
 /** One named official may legitimately host multiple shows; never key on name alone. */
 export function priorityReviewKey(record:PriorityOfficialShowReview):string {
