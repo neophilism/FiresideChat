@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdminAuthenticated } from "@/lib/admin-auth";
 import { db } from "@/lib/db";
+import { HostEvidenceAndReviewForms, NewHostCandidateForm } from "@/components/host-review-forms";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Host verification queue", robots: { index: false, follow: false } };
@@ -28,6 +29,8 @@ export default async function HostReviewsPage({searchParams}:Props) {
       <Link href="/admin">Back to operations</Link>
     </section>
     <section className="section-block admin-section"><h2>{total} candidates</h2>
+      <p>Shared administrator authentication proves a private review session, not the human operator identity.</p>
+      <NewHostCandidateForm />
       {reviews.map(row=><article className="studio-admin-card" key={row.id}>
         <header><strong>{row.officialName} ({row.officialKey}) / {row.showTitle}</strong>
           <span>{row.status.replaceAll("_"," ")} / revision {row.revision}</span></header>
@@ -42,6 +45,7 @@ export default async function HostReviewsPage({searchParams}:Props) {
         {row.evidence.length===0?<p>No evidence submitted.</p>:null}
         <p>Audit: {row.audit.map(a=>a.action+" revision "+a.revision).join("; ") || "None recorded"}</p>
         {row.reviewNote?<p>Reviewer rationale: {row.reviewNote}</p>:null}
+      {row.status==="PENDING"||row.status==="NEEDS_EVIDENCE" ? <HostEvidenceAndReviewForms candidateId={row.id} revision={row.revision} /> : null}
       </article>)}
       {reviews.length===0?<p>No candidates on this page.</p>:null}
       <p>{page>1?<Link href={"/admin/host-reviews?page="+(page-1)}>Previous</Link>:null}
